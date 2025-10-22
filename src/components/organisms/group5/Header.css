@@ -1,0 +1,22 @@
+.navbar {
+  width: 100%;
+  background-color: #fffcf6;
+  border-bottom: 1px solid #f1eae4;
+  padding: 0.8rem 2rem;
+  display: flex;
+  justify-content: center;
+  font-family: popins;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+}

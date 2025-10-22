@@ -1,0 +1,13 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #e74c3c; /* Red accent */
+  --color-text: #333;
+  --color-bg: #fdfaf5; /* Light cream background */
+  --font-family: 'Poppins', sans-serif;
+  --transition-fast: 0.2s ease-in-out;
+}
