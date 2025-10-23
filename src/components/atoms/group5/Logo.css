@@ -12,7 +12,7 @@
   background-color: var(--color-primary);
   color: #fff;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   border-radius: 8px;
   width: 32px;

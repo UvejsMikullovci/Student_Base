@@ -1,11 +1,16 @@
+// NavLink.jsx
 import React from "react";
+import { NavLink as RouterNavLink } from "react-router-dom";
 import "./NavLink.css";
 
-const NavLink = ({ label, href, active }) => {
+const NavLink = ({ label, to }) => {
   return (
-    <a href={href} className={`nav-link ${active ? "active" : ""}`}>
+    <RouterNavLink
+      to={to}
+      className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+    >
       {label}
-    </a>
+    </RouterNavLink>
   );
 };
 

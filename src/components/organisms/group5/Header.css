@@ -2,18 +2,25 @@
   width: 100%;
   background-color: #fffcf6;
   border-bottom: 1px solid #f1eae4;
-  padding: 0.8rem 2rem;
+  padding: 1.2rem 4rem; /* increased padding for more space */
   display: flex;
   justify-content: center;
-  font-family: popins;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px; /* slightly wider for a more expanded layout */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* space between logo and right section */
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* space between navlinks and button */
+  margin-left: auto; /* pushes nav-right (links + button) to the right */
 }
 
 .cta {
