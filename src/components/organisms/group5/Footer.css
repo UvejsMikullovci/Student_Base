@@ -24,7 +24,7 @@
 }
 
 .brand-logo {
-  width: 100px;
+  width: 150px;
   height: 60px;
   /* background-color: #e65b4c; */
   border-radius: 8px;
@@ -64,8 +64,8 @@
 }
 
 .footer-icon {
-  width: 36px;
-  height: 36px;
+  width: 60px;
+  height: 60px;
   border-radius: 8px;
   background-color: white;
   border: 1px solid #f1eae4;
