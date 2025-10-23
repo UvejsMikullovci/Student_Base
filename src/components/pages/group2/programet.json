@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Inxhinieri Informatike",
+    "category": "IT",
+    "university": "Universiteti i Tiranës",
+    "description": "Program modern që kombinon teorinë me praktikën në zhvillimin e softuerit dhe teknologjitë e reja.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 2,
+    "title": "Administrim Biznesi",
+    "category": "Biznes",
+    "university": "Universiteti Politeknik",
+    "description": "Mëso aftësitë e nevojshme për të menaxhuar biznese moderne dhe për të marrë vendime strategjike.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 3,
+    "title": "Mjekësi",
+    "category": "Shëndetësi",
+    "university": "Universiteti i Tiranës",
+    "description": "Program i plotë mjekësor që përgatit profesionistë të kualifikuar në fushën e shëndetësisë.",
+    "duration": "6 vjet",
+    "degree": "Master Profesional",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 4,
+    "title": "Inxhinieri Elektrike",
+    "category": "Inxhinieri",
+    "university": "Universiteti Politeknik",
+    "description": "Studim i thelluar i sistemeve elektrike, elektronikës dhe energjisë së rinovueshme.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 5,
+    "title": "Psikologji",
+    "category": "Shkenca Sociale",
+    "university": "Kolegji Europian",
+    "description": "Eksploro sjelljen njerëzore dhe proceset mendore në një mjedis akademik bashkëkohor.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 6,
+    "title": "Arkitekturë",
+    "category": "Arkitekturë",
+    "university": "Universiteti Politeknik",
+    "description": "Krijoni hapësira dhe ndërtesa që kombinojnë estetikën me funksionalitetin.",
+    "duration": "5 vjet",
+    "degree": "Master Profesional",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 7,
+    "title": "Marketing dhe Komunikim",
+    "category": "Biznes",
+    "university": "Kolegji Bedër",
+    "description": "Mëso strategjitë moderne të marketingut dhe komunikimit në botën digjitale.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 8,
+    "title": "Stomatologji",
+    "category": "Shëndetësi",
+    "university": "Universiteti i Tiranës",
+    "description": "Program i specializuar për kujdesin dentar dhe kirurgjinë orale.",
+    "duration": "5 vjet",
+    "degree": "Master Profesional",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 9,
+    "title": "Shkenca Kompjuterike",
+    "category": "IT",
+    "university": "Universiteti Politeknik",
+    "description": "Thellohuni në algoritmikë, inteligjencë artificiale dhe shkencën e të dhënave.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  }
+]
