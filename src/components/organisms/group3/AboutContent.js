@@ -1,0 +1,95 @@
+import React from "react";
+import Heading from "../../atoms/group3/Heading";
+import Paragraph from "../../atoms/group3/Paragraph";
+import StatsSection from "../../molecules/group3/StatsSection";
+import MissionVisionSection from "../../molecules/group3/MissionVisionSection";
+import TeamSection from "../../molecules/group3/TeamSection";
+import PartnersSection from "../../molecules/group3/PartnersSection";
+import { motion } from "framer-motion";
+
+export default function AboutContent() {
+  return (
+    <div className="bg-[#FFF8F6] text-gray-800 pb-20 overflow-hidden">
+      {/* Hero Section */}
+      <motion.div
+        className="bg-gradient-to-b from-red-600 to-red-700 text-white text-center py-16 rounded-b-3xl shadow-lg"
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Heading text="Rreth Nesh" className="text-white" />
+        <Paragraph
+          text="Ne jemi të përkushtuar për të transformuar mënyrën si studentët e Kosovës zhvillojnë aftësitë dhe përgatiten për institucionet arsimore."
+          className="text-gray-100"
+        />
+      </motion.div>
+
+      {/* Stats Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <StatsSection />
+      </motion.div>
+
+      {/* Mission & Vision */}
+      <motion.div
+        className="max-w-6xl mx-auto px-6 mt-16"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <Heading text="Misioni dhe Vizioni jonë" />
+        <Paragraph text="Gjithçka që bëjmë është e ndërtuar nga vlerat tona themelore." />
+        <MissionVisionSection />
+      </motion.div>
+
+      {/* History Section */}
+      <motion.div
+        className="max-w-6xl mx-auto mt-20 px-6 grid md:grid-cols-2 gap-10 items-center"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div>
+          <Heading text="Historia jonë" className="text-left" />
+          <Paragraph
+            text="Shkolla u themelua në vitin 2009 me një vizion të qartë për të lehtësuar procesin e arsimit dhe zhvillimin profesional për studentët. Që atëherë kemi punuar për të përmirësuar çdo aspekt të përvojës së studentëve përmes teknologjisë."
+            className="text-left"
+          />
+        </div>
+        <motion.img
+          src="https://images.unsplash.com/photo-1573497491208-6b1acb260507"
+          alt="Team working"
+          className="rounded-2xl shadow-lg"
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.4 }}
+        />
+      </motion.div>
+
+      {/* Team Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <TeamSection />
+      </motion.div>
+
+      {/* Partners Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <PartnersSection />
+      </motion.div>
+    </div>
+  );
+}
