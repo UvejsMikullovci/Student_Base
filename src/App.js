@@ -8,6 +8,7 @@ import Settings from "./components/pages/group4/settings";
 import Footer from "./components/organisms/group5/Footer"; // ✅ Import Footer
 import "./components/styles/variables.css";
 import Programet from "./components/pages/group2/programet";
+import RrethNeshPage from "./components/pages/group3/RethNeshPage";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
             <Route path="/kolegjte" element={<h1>Kolegjët Page</h1>} />
             <Route path="/programet" element={<Programet />} />
             <Route path="/cmimet" element={<h1>Çmimet Page</h1>} />
-            <Route path="/rreth-nesh" element={<h1>Rreth Nesh Page</h1>} />
+            <Route path="/rreth-nesh" element={<RrethNeshPage />} />
             <Route path="/kontakti" element={<h1>Kontakti Page</h1>} />
           </Routes>
         </main>
