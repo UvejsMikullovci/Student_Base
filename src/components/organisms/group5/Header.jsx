@@ -9,9 +9,11 @@ const Header = () => {
     <header className="navbar">
       <div className="container">
         <Brand />
-        <NavLinks />
-        <div className="cta">
-          <Button label="Paneli im" />
+        <div className="nav-right">
+          <NavLinks />
+          <div className="cta">
+            <Button label="Paneli im" />
+          </div>
         </div>
       </div>
     </header>

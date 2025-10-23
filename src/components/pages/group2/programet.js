@@ -1,6 +1,6 @@
 import React from "react";
 import programet from "./programet.json";
-import "./Programet.css";
+// import "./Programet.css";
 
 function Programet() {
   return (

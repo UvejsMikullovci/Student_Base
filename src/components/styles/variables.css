@@ -5,9 +5,9 @@
 }
 
 :root {
-  --color-primary: #e74c3c; /* Red accent */
-  --color-text: #333;
-  --color-bg: #fdfaf5; /* Light cream background */
+  --color-primary: #DF4C4A; /* Red accent */
+  --color-text: #101010;
+  --color-bg: #FFFCF6; /* Light cream background */
   --font-family: 'Poppins', sans-serif;
   --transition-fast: 0.2s ease-in-out;
 }
