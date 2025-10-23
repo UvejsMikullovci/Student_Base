@@ -1,4 +1,4 @@
-// NavLinks.jsx
+// src/components/molecules/group5/NavLinks.jsx
 import React from "react";
 import NavLink from "../../atoms/group5/NavLink";
 import "./NavLinks.css";
