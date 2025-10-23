@@ -19,7 +19,7 @@ function App() {
           <Route path="/panel-favorited" element={<Favorited/>} />
           <Route path="/panel-settings" element={<Settings/>} />
         </Routes>
-        <main style={{ minHeight: "80vh" }}> {/* ✅ Ensures content spacing above footer */}
+        <main style={{ minHeight: "10vh" }}> {/* ✅ Ensures content spacing above footer */}
           <Routes>
             <Route path="/" element={<h1>Import HomePage</h1>} />
             <Route path="/kolegjte" element={<h1>Kolegjët Page</h1>} />
