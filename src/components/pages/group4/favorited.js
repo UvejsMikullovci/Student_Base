@@ -2,7 +2,9 @@ import React from 'react'
 
 function favorited() {
   return (
-    <div>favorited</div>
+    
+    <div>
+    </div>
   )
 }
 
