@@ -1,15 +1,16 @@
+// NavLinks.jsx
 import React from "react";
 import NavLink from "../../atoms/group5/NavLink";
 import "./NavLinks.css";
 
 const NavLinks = () => {
   const links = [
-    { label: "Ballina", href: "#", active: true },
-    { label: "Kolegjët", href: "#" },
-    { label: "Programet", href: "#" },
-    { label: "Çmimet", href: "#" },
-    { label: "Rreth Nesh", href: "#" },
-    { label: "Kontakti", href: "#" },
+    { label: "Ballina", to: "/" },
+    { label: "Kolegjët", to: "/kolegjte" },
+    { label: "Programet", to: "/programet" },
+    { label: "Çmimet", to: "/cmimet" },
+    { label: "Rreth Nesh", to: "/rreth-nesh" },
+    { label: "Kontakti", to: "/kontakti" },
   ];
 
   return (
