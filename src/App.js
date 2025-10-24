@@ -10,6 +10,8 @@ import Footer from "./components/organisms/group5/Footer"; // ✅ Import Footer
 import "./components/styles/variables.css";
 import Programet from "./components/pages/group2/programet";
 import RrethNeshPage from "./components/pages/group3/RethNeshPage";
+import { button } from "framer-motion/client";
+import "./components/organisms/group5/Sidebar.css"
 
 function App() {
   return (
