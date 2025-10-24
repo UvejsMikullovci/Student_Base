@@ -13,6 +13,7 @@ import RrethNeshPage from "./components/pages/group3/RethNeshPage";
 import CmimetPage from "./components/pages/group2/CmimetPage";
 import KontaktiPage from "./components/pages/group3/KontaktiPage";
 
+
 function App() {
   return (
     <div className="App">
@@ -34,7 +35,7 @@ function App() {
             <Route path="/kontakti" element={<KontaktiPage />} />
           </Routes >
         </main >
-        <Footer /> {/* ✅ Footer shown on all routes */}
+    <Footer /> {/* ✅ Footer shown on all routes */ }
       </Router >
     </div >
   );
