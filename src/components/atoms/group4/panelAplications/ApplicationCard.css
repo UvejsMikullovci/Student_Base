@@ -1,0 +1,102 @@
+.application-card {
+  background: #fdfaf7;
+  border: 1px solid #f3e6e2;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  box-shadow: 0 0 0 transparent;
+  transition: all 0.2s ease;
+}
+
+.application-card:hover {
+  border-color: #e4d3ce;
+}
+
+.application-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.application-left {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  text-align: left!important;
+}
+
+
+.application-university {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e1e1e;
+  margin: 0;
+    text-align: left!important;
+}
+
+.application-program {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0.15rem 0 0;
+}
+
+.application-divider {
+  border: none;
+  border-top: 1px solid #f2dfda;
+  margin: 0.5rem 0;
+}
+
+.application-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.application-date {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.status-badge {
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-badge.pranuar {
+  background: #e8f9ef;
+  color: #167c4a;
+}
+
+.status-badge.pritje {
+  background: #fff8e2;
+  color: #8b6500;
+}
+
+.status-badge.refuzuar {
+  background: #ffe8e8;
+  color: #b91c1c;
+}
+
+.details-btn {
+  border: 1px solid #e5cec9;
+  background: transparent;
+  border-radius: 6px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  color: #222;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.details-btn:hover {
+  background: #f6ece9;
+  border-color: #d6bbb4;
+}

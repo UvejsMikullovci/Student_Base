@@ -10,7 +10,7 @@
 
 .container {
   width: 100%;
-  max-width: 1400px; /* slightly wider for a more expanded layout */
+  max-width: 1600px; /* slightly wider for a more expanded layout */
   display: flex;
   align-items: center;
   justify-content: space-between; /* space between logo and right section */

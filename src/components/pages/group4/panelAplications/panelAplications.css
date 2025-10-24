@@ -1,0 +1,20 @@
+.panel-applications {
+  max-width: 60%;
+  margin: 0 7% 0 auto;
+  padding: 3rem 1rem;
+  font-family: "Poppins", sans-serif;
+  color: #2d2d2d;
+}
+
+
+.applications-title {
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  text-align: left!important;
+}
+
+.applications-subtitle {
+  color: #555;
+  text-align: left!important;
+}

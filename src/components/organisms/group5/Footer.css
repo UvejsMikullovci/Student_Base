@@ -12,7 +12,7 @@
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1.2fr;
   gap: 3rem;
-  max-width: 1400px;
+  max-width: 1450px;
   margin: 0 auto;
   align-items: flex-start;
 }

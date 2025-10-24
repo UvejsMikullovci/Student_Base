@@ -1,7 +1,7 @@
 import React from 'react';
 import './settings.css';
-import ToggleSwitch from '../../atoms/group4/toggleSwitch';
-import Dropdown from '../../atoms/group4/dropdownSelection';
+import ToggleSwitch from '../../../atoms/group4/toggleSwitch';
+import Dropdown from '../../../atoms/group4/dropdownSelection';
 
 function settings() {
 

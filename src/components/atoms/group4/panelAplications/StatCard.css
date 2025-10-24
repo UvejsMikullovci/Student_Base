@@ -1,0 +1,45 @@
+.stat-card {
+  flex: 1 1 200px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    text-align: left!important;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Status Colors */
+.stat-card.total {
+  border-color: #f5f5f5;
+}
+
+.stat-card.accepted {
+  background-color: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+.stat-card.pending {
+  background-color: #fefce8;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.stat-card.rejected {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #b91c1c;
+}

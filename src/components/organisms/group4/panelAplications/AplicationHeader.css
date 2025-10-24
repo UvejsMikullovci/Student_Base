@@ -1,0 +1,14 @@
+.applications-header {
+  margin-bottom: 1.5rem;
+  text-align: left!important;
+}
+
+.applications-title {
+  font-size: 2.7rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.applications-subtitle {
+  color: #555;
+}

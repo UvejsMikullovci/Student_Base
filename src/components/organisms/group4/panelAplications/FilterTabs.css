@@ -1,0 +1,41 @@
+.filter-tabs {
+  margin-top: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3rem;
+}
+
+.tabs-inner {
+  display: flex;
+  gap: 2rem;
+}
+
+.tabs-inner button {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding-bottom: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.tabs-inner button:hover {
+  color: #DF4C4A;
+}
+
+.tabs-inner button.active {
+  color: #DF4C4A;
+}
+
+.tabs-inner button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #DF4C4A;
+  border-radius: 6px;
+}
