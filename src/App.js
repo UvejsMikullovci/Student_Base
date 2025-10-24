@@ -11,6 +11,7 @@ import Programet from "./components/pages/group2/programet";
 import RrethNeshPage from "./components/pages/group3/RethNeshPage";
 import CollegeDetailsPage from "./components/pages/group1/CollegeDetailsPage";
 import CmimetPage from "./components/pages/group2/CmimetPage"; 
+import KontaktiPage from "./components/pages/group3/KontaktiPage";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
             <Route path="/programet" element={<Programet />} />
             <Route path="/cmimet" element={<CmimetPage />} /> 
             <Route path="/rreth-nesh" element={<RrethNeshPage />} />
-            <Route path="/kontakti" element={<h1>Kontakti Page</h1>} />
+
           </Routes>
         </main>
 
