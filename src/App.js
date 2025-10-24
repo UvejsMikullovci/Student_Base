@@ -11,6 +11,7 @@ import "./components/styles/variables.css";
 import Programet from "./components/pages/group2/programet";
 import RrethNeshPage from "./components/pages/group3/RethNeshPage";
 import CmimetPage from "./components/pages/group2/CmimetPage";
+import HomePage from './components/pages/group1/HomePage'
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         </Routes>
         <main style={{ minHeight: "10vh" }}> {/* ✅ Ensures content spacing above footer */}
           <Routes>
-            <Route path="/" element={<h1>Import HomePage</h1>} />
+            <Route path="/" element={<HomePage/>} />
             <Route path="/kolegjte" element={<h1>Kolegjët Page</h1>} />
             <Route path="/programet" element={<Programet />} />
             <Route path="/cmimet" element={<CmimetPage />} />
