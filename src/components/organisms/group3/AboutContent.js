@@ -49,23 +49,24 @@ export default function AboutContent() {
 
       {/* History Section */}
       <motion.div
-        className="max-w-6xl mx-auto mt-20 px-6 grid md:grid-cols-2 gap-10 items-center"
+        className="about-history"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <div>
+        <div className="history-text">
           <Heading text="Historia jonë" className="text-left" />
-          <Paragraph
-            text="Shkolla u themelua në vitin 2009 me një vizion të qartë për të lehtësuar procesin e arsimit dhe zhvillimin profesional për studentët. Që atëherë kemi punuar për të përmirësuar çdo aspekt të përvojës së studentëve përmes teknologjisë."
-            className="text-left"
-          />
+          <Paragraph text="Studo u themelua në vitin 2020 me një vizion të qartë: të lehtësojmë procesin e zgjedhjes dhe aplikimit në kolegje për studentët e Kosovës." />
+          <Paragraph text='Ekipi ynë filloi me një pyetje të thjeshtë: "Pse duhet të jetë kaq e vështirë për studentët të gjejnë informacion të besueshëm për kolegjet?"' />
+          <Paragraph text="Sot, ne jemi krenarë që shërbejmë si ura midis mijëra studentëve dhe institucioneve më të mira arsimore në Kosovë, duke i ndihmuar ata të marrin vendime të informuara për të ardhmen e tyre." />
+          <Paragraph text="Me një ekip të përkushtuar dhe partneritete me mbi 50 kolegje, ne vazhdojmë të inovojmë dhe të përmirësojmë përvojën e çdo studenti në platformën tonë." />
         </div>
+
         <motion.img
           src="https://images.unsplash.com/photo-1573497491208-6b1acb260507"
           alt="Team working"
-          className="rounded-2xl shadow-lg"
+          className="history-img"
           whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.4 }}
         />

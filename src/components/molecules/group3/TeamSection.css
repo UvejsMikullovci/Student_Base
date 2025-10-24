@@ -1,0 +1,31 @@
+.team-section {
+    background-color: #fffaf5;
+    /* soft beige background */
+    padding: 60px 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.team-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+.team-subtitle {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* Make the cards wider by increasing the min width */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* was 250px */
+    gap: 28px;
+    max-width: 1300px;
+    /* slightly wider section */
+    margin: 0 auto;
+}
