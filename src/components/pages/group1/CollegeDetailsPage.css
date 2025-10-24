@@ -1,0 +1,106 @@
+/* Header i kolegjit */
+.college-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff8f2; /* ngjyrë më e ngrohtë se #fffcf6 */
+  padding: 20px;
+  border-bottom: 2px solid #e57b72; /* më i butë se df4c4a */
+  border-radius: 12px 12px 0 0; /* pak butësi në cepa */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.college-header h2 {
+  margin: 0;
+  color: #2b2b2b;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Tag për llojin e kolegjit */
+.tag {
+  background-color: #e57b72cc; /* nuancë e ngrohtë */
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-left: 10px;
+}
+
+/* Metadata e kolegjit */
+.college-meta {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #2b2b2b;
+}
+
+/* Butonat */
+.button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.button.primary {
+  background: #e57b72;
+  color: #fff;
+}
+
+.button.primary:hover {
+  background: #df4c4a;
+}
+
+.button.secondary {
+  background: transparent;
+  border: 2px solid #e57b72;
+  color: #e57b72;
+}
+
+.button.secondary:hover {
+  background: #e57b72;
+  color: #fff;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff1ed; /* më e ngrohtë se #fff4f2 */
+  padding: 10px;
+  border-radius: 25px;
+  margin: 20px auto;
+  width: 80%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.tab-button {
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  color: #2b2b2b;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  background: #e57b72cc;
+  color: #fff;
+  border-radius: 20px;
+}
+
+/* Info Box */
+.info-box {
+  background-color: #fff8f2;
+  border: 1px solid #e57b72cc;
+  border-radius: 12px;
+  padding: 20px;
+  width: 80%;
+  margin: 20px auto;
+  color: #2b2b2b;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
