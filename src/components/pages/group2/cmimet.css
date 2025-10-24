@@ -1,0 +1,67 @@
+.pricing-page {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #fff8f4;
+  color: #222;
+}
+
+.faq-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.faq-section h2 {
+  text-align: center;
+  font-size: 1.7rem;
+  margin-bottom: 2.5rem;
+}
+
+.faq-item {
+  margin-bottom: 2rem;
+}
+
+.faq-item h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.faq-item p {
+  color: #555;
+  margin-left: 0.5rem;
+  line-height: 1.7;
+}
+
+.cta-section {
+  background-color: #db4b44;
+  color: #fff;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.cta-subtitle {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  opacity: 0.95;
+}
+
+.cta-section h3 {
+  font-size: 1.3rem;
+  margin: 0 auto 2rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.cta-btn {
+  background-color: white;
+  color: #db4b44;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #f3f3f3;
+}

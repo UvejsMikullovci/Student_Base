@@ -11,33 +11,41 @@ import "./components/styles/variables.css";
 import Programet from "./components/pages/group2/programet";
 import RrethNeshPage from "./components/pages/group3/RethNeshPage";
 import CmimetPage from "./components/pages/group2/CmimetPage";
+<<<<<<< HEAD
 import HomePage from './components/pages/group1/HomePage'
+=======
+import ContactPage from "./components/pages/group3/ContactPage";
+
+>>>>>>> 081752dd2a3dfa0a5edfe1fab82da62d0bc47e6b
 
 function App() {
   return (
     <div className="App">
-       
+
       <Router>
         <Header />
         <Routes>
-          <Route path="/panel-favorited" element={<Favorited/>} />
-          <Route path="/panel-settings" element={<Settings/>} />
-          <Route path="/panel-aplications" element={<PanelAplications/>} />
+          <Route path="/panel-favorited" element={<Favorited />} />
+          <Route path="/panel-settings" element={<Settings />} />
+          <Route path="/panel-aplications" element={<PanelAplications />} />
         </Routes>
         <main style={{ minHeight: "10vh" }}> {/* ✅ Ensures content spacing above footer */}
           <Routes>
+<<<<<<< HEAD
             <Route path="/" element={<HomePage/>} />
+=======
+            <Route path="/" element={<h1>uvejs test HomePage</h1>} />
+>>>>>>> 081752dd2a3dfa0a5edfe1fab82da62d0bc47e6b
             <Route path="/kolegjte" element={<h1>Kolegjët Page</h1>} />
             <Route path="/programet" element={<Programet />} />
             <Route path="/cmimet" element={<CmimetPage />} />
             <Route path="/rreth-nesh" element={<RrethNeshPage />} />
-            <Route path="/kontakti" element={<h1>Kontakti Page</h1>} />
-           
-          </Routes>
-        </main>
-        <Footer /> {/* ✅ Footer shown on all routes */}
-      </Router>
-    </div>
+            <Route path="/kontakti" element={<ContactPage />} />
+          </Routes >
+        </main >
+    <Footer /> {/* ✅ Footer shown on all routes */ }
+      </Router >
+    </div >
   );
 }
 
