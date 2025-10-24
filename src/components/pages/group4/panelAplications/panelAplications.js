@@ -6,7 +6,6 @@ import FilterTabs from "../../../organisms/group4/panelAplications/FilterTabs";
 import ApplicationsList from "../../../molecules/group4/panelAplications/ApplicationsList";
 import "./panelAplications.css";
 
-
 const PanelAplications = () => {
   const [activeFilter, setActiveFilter] = useState("all");
 
@@ -61,9 +60,6 @@ const PanelAplications = () => {
         );
 
   return (
-
-
-    
     <div className="panel-applications">
       <h1 className="applications-title">Aplikimet e mia</h1>
       <p className="applications-subtitle">
@@ -76,7 +72,6 @@ const PanelAplications = () => {
         pending={stats.pending}
         rejected={stats.rejected}
       />
-      
 
       <FilterTabs
         activeFilter={activeFilter}

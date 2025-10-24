@@ -10,7 +10,7 @@ const NavLinks = () => {
     { label: "Programet", to: "/programet" },
     { label: "Çmimet", to: "/cmimet" },
     { label: "Rreth Nesh", to: "/rreth-nesh" },
-    { label: "Kontakti", to: "/kontakti" }
+    { label: "Kontakti", to: "/kontakti" },
   ];
 
   return (
