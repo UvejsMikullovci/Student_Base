@@ -6,23 +6,29 @@ import MissionVisionSection from "../../molecules/group3/MissionVisionSection";
 import TeamSection from "../../molecules/group3/TeamSection";
 import PartnersSection from "../../molecules/group3/PartnersSection";
 import { motion } from "framer-motion";
+import "./AboutContent.css";
 
 export default function AboutContent() {
   return (
     <div className="bg-[#FFF8F6] text-gray-800 pb-20 overflow-hidden">
       {/* Hero Section */}
+      {/* Hero Section */}
       <motion.div
-        className="bg-gradient-to-b from-red-600 to-red-700 text-white text-center py-16 rounded-b-3xl shadow-lg"
+        className="about-hero"
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <Heading text="Rreth Nesh" className="text-white" />
-        <Paragraph
-          text="Ne jemi të përkushtuar për të transformuar mënyrën si studentët e Kosovës zhvillojnë aftësitë dhe përgatiten për institucionet arsimore."
-          className="text-gray-100"
-        />
+        <div className="about-hero-overlay"></div>
+        <div className="about-hero-content">
+          <Heading text="Rreth Nesh" className="text-white" />
+          <Paragraph
+            text="Ne jemi të përkushtuar për të transformuar mënyrën si studentët e Kosovës zhvillojnë aftësitë dhe përgatiten për institucionet arsimore."
+            className="text-gray-100"
+          />
+        </div>
       </motion.div>
+
 
       {/* Stats Section */}
       <motion.div

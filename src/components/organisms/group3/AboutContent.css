@@ -6,141 +6,76 @@
   padding-bottom: 80px;
 }
 
-/* ===== HERO SECTION ===== */
+/* ===== HERO SECTION (Rreth Nesh) ===== */
 .about-hero {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
-  color: #ffffff;
+  position: relative;
+  background: url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1")
+    center/cover no-repeat;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 100px 20px 120px 20px;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
+  overflow: hidden;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(204, 53, 45, 0.88);
+  z-index: 1;
+}
+
+.about-hero-content {
   position: relative;
   z-index: 2;
+  color: white;
+  max-width: 800px;
+  padding: 0 20px;
 }
 
-.about-hero h2,
-.about-hero h1 {
-  color: #fff;
-  font-size: 2.8rem;
+.about-hero-content h2 {
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 16px;
-  letter-spacing: 0.5px;
+  margin-bottom: 20px;
 }
 
-.hero-subtext {
-  color: #f0f0f0;
-  max-width: 680px;
-  margin: 0 auto;
-  line-height: 1.7;
+.about-hero-content p {
   font-size: 1.1rem;
-  opacity: 0.95;
+  line-height: 1.6;
+  color: #f9f9f9;
 }
 
-.about-section {
+/* ===== STATS, MISSION, HISTORY ===== */
+.about-section,
+.about-mission {
   max-width: 1200px;
   margin: 60px auto;
   padding: 0 20px;
 }
 
-/* ===== MISSION SECTION ===== */
 .about-mission {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 0 20px;
   text-align: center;
 }
 
 /* ===== HISTORY SECTION ===== */
-.about-history {
-  display: flex;
-  flex-direction: row;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  align-items: center;
-  gap: 50px;
-  max-width: 100%;
-  margin: 100px auto 80px auto;
-  padding: 0 20px;
-}
-
-.history-text {
-  text-align: left;
-}
-
-.history-text h2 {
-  color: #b91c1c;
-  font-size: 1.9rem;
-  margin-bottom: 20px;
-}
-
-.history-text p {
-  color: #555;
-  line-height: 1.7;
-  margin-bottom: 15px;
-  font-size: 1.05rem;
-}
-
-.history-img {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 22px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
-}
-
-/* ===== TEAM SECTION ===== */
-.about-section h3 {
-  color: #dc2626;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .about-hero {
-    border-radius: 0 0 40px 40px;
-    padding: 70px 15px 100px;
-  }
-
-  .about-hero h2 {
-    font-size: 2.2rem;
-  }
-
-  .hero-subtext {
-    font-size: 1rem;
-  }
-
-  .about-section {
-    margin: 40px auto;
-  }
-
-  .history-text {
-    text-align: center;
-  }
-}
-
-
-
-
-
-.about-history-container {
-  background-color: #fff8f6;
-  color: #333;
-  font-family: "Poppins", sans-serif;
-  overflow: hidden;
-  padding: 100px 0;
-}
-
-/* History section grid layout */
 .about-history {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   align-items: center;
   gap: 60px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 100px auto 80px auto;
   padding: 0 40px;
 }
 
-/* Text styles */
+.history-text {
+  text-align: left;
+}
+
 .history-text h2 {
   color: #b91c1c;
   font-size: 2rem;
@@ -155,7 +90,6 @@
   margin-bottom: 16px;
 }
 
-/* Image styling */
 .history-img {
   width: 100%;
   max-width: 520px;
@@ -164,13 +98,31 @@
   transition: transform 0.3s ease;
 }
 
-/* Hover effect */
 .history-img:hover {
   transform: scale(1.03);
 }
 
-/* Responsive */
+/* ===== TEAM SECTION ===== */
+.about-section h3 {
+  color: #dc2626;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+  .about-hero {
+    height: 350px;
+    padding: 60px 15px;
+    border-radius: 0 0 40px 40px;
+  }
+
+  .about-hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .about-hero-content p {
+    font-size: 1rem;
+  }
+
   .about-history {
     padding: 0 20px;
     gap: 40px;
