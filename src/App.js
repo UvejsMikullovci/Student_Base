@@ -11,22 +11,18 @@ import "./components/styles/variables.css";
 import Programet from "./components/pages/group2/programet";
 import RrethNeshPage from "./components/pages/group3/RethNeshPage";
 import CmimetPage from "./components/pages/group2/CmimetPage";
-<<<<<<< HEAD
-import ContactPage from "./components/pages/group3/ContactPage";
-=======
 import KontaktiPage from "./components/pages/group3/KontaktiPage";
->>>>>>> f7a49fbe10c32ace234a85bc5be2467171f1ecb1
 
 function App() {
   return (
     <div className="App">
-       
+
       <Router>
         <Header />
         <Routes>
-          <Route path="/panel-favorited" element={<Favorited/>} />
-          <Route path="/panel-settings" element={<Settings/>} />
-          <Route path="/panel-aplications" element={<PanelAplications/>} />
+          <Route path="/panel-favorited" element={<Favorited />} />
+          <Route path="/panel-settings" element={<Settings />} />
+          <Route path="/panel-aplications" element={<PanelAplications />} />
         </Routes>
         <main style={{ minHeight: "10vh" }}> {/* ✅ Ensures content spacing above footer */}
           <Routes>
@@ -35,17 +31,12 @@ function App() {
             <Route path="/programet" element={<Programet />} />
             <Route path="/cmimet" element={<CmimetPage />} />
             <Route path="/rreth-nesh" element={<RrethNeshPage />} />
-<<<<<<< HEAD
-            <Route path="/contact" element={<ContactPage />} />
-=======
             <Route path="/kontakti" element={<KontaktiPage />} />
->>>>>>> f7a49fbe10c32ace234a85bc5be2467171f1ecb1
-           
-          </Routes>
-        </main>
+          </Routes >
+        </main >
         <Footer /> {/* ✅ Footer shown on all routes */}
-      </Router>
-    </div>
+      </Router >
+    </div >
   );
 }
 
