@@ -27,7 +27,7 @@ function App() {
         </Routes>
         <main style={{ minHeight: "10vh" }}> {/* ✅ Ensures content spacing above footer */}
           <Routes>
-            <Route path="/" element={<h1>sumea HomePage</h1>} />
+            <Route path="/" element={<h1>uvejs test HomePage</h1>} />
             <Route path="/kolegjte" element={<h1>Kolegjët Page</h1>} />
             <Route path="/programet" element={<Programet />} />
             <Route path="/cmimet" element={<CmimetPage />} />
