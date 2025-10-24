@@ -11,7 +11,7 @@ import "./components/styles/variables.css";
 import Programet from "./components/pages/group2/programet";
 import RrethNeshPage from "./components/pages/group3/RethNeshPage";
 import CmimetPage from "./components/pages/group2/CmimetPage";
-import KontaktiPage from "./components/pages/group3/KontaktiPage";
+import ContactPage from "./components/pages/group3/ContactPage";
 
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
             <Route path="/programet" element={<Programet />} />
             <Route path="/cmimet" element={<CmimetPage />} />
             <Route path="/rreth-nesh" element={<RrethNeshPage />} />
-            <Route path="/kontakti" element={<KontaktiPage />} />
+            <Route path="/kontakti" element={<ContactPage />} />
           </Routes >
         </main >
     <Footer /> {/* ✅ Footer shown on all routes */ }

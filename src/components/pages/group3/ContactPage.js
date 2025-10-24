@@ -1,4 +1,5 @@
 import React from "react";
+import "./ContactPage.css";
 import ContactHeader from "../../organisms/group3/ContactHeader";
 import ContactDetails from "../../organisms/group3/ContactDetails";
 import ContactForm from "../../molecules/group3/ContactForm";
