@@ -10,10 +10,12 @@ import Footer from "./components/organisms/group5/Footer"; // ✅ Import Footer
 import "./components/styles/variables.css";
 import Programet from "./components/pages/group2/programet";
 import RrethNeshPage from "./components/pages/group3/RethNeshPage";
+import CmimetPage from "./components/pages/group2/CmimetPage";
 
 function App() {
   return (
     <div className="App">
+       
       <Router>
         <Header />
         <Routes>
@@ -26,9 +28,10 @@ function App() {
             <Route path="/" element={<h1>Import HomePage</h1>} />
             <Route path="/kolegjte" element={<h1>Kolegjët Page</h1>} />
             <Route path="/programet" element={<Programet />} />
-            <Route path="/cmimet" element={<h1>Çmimet Page</h1>} />
+            <Route path="/cmimet" element={<CmimetPage />} />
             <Route path="/rreth-nesh" element={<RrethNeshPage />} />
             <Route path="/kontakti" element={<h1>Kontakti Page</h1>} />
+           
           </Routes>
         </main>
         <Footer /> {/* ✅ Footer shown on all routes */}
