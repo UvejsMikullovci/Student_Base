@@ -11,7 +11,11 @@ import "./components/styles/variables.css";
 import Programet from "./components/pages/group2/programet";
 import RrethNeshPage from "./components/pages/group3/RethNeshPage";
 import CmimetPage from "./components/pages/group2/CmimetPage";
+<<<<<<< HEAD
 import ContactPage from "./components/pages/group3/ContactPage";
+=======
+import KontaktiPage from "./components/pages/group3/KontaktiPage";
+>>>>>>> f7a49fbe10c32ace234a85bc5be2467171f1ecb1
 
 function App() {
   return (
@@ -31,7 +35,11 @@ function App() {
             <Route path="/programet" element={<Programet />} />
             <Route path="/cmimet" element={<CmimetPage />} />
             <Route path="/rreth-nesh" element={<RrethNeshPage />} />
+<<<<<<< HEAD
             <Route path="/contact" element={<ContactPage />} />
+=======
+            <Route path="/kontakti" element={<KontaktiPage />} />
+>>>>>>> f7a49fbe10c32ace234a85bc5be2467171f1ecb1
            
           </Routes>
         </main>
