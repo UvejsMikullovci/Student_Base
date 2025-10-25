@@ -11,7 +11,7 @@ const plans = [
     features: [
       "Shfleto të gjitha kolegjet",
       "Shiko informacion bazë",
-      "Apliko në deri 3 kolegje",
+      "Apliko në deri 5 kolegje",
       "Mbështetje email bazë",
     ],
     missing: [
