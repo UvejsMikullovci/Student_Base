@@ -25,7 +25,7 @@ function App() {
           <Route path="/panel-settings" element={<Settings />} />
           <Route path="/panel-aplications" element={<PanelAplications />} />
         </Routes>
-        <main style={{ minHeight: "10vh" }}> {/* ✅ Ensures content spacing above footer */}
+        <main style={{ minHeight: "10vh" }}>
           <Routes>
             <Route path="/" element={<HomePage/>} />
             <Route path="/kolegjte" element={<h1>Kolegjët Page</h1>} />
