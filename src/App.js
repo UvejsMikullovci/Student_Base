@@ -35,7 +35,7 @@ function App() {
             <Route path="/kontakti" element={<ContactPage />} />
           </Routes >
         </main >
-    <Footer /> {/* ✅ Footer shown on all routes */ }
+    <Footer />
       </Router >
     </div >
   );
