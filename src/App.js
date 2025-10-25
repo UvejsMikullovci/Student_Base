@@ -13,6 +13,7 @@ import RrethNeshPage from "./components/pages/group3/RethNeshPage";
 import CmimetPage from "./components/pages/group2/CmimetPage";
 import HomePage from './components/pages/group1/HomePage'
 import ContactPage from "./components/pages/group3/ContactPage";
+import PanelPayment from "./components/pages/group4/panelPayment/Payments";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/panel-favorited" element={<Favorited />} />
           <Route path="/panel-settings" element={<Settings />} />
           <Route path="/panel-aplications" element={<PanelAplications />} />
+          <Route path="/panel-payment" element={<PanelPayment />} />
         </Routes>
         <main style={{ minHeight: "10vh" }}>
           <Routes>
