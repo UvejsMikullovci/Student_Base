@@ -10,7 +10,8 @@ const ContactPage = () => {
     return (
         <div className="contact-page">
             <ContactHeader />
-            <ContactDetails />
+            <ContactDetails /> 
+            <h1>test</h1>
             <div className="contact-body">
                 <ContactForm />
                 <FAQSection />
