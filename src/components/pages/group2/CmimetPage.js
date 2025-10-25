@@ -7,6 +7,7 @@ export default function RrethNeshPage() {
   return (
     <main>
       <Cmimet />
+      // TODO: FAQ Section re design
        <div className="pricing-page">
       <section className="faq-section">
         <h2>Pyetje të shpeshta rreth çmimeve</h2>
