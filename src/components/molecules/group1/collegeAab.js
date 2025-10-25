@@ -7,7 +7,7 @@ export default function CollegeAab() {
     <div style={{ color: 'white', textAlign: 'center' }}>
       <h1>College AAB</h1>
       <p>This is a description of College AAB.</p>
-      <Button text="Learn More" onClick={() => alert('Clicked!')} />
+      <Button text="Learn More" onClick={() => alert('Clicked!')}  />
     </div>
   );
 }
