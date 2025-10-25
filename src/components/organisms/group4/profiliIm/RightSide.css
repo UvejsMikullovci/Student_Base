@@ -1,6 +1,6 @@
 .div-profileBox {
     margin: 2% auto;
-    width: 30%;
+    width: 100%;
     padding: 10px;
     text-align: center;
     border: 1px solid #df4d4a90;
@@ -33,8 +33,8 @@
 .div-profileFastStatistics {
     margin: 2% auto;
     font-weight: 100;
-    width: 30%;
-    padding: 10px;
+    width: 100%;
+    padding: 30px;
     text-align: start;
     border: 1px solid #df4d4a90;
     border-radius: 25px;

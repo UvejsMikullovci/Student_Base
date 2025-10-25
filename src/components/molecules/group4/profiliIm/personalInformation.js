@@ -2,32 +2,29 @@ import React, { useState } from 'react';
 import './PersonalInformation.css';
 
 function PersonalInformation() {
-  // Actual saved info
   const [info, setInfo] = useState({
-    name: "Maja",
-    surname: "Llosha",
-    email: "maja@example.com",
+    name: "Erion",
+    surname: "Veliaj",
+    email: "erionveliaj@example.com",
     phone: "+355 68 123 4567",
     birthday: "2002-05-21",
     city: "Tirana",
     address: "Rruga e Dibrës, 123"
   });
 
-  // Temporary editable info
+
   const [tempInfo, setTempInfo] = useState({ ...info });
 
-  // Handle field typing
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTempInfo({ ...tempInfo, [name]: value });
   };
 
-  // Save button
+
   const handleSave = () => {
     setInfo({ ...tempInfo });
   };
 
-  // Optional: Reset (Cancel) button
   const handleCancel = () => {
     setTempInfo({ ...info });
   };
