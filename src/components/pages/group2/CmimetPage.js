@@ -2,6 +2,7 @@ import React from "react";
 import Cmimet from "../../organisms/group2/cmimet";
 import "./cmimet.css";
 
+// TODO: fix pricing style
 
 export default function RrethNeshPage() {
   return (

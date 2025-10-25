@@ -1,9 +1,13 @@
 import React from "react";
 import "./cmimet.css";
+import {
+  faCheckCircle,
+  faTimesCircle,
+} from "@fortawesome/fontawesome-free";
 
 const plans = [
   {
-    name: "Falass",
+    name: "Falas",
     price: "€0",
     period: "/muaj",
     description: "Për studentë që po fillojnë kërkimin e tyre",
@@ -33,12 +37,9 @@ const plans = [
       "Statistika të avancuara",
       "Krahasim i detajuar",
       "Mbështetje prioritare",
-      "Njoftime e hershme",
+      "Njoftime të hershme",
     ],
-    missing: [
-      "Konsulencë personale (1 sesion)",
-      "Webinare ekskluzive",
-    ],
+    missing: ["Konsulencë personale (1 sesion)", "Webinare ekskluzive"],
     buttonText: "Zgjidh Premium",
     highlight: true,
   },
@@ -74,22 +75,26 @@ export default function PricingPlans() {
           {plan.highlight && (
             <div className="badge">Më i përzgjedhuri</div>
           )}
-          <h2>{plan.name}</h2>
+
+          <h2 className="plan-title">{plan.name}</h2>
           <p className="description">{plan.description}</p>
+
           <h1 className="price">
             {plan.price}
             <span>{plan.period}</span>
           </h1>
 
           <ul className="features">
-            {plan.features.map((f, idx) => (
-              <li key={idx} className="feature">
-                ✅ {f}
+            {plan.features.map((feature, idx) => (
+              <li key={idx}>
+                <i class="faCheckCircle"></i>
+                {feature}
               </li>
             ))}
-            {plan.missing.map((m, idx) => (
+            {plan.missing.map((missing, idx) => (
               <li key={idx} className="missing">
-                ❌ {m}
+                <i class="faTimesCircle" style={{ color: "#e74c3c" }}></i>
+                {missing}
               </li>
             ))}
           </ul>
