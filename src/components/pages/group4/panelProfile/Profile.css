@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.div-panelProfile {
+    width: 80%;
+    margin: 2% auto;
+    font-family: 'Poppins', sans-serif;
+}
+
+.div-headerPart {
+    width: 100%;
+}
+
+.div-littleBoxi {
+    width: 60%;
+    border: 2px solid #df4d4a90;
+    padding: 20px;
+    text-align: start;
+    border-radius: 5px;
+}
+
+.div-littleBoxContent {
+    display: flex;
+    flex-direction: row;
+    border: none!important;
+    justify-content: space-between;
+}
+
+.div-littleBoxComponent {
+    width: 70%;
+}
+
+.div-Heading {
+    width: 100%;
+    text-align: start;
+}
+
+#hrLine-littleBox {
+    width: 75%;
+    height: 5px;
+  border: none;
+  border-radius: 50px;
+  background-color: #DF4C4A;
+}
