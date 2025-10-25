@@ -1,9 +1,11 @@
 import React from 'react'
-import Profile from '../../../molecules/'
+import Profile from '../../../molecules/group4/profiliIm/ProfileBox'
+import './RightSide.css'
 
 export default function RightSide() {
   return (
-    <div>
+    <>
+    <div className='RightSide'>
       <div className='div-profileBoxi'>
         <Profile
         src=""
@@ -13,6 +15,15 @@ export default function RightSide() {
         button="Ndrysho Foton"
         ></Profile>
       </div>
+      <div className='div-profileFastStatistics'>
+        <Profile
+          title="sda"
+          text="sadwa"
+          number="wadsad"
+        ></Profile>
+      </div>
     </div>
+
+    </>
   )
 }
