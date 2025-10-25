@@ -2,12 +2,12 @@ import React from "react";
 import Cmimet from "../../organisms/group2/cmimet";
 import "./cmimet.css";
 
+// TODO: fix pricing style
 
 export default function RrethNeshPage() {
   return (
     <main>
       <Cmimet />
-      // TODO: FAQ Section re design
        <div className="pricing-page">
       <section className="faq-section">
         <h2>Pyetje të shpeshta rreth çmimeve</h2>
