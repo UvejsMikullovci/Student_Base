@@ -1,5 +1,7 @@
 import React from 'react'
 import LittleBox from '../../../molecules/group4/profiliIm/LittleBox'
+import RightSide from '../../../organisms/group4/profiliIm/RightSide'
+import LeftSide from '../../../organisms/group4/profiliIm/LeftSide'
 import './Profile.css'
 
 export default function Profile() {
@@ -34,7 +36,7 @@ export default function Profile() {
 
         </div>
         <div className='div-rightSide'>
-
+        <RightSide></RightSide>
         </div>
         </div>     
           </div>

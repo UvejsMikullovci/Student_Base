@@ -1,5 +1,5 @@
 import React from 'react'
-import Profile from '../../../pages/group4/panelProfile/Profile'
+import Profile from '../../../molecules/'
 
 export default function RightSide() {
   return (
@@ -7,7 +7,10 @@ export default function RightSide() {
       <div className='div-profileBoxi'>
         <Profile
         src=""
-        name="Erion Velijaj"
+        name="Erion Veliaj"
+        email="erionveliaj@gmail.com"
+        role="Student"
+        button="Ndrysho Foton"
         ></Profile>
       </div>
     </div>

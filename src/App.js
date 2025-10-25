@@ -31,7 +31,7 @@ function App() {
           <Route path="/panel-profile" element={<PanelProfile/>} />
           <Route path="/panel-payment" element={<PanelPayment />} />
           <Route path="/panel-notifications" element={<PanelNotifications />} />
-        </Routes>
+       </Routes>
         <main style={{ minHeight: "10vh" }}>
           <Routes>
             <Route path="/" element={<HomePage/>} />
