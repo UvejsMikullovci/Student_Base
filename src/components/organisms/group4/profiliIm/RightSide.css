@@ -1,0 +1,45 @@
+.div-profileBox {
+    margin: 2% auto;
+    width: 30%;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #df4d4a90;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.div-profileBox h1 {
+    background-color: #DF4C4ABF;
+    color: var(--color-blue-600);
+    border-radius: 300px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.div-profileBox button {
+    width: 90%;
+    background-color: white;
+    border: 1px solid #df4d4a90;
+    height: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-profileFastStatistics {
+    margin: 2% auto;
+    font-weight: 100;
+    width: 30%;
+    padding: 10px;
+    text-align: start;
+    border: 1px solid #df4d4a90;
+    border-radius: 25px;
+}
+.div-profileBoxTitle {
+    border-bottom: 1px solid #df4d4a90;
+    width: 100%;
+}

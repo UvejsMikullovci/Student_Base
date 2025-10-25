@@ -1,5 +1,6 @@
 import React from 'react'
 import Profile from '../../../molecules/group4/profiliIm/ProfileBox'
+import FastStatistics from '../../../molecules/group4/profiliIm/FastStatistics'
 import './RightSide.css'
 
 export default function RightSide() {
@@ -16,11 +17,13 @@ export default function RightSide() {
         ></Profile>
       </div>
       <div className='div-profileFastStatistics'>
-        <Profile
-          title="sda"
-          text="sadwa"
-          number="wadsad"
-        ></Profile>
+        <FastStatistics
+        title="Statistika te shpejta"
+        headingOne="Aplikime totale"
+        headingTwo="Te pranuara"
+        headingThree="Ne pritje"
+        headingFour="Dokumente"
+        ></FastStatistics>
       </div>
     </div>
 
