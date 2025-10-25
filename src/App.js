@@ -33,6 +33,7 @@ function App() {
             <Route path="/cmimet" element={<CmimetPage />} />
             <Route path="/rreth-nesh" element={<RrethNeshPage />} />
             <Route path="/kontakti" element={<ContactPage />} />
+            // TODO: include payment integration page here.
           </Routes >
         </main >
     <Footer />
