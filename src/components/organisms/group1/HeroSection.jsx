@@ -4,6 +4,7 @@ import { StatsGroup } from "../../molecules/group1/StatsGroup";
 import { ImageGrid } from "../../molecules/group1/ImageGrid";
 import "./HeroSection.css";
 
+
 export function HeroSection() {
   return (
     <section className="hero-section">
@@ -15,5 +16,7 @@ export function HeroSection() {
         <ImageGrid />
       </div>
     </section>
+
+    
   );
 }
