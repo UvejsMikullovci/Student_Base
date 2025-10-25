@@ -249,7 +249,7 @@ body {
 }
 
 /* ===== Button ===== */
-button {
+.contact-page button {
     background-color: #e74c3c;
     color: #fff;
     border: none;
@@ -263,7 +263,7 @@ button {
     display: inline-block;
 }
 
-button:hover {
+.contact-page button:hover {
     background-color: #cf3b2f;
     transform: translateY(-2px) scale(1.03);
 }
