@@ -11,7 +11,7 @@
 .pricing-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   gap: 2.5rem;
   padding: 60px 20px;
@@ -39,6 +39,8 @@
 /* Highlight (Premium) */
 .highlight {
   border: 2px solid #c94733;
+  padding: 43px 38px;
+  width: 330px;
 }
 
 .highlight .plan-btn {
@@ -139,4 +141,28 @@
 .plan-btn:hover {
   background-color: #c94733;
   color: white;
+}
+
+.pricing-header {
+  text-align: center;
+  margin: 2.5em 0 2rem 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #1a1a1a;
+}
+
+.pricing-header h1 {
+  font-size: 2.6rem;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: #1a1a1a;
+}
+
+.pricing-header p {
+  margin-top: 12px;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: #6d645d;
+  line-height: 1.7;
 }

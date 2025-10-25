@@ -1,9 +1,6 @@
 import React from "react";
 import "./cmimet.css";
-import {
-  faCheckCircle,
-  faTimesCircle,
-} from "@fortawesome/fontawesome-free";
+import { faCheckCircle, faTimesCircle } from "@fortawesome/fontawesome-free";
 
 const plans = [
   {
@@ -59,49 +56,56 @@ const plans = [
       "Trajnime për stafin",
     ],
     missing: [],
-    buttonText: "Kontakto shitjet",
+    buttonText: "Zgjidh Enterprise",
     highlight: false,
   },
 ];
 
 export default function PricingPlans() {
   return (
-    <div className="pricing-container">
-      {plans.map((plan, i) => (
-        <div
-          key={i}
-          className={`plan-card ${plan.highlight ? "highlight" : ""}`}
-        >
-          {plan.highlight && (
-            <div className="badge">Më i përzgjedhuri</div>
-          )}
+    <section className="pricing-section">
+      <div className="pricing-header">
+        <h1>Planet për çdo nevojë</h1>
+        <p>
+          Zgjidhni planin që përshtatet me ju — filloni falas dhe rrituni kur të jeni gati.
+        </p>
+      </div>
 
-          <h2 className="plan-title">{plan.name}</h2>
-          <p className="description">{plan.description}</p>
+      <div className="pricing-container">
+        {plans.map((plan, i) => (
+          <div
+            key={i}
+            className={`plan-card ${plan.highlight ? "highlight" : ""}`}
+          >
+            {plan.highlight && <div className="badge">Më i përzgjedhuri</div>}
 
-          <h1 className="price">
-            {plan.price}
-            <span>{plan.period}</span>
-          </h1>
+            <h2 className="plan-title">{plan.name}</h2>
+            <p className="description">{plan.description}</p>
 
-          <ul className="features">
-            {plan.features.map((feature, idx) => (
-              <li key={idx}>
-                <i class="faCheckCircle"></i>
-                {feature}
-              </li>
-            ))}
-            {plan.missing.map((missing, idx) => (
-              <li key={idx} className="missing">
-                <i class="faTimesCircle" style={{ color: "#e74c3c" }}></i>
-                {missing}
-              </li>
-            ))}
-          </ul>
+            <h1 className="price">
+              {plan.price}
+              <span>{plan.period}</span>
+            </h1>
 
-          <button className="plan-btn">{plan.buttonText}</button>
-        </div>
-      ))}
-    </div>
+            <ul className="features">
+              {plan.features.map((feature, idx) => (
+                <li key={idx}>
+                  <i className="faCheckCircle"></i>
+                  {feature}
+                </li>
+              ))}
+              {plan.missing.map((missing, idx) => (
+                <li key={idx} className="missing">
+                  <i className="faTimesCircle"></i>
+                  {missing}
+                </li>
+              ))}
+            </ul>
+
+            <button className="plan-btn">{plan.buttonText}</button>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
