@@ -1,0 +1,20 @@
+.favorited-container {
+    width: 45%;
+    border:1px solid black;
+    margin: auto;
+    margin-top: 50px;
+    padding: 30px;
+}
+.card-head {
+    color:black;
+    text-align: left;
+    font-weight: 300;
+    font-size: 18px;
+}
+.card-paragraph {
+    color: rgb(95, 95, 95);
+    text-align: left;
+    font-weight: 300;
+    font-size: 18px;
+    margin-top: 10px;
+}

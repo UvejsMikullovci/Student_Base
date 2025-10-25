@@ -1,5 +1,5 @@
 import React from 'react'
-import PersonalInformation from '../../../molecules/group4/profiliIm/PersonalInformation.js'
+import PersonalInformation from '../../../molecules/group4/profiliIm/personalInformation.js'
 
 export default function LeftSide() {
   return (
