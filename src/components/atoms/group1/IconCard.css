@@ -1,0 +1,50 @@
+.icon-card {
+height: 30vh;
+    background-color: #ffffff63;
+    border-radius: 12px;
+   
+    padding: 20px;
+    text-align: center;
+    width: 320px;
+    display: flex
+;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s 
+ease;
+}
+
+.icon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+.icon {
+  width: 70px;
+  height: 70px;
+  background-color: #ffe6ef; 
+  border-radius: 12px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.icon svg {
+  color: #e04e45;
+    font-size: 28px;
+    stroke-width: 0.5;
+}
+.icon-card h3 {
+ font-size: 1rem;
+    font-weight: 550;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.icon-card p {
+  font-size: 0.5rem;
+  color: #555;
+  line-height: 1.5;
+}

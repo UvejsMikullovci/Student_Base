@@ -1,0 +1,55 @@
+.why-section {
+  background-color: #fff0f2;
+  text-align: center;
+  padding: 100px 0;
+  border-radius: 16px;
+  margin-left:calc(-50vw + 50%);
+ width: 100vw;
+  position: relative;
+}
+
+.why-section h2 {
+font-size: 1.30rem;
+    color: black;
+    margin-bottom: 12px;
+    font-weight: 550;
+}
+
+.why-section p {
+  color: #555;
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+.icon {
+  font-size: 28px;
+  color: #a4161a;
+  background: rgba(164, 22, 26, 0.1);
+  border-radius: 20%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 12px;
+}
+.why-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+   gap: 20px;
+    justify-items: center;
+}
+.why-grid p{
+  font-weight:20px;
+}
+
+.why-grid .description {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #555;
+  white-space: nowrap;      
+  overflow: hidden;         
+  text-overflow: ellipsis;
+  width: 90%;
+  margin: 0;               
+}
