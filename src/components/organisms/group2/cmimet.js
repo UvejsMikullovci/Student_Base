@@ -65,7 +65,7 @@ export default function PricingPlans() {
   return (
     <section className="pricing-section">
       <div className="pricing-header">
-        <h1>Planet për çdo nevojë</h1>
+        <h1>Planet për çdo <span>nevojë</span></h1>
         <p>
           Zgjidhni planin që përshtatet me ju — filloni falas dhe rrituni kur të jeni gati.
         </p>

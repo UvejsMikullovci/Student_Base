@@ -166,3 +166,7 @@
   color: #6d645d;
   line-height: 1.7;
 }
+
+.pricing-header h1 span {
+    text-decoration: underline wavy rgba(255, 0, 0, 0.5);
+}
