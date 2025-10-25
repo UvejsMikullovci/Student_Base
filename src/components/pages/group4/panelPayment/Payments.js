@@ -2,7 +2,6 @@ import React, { useState } from "react";
 function GlobalStyles() {
   return (
     <style>{`
-      /* --- Reset & Globals --- */
       :root {
         --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         --bg-main: #F9FAFB;
