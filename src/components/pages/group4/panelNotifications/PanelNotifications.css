@@ -18,7 +18,7 @@ body {
 }
 
 .notif-left {
-  flex: 0 0 350px;
+  flex: 0 0 350.1px;
   background: #fffaf5;
   border-top-left-radius: 16px;
   border-bottom-left-radius: 16px;
