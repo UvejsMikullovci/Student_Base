@@ -3,7 +3,22 @@
 .div-panelProfile {
     width: 80%;
     margin: 2% auto;
+    align-items: center;
     font-family: 'Poppins', sans-serif;
+}
+
+.div-panelContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.div-leftSide {
+    width: 55%;
+}
+
+.div-rightSidet {
+    width: 45%;
 }
 
 .div-headerPart {
