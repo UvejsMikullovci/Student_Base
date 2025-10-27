@@ -2,15 +2,21 @@
   {
     "id": 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "title": "Inxhinieri Kompjuterike",
     "category": "IT",
     "university": "Universiteti i Prishtinës",
     "description": "Program që përgatit studentët në fushën e programimit, rrjeteve kompjuterike dhe inteligjencës artificiale.",
 =======
+=======
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "title": "Shkenca Kompjuterike",
     "category": "IT & Teknologji",
     "university": "Universiteti i Prishtinës",
     "description": "Program që zhvillon aftësi në inteligjencë artificiale, analiza të të dhënave dhe zhvillim të sistemeve.",
+<<<<<<< HEAD
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
+=======
 >>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "duration": "3 vjet",
     "degree": "Bachelor",
@@ -19,6 +25,7 @@
   {
     "id": 2,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "title": "Administrim Biznesi",
     "category": "Biznes",
     "university": "Universiteti i Prizrenit “Ukshin Hoti”",
@@ -26,12 +33,17 @@
     "duration": "3 vjet",
     "degree": "Bachelor",
 =======
+=======
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "title": "Inxhinieri Elektronike",
     "category": "Inxhinieri",
     "university": "Universiteti i Prishtinës",
     "description": "Fokusuar në projektimin e qarqeve, automatikës dhe teknologjive moderne të energjisë.",
     "duration": "5 vjet",
     "degree": "Master",
+<<<<<<< HEAD
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
+=======
 >>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "buttonText": "Mëso më shumë"
   },
@@ -41,7 +53,11 @@
     "category": "Shëndetësi",
     "university": "Universiteti i Prishtinës",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "description": "Program gjithëpërfshirës për përgatitjen e profesionistëve të shëndetësisë me njohuri teorike dhe praktike.",
+=======
+    "description": "Studime të avancuara për përgatitjen e profesionistëve në fushën e mjekësisë klinike dhe kërkimeve.",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
 =======
     "description": "Studime të avancuara për përgatitjen e profesionistëve në fushën e mjekësisë klinike dhe kërkimeve.",
 >>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
@@ -52,15 +68,21 @@
   {
     "id": 4,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "title": "Inxhinieri Elektrike dhe Kompjuterike",
     "category": "Inxhinieri",
     "university": "Universiteti i Mitrovicës “Isa Boletini”",
     "description": "Studim i thelluar i sistemeve elektrike, elektronikës industriale dhe automatizimit.",
 =======
+=======
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "title": "Administrim Biznesi",
     "category": "Biznes & Ekonomi",
     "university": "Universiteti i Prizrenit “Ukshin Hoti”",
     "description": "Trajnim profesional në menaxhim, financa dhe zhvillim të ndërmarrjeve.",
+<<<<<<< HEAD
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
+=======
 >>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "duration": "3 vjet",
     "degree": "Bachelor",
@@ -69,6 +91,7 @@
   {
     "id": 5,
 <<<<<<< HEAD
+<<<<<<< HEAD
     "title": "Psikologji",
     "category": "Shkenca Sociale",
     "university": "Universiteti “Kadri Zeka” – Gjilan",
@@ -76,17 +99,23 @@
     "duration": "3 vjet",
     "degree": "Bachelor",
 =======
+=======
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "title": "Ekonomi Ndërkombëtare",
     "category": "Biznes & Ekonomi",
     "university": "Universiteti i Prizrenit “Ukshin Hoti”",
     "description": "Zhvillim i njohurive për tregje ndërkombëtare dhe menaxhim financiar global.",
     "duration": "5 vjet",
     "degree": "Master",
+<<<<<<< HEAD
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
+=======
 >>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "buttonText": "Mëso më shumë"
   },
   {
     "id": 6,
+<<<<<<< HEAD
 <<<<<<< HEAD
     "title": "Arkitekturë",
     "category": "Arkitekturë",
@@ -95,17 +124,23 @@
     "duration": "5 vjet",
     "degree": "Master Profesional",
 =======
+=======
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "title": "Psikologji Klinike",
     "category": "Shkenca Sociale",
     "university": "Universiteti i Gjakovës “Fehmi Agani”",
     "description": "Program i përqendruar në shëndetin mendor dhe terapi psikologjike moderne.",
     "duration": "3 vjet",
     "degree": "Bachelor",
+<<<<<<< HEAD
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
+=======
 >>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "buttonText": "Mëso më shumë"
   },
   {
     "id": 7,
+<<<<<<< HEAD
 <<<<<<< HEAD
     "title": "Marketing dhe Komunikim",
     "category": "Biznes",
@@ -114,12 +149,15 @@
     "duration": "3 vjet",
     "degree": "Bachelor",
 =======
+=======
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "title": "Mësimdhënie dhe Edukim",
     "category": "Shkenca Sociale",
     "university": "Universiteti i Gjakovës “Fehmi Agani”",
     "description": "Përgatitje profesionale për punë në arsim fillor dhe të mesëm me metoda moderne mësimore.",
     "duration": "4 vjet",
     "degree": "Master",
+<<<<<<< HEAD
 >>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "buttonText": "Mëso më shumë"
   },
@@ -214,21 +252,60 @@
     "category": "Shëndetësi",
     "university": "Universiteti i Prishtinës",
     "description": "Studim i barnave, përbërjes kimike dhe efekteve të tyre për trajtimin e sëmundjeve.",
-    "duration": "5 vjet",
-    "degree": "Master Profesional",
+=======
     "buttonText": "Mëso më shumë"
   },
   {
+    "id": 8,
+    "title": "Arkitekturë",
+    "category": "Arkitekturë",
+    "university": "Universiteti i Gjilanit “Kadri Zeka”",
+    "description": "Program që përfshin dizajn arkitektonik, planifikim urban dhe teknologji ndërtimi.",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
+    "duration": "5 vjet",
+    "degree": "Master",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+<<<<<<< HEAD
     "id": 16,
     "title": "Teknologji Informative dhe Siguri Kibernetike",
     "category": "IT",
     "university": "Kolegji Riinvest",
     "description": "Program që mbulon sigurinë e rrjeteve, kriptografinë dhe mbrojtjen nga kërcënimet digjitale.",
+=======
+    "id": 9,
+    "title": "Inxhinieri Mekanike",
+    "category": "Inxhinieri",
+    "university": "Universiteti i Mitrovicës “Isa Boletini”",
+    "description": "Zhvillim i koncepteve të makinerive moderne, sistemeve energjetike dhe prodhimit industrial.",
+    "duration": "4 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 10,
+    "title": "Inxhinieri Mjedisi",
+    "category": "Inxhinieri",
+    "university": "Universiteti i Mitrovicës “Isa Boletini”",
+    "description": "Studim i ndikimeve mjedisore, mbrojtjes së natyrës dhe zhvillimit të qëndrueshëm.",
+    "duration": "5 vjet",
+    "degree": "Master",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 11,
+    "title": "Menaxhim Ndërkombëtar",
+    "category": "Biznes & Ekonomi",
+    "university": "UBT College",
+    "description": "Program që ndërthur ekonominë, teknologjinë dhe menaxhimin global për sfidat e tregut modern.",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "duration": "3 vjet",
     "degree": "Bachelor",
     "buttonText": "Mëso më shumë"
   },
   {
+<<<<<<< HEAD
     "id": 17,
     "title": "Shkenca Politike",
     "category": "Shkenca Sociale",
@@ -266,6 +343,8 @@
     "buttonText": "Mëso më shumë"
   },
   {
+=======
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "id": 12,
     "title": "Inxhinieri Softuerike",
     "category": "IT & Teknologji",
