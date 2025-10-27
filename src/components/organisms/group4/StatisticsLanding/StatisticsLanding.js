@@ -1,8 +1,6 @@
 import React from "react";
 import "./StatisticsLanding.css";
 import StatisticsBasicDiv from "../../../molecules/group4/statisticsDiv/StatisticsBasicDiv";
-import { TrendingUp, Clock, Target, Users, Award } from "lucide-react";
-import "./StatisticsLanding.css";
 
 function StatisticsLanding() {
   return (
@@ -11,34 +9,35 @@ function StatisticsLanding() {
         <h2>Statistikat</h2>
         <p>Shiko performancën dhe progresionin tënd</p>
       </div>
+
       <div className="statistics-container">
         <StatisticsBasicDiv
           value="8.6"
           label="Mesatarja juaj"
           change="+0.4"
           changeColor="text-green-600"
-          iconName="<TrendingUp />"
+          iconName="TrendingUp"
         />
         <StatisticsBasicDiv
           value="3/45"
           label="Vendi në klasë"
           change="+2"
           changeColor="text-green-600"
-          iconName="<Clock />"
+          iconName="Users"
         />
         <StatisticsBasicDiv
           value="12/15"
           label="Objektivat e arritura"
           change="+0.4"
           changeColor="text-green-600"
-          iconName="<Target />"
+          iconName="Target"
         />
         <StatisticsBasicDiv
           value="126h"
           label="Orë studimi"
           change="+18h"
           changeColor="text-green-600"
-          iconName="<Clock />"
+          iconName="Clock"
         />
       </div>
     </div>

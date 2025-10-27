@@ -1,0 +1,49 @@
+.statistics-charts-section {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: stretch;
+  box-sizing: border-box;
+  margin: 20px;
+}
+
+.statistics-line-chart,
+.statistics-bar-chart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fffcf6;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  box-sizing: border-box;
+  min-width: 0;
+}
+.statistics-line-chart-section {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.statistics-text {
+  font-size: 18px;
+  font-weight: 100;
+  margin-bottom: 30px;
+}
+.chart-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.chart-title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.recharts-cartesian-grid {
+  width: 100% !important;
+  height: 100% !important;
+}
