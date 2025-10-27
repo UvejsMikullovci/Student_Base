@@ -16,6 +16,7 @@ import HomePage from './components/pages/group1/HomePage'
 import ContactPage from "./components/pages/group3/ContactPage";
 import PanelPayment from "./components/pages/group4/panelPayment/Payments";
 import PanelNotifications from "./components/pages/group4/panelNotifications/PanelNotifications";
+import Collages from './components/pages/group1/Collages/Collages'
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
         <main style={{ minHeight: "10vh" }}>
           <Routes>
             <Route path="/" element={<HomePage/>} />
-            <Route path="/kolegjte" element={<h1>Kolegjët Page</h1>} />
+            <Route path="/kolegjte" element={<Collages />} />
             <Route path="/programet" element={<Programet />} />
             <Route path="/cmimet" element={<CmimetPage />} />
             <Route path="/rreth-nesh" element={<RrethNeshPage />} />
