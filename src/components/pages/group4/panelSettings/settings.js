@@ -27,10 +27,10 @@ function settings() {
 
   return (
     <div className="settings-container">
-      <h1 className="card-head"><i className="fa-solid fa-gear" style={{ fontSize: "24px", color: "#f54242",marginRight:"15px" }}></i>Cilesimet</h1>
+      <h1 className="card-head"><i className="fa-solid fa-gear" style={{ fontSize: "24px", color: "#DF4C4A",marginRight:"15px" }}></i>Cilesimet</h1>
       <p className="card-paragraph">Menaxho profilin dhe preferencat tua</p>
       <div className="personal-information">
-        <h1 className="card-head"><i className="fa-regular fa-user" style={{ fontSize: "24px", color: "#f54242",marginRight:"15px",marginTop:"15px" }}></i>Informacioni Personal</h1>
+        <h1 className="card-head"><i className="fa-regular fa-user" style={{ fontSize: "24px", color: "#DF4C4A",marginRight:"15px",marginTop:"15px" }}></i>Informacioni Personal</h1>
         <p className="card-paragraph" style={{marginBottom:"20px"}}>Përditëso informacionin tënd personal</p>
         <div className="inputs-container">
           <div className="name-inputs">
@@ -56,7 +56,7 @@ function settings() {
       </div>
 
     <div className="safety-information">
-        <h1 className="card-head"><i className="fa-solid fa-lock" style={{ fontSize: "24px", color: "#f54242",marginRight:"15px",marginTop:"15px" }}></i>Siguria</h1>
+        <h1 className="card-head"><i className="fa-solid fa-lock" style={{ fontSize: "24px", color: "#DF4C4A",marginRight:"15px",marginTop:"15px" }}></i>Siguria</h1>
         <p className="card-paragraph" style={{marginBottom:"20px"}}>Ndrysho fjalëkalimin tënd</p>
         <div className="inputs-container">
           <div className="input-group">
@@ -76,7 +76,7 @@ function settings() {
       </div>
 
       <div className="notification-container">
-        <h1 className="card-head"><i className="fa-solid fa-bell" style={{ fontSize: "24px", color: "#f54242",marginRight:"15px",marginTop:"15px" }}></i>Njoftimet</h1>
+        <h1 className="card-head"><i className="fa-solid fa-bell" style={{ fontSize: "24px", color: "#DF4C4A",marginRight:"15px",marginTop:"15px" }}></i>Njoftimet</h1>
         <p className="card-paragraph" style={{marginBottom:"20px"}}>Menaxho preferencat e njoftimeve</p>
         <div className="notification-settings">
           <div className="notification-item">
@@ -112,7 +112,7 @@ function settings() {
 
 
       <div className="language-container">
-        <h1 className="card-head"><i className="fa-solid fa-globe" style={{ fontSize: "24px", color: "#f54242",marginRight:"15px",marginTop:"15px" }}></i>Gjuha dhe rajoni</h1>
+        <h1 className="card-head"><i className="fa-solid fa-globe" style={{ fontSize: "24px", color: "#DF4C4A",marginRight:"15px",marginTop:"15px" }}></i>Gjuha dhe rajoni</h1>
         <p className="card-paragraph" style={{marginBottom:"20px"}}>Menaxho preferencat e njoftimeve</p>
 
         <Dropdown
@@ -129,10 +129,10 @@ function settings() {
       </div>
 
       <div className="payment-container">
-        <h1 className="card-head"><i className="fa-solid fa-credit-card" style={{ fontSize: "24px", color: "#f54242",marginRight:"15px",marginTop:"15px" }}></i>Metodat e pageses</h1>
+        <h1 className="card-head"><i className="fa-solid fa-credit-card" style={{ fontSize: "24px", color: "#DF4C4A",marginRight:"15px",marginTop:"15px" }}></i>Metodat e pageses</h1>
         <p className="card-paragraph" style={{marginBottom:"20px"}}>Menaxho metodat e pagesës</p>
         <div className='payment-methods'>
-          <i className="fa-solid fa-credit-card" style={{ fontSize: "48px", color: "#f54242", marginRight:"20px",backgroundColor:"#ffd6d6ff",padding:"10px",borderRadius:"20px" }}></ i>
+          <i className="fa-solid fa-credit-card" style={{ fontSize: "48px", color: "#DF4C4A", marginRight:"20px",backgroundColor:"#ffd9d9ff",padding:"12px",borderRadius:"20px" }}></ i>
           <p style={{marginBottom:"20px"}}>Nuk ke shtuar asnje metode pagese ende</p>
           <button className="payment-button">Shto metode pagese</button>
           </div>

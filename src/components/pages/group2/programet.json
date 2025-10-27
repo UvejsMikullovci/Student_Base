@@ -1,92 +1,358 @@
 [
   {
     "id": 1,
-    "title": "Inxhinieri Informatike",
+<<<<<<< HEAD
+    "title": "Inxhinieri Kompjuterike",
     "category": "IT",
-    "university": "Universiteti i Tiranës",
-    "description": "Program modern që kombinon teorinë me praktikën në zhvillimin e softuerit dhe teknologjitë e reja.",
+    "university": "Universiteti i Prishtinës",
+    "description": "Program që përgatit studentët në fushën e programimit, rrjeteve kompjuterike dhe inteligjencës artificiale.",
+=======
+    "title": "Shkenca Kompjuterike",
+    "category": "IT & Teknologji",
+    "university": "Universiteti i Prishtinës",
+    "description": "Program që zhvillon aftësi në inteligjencë artificiale, analiza të të dhënave dhe zhvillim të sistemeve.",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "duration": "3 vjet",
     "degree": "Bachelor",
     "buttonText": "Mëso më shumë"
   },
   {
     "id": 2,
+<<<<<<< HEAD
     "title": "Administrim Biznesi",
     "category": "Biznes",
-    "university": "Universiteti Politeknik",
-    "description": "Mëso aftësitë e nevojshme për të menaxhuar biznese moderne dhe për të marrë vendime strategjike.",
+    "university": "Universiteti i Prizrenit “Ukshin Hoti”",
+    "description": "Fokusohet në zhvillimin e aftësive menaxheriale dhe strategjike për drejtimin e organizatave bashkëkohore.",
     "duration": "3 vjet",
     "degree": "Bachelor",
+=======
+    "title": "Inxhinieri Elektronike",
+    "category": "Inxhinieri",
+    "university": "Universiteti i Prishtinës",
+    "description": "Fokusuar në projektimin e qarqeve, automatikës dhe teknologjive moderne të energjisë.",
+    "duration": "5 vjet",
+    "degree": "Master",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "buttonText": "Mëso më shumë"
   },
   {
     "id": 3,
-    "title": "Mjekësi",
+    "title": "Mjekësi e Përgjithshme",
     "category": "Shëndetësi",
-    "university": "Universiteti i Tiranës",
-    "description": "Program i plotë mjekësor që përgatit profesionistë të kualifikuar në fushën e shëndetësisë.",
+    "university": "Universiteti i Prishtinës",
+<<<<<<< HEAD
+    "description": "Program gjithëpërfshirës për përgatitjen e profesionistëve të shëndetësisë me njohuri teorike dhe praktike.",
+=======
+    "description": "Studime të avancuara për përgatitjen e profesionistëve në fushën e mjekësisë klinike dhe kërkimeve.",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "duration": "6 vjet",
-    "degree": "Master Profesional",
+    "degree": "Doktoraturë",
     "buttonText": "Mëso më shumë"
   },
   {
     "id": 4,
-    "title": "Inxhinieri Elektrike",
+<<<<<<< HEAD
+    "title": "Inxhinieri Elektrike dhe Kompjuterike",
     "category": "Inxhinieri",
-    "university": "Universiteti Politeknik",
-    "description": "Studim i thelluar i sistemeve elektrike, elektronikës dhe energjisë së rinovueshme.",
+    "university": "Universiteti i Mitrovicës “Isa Boletini”",
+    "description": "Studim i thelluar i sistemeve elektrike, elektronikës industriale dhe automatizimit.",
+=======
+    "title": "Administrim Biznesi",
+    "category": "Biznes & Ekonomi",
+    "university": "Universiteti i Prizrenit “Ukshin Hoti”",
+    "description": "Trajnim profesional në menaxhim, financa dhe zhvillim të ndërmarrjeve.",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "duration": "3 vjet",
     "degree": "Bachelor",
     "buttonText": "Mëso më shumë"
   },
   {
     "id": 5,
+<<<<<<< HEAD
     "title": "Psikologji",
     "category": "Shkenca Sociale",
-    "university": "Kolegji Europian",
-    "description": "Eksploro sjelljen njerëzore dhe proceset mendore në një mjedis akademik bashkëkohor.",
+    "university": "Universiteti “Kadri Zeka” – Gjilan",
+    "description": "Studim i proceseve mendore, emocionale dhe sjelljeve njerëzore në kontekste të ndryshme sociale.",
     "duration": "3 vjet",
     "degree": "Bachelor",
+=======
+    "title": "Ekonomi Ndërkombëtare",
+    "category": "Biznes & Ekonomi",
+    "university": "Universiteti i Prizrenit “Ukshin Hoti”",
+    "description": "Zhvillim i njohurive për tregje ndërkombëtare dhe menaxhim financiar global.",
+    "duration": "5 vjet",
+    "degree": "Master",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "buttonText": "Mëso më shumë"
   },
   {
     "id": 6,
+<<<<<<< HEAD
     "title": "Arkitekturë",
     "category": "Arkitekturë",
-    "university": "Universiteti Politeknik",
-    "description": "Krijoni hapësira dhe ndërtesa që kombinojnë estetikën me funksionalitetin.",
+    "university": "Universiteti i Prishtinës",
+    "description": "Program që ndërthur kreativitetin me teknologjinë në projektimin e hapësirave urbane dhe ndërtesave.",
     "duration": "5 vjet",
     "degree": "Master Profesional",
+=======
+    "title": "Psikologji Klinike",
+    "category": "Shkenca Sociale",
+    "university": "Universiteti i Gjakovës “Fehmi Agani”",
+    "description": "Program i përqendruar në shëndetin mendor dhe terapi psikologjike moderne.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
     "buttonText": "Mëso më shumë"
   },
   {
     "id": 7,
+<<<<<<< HEAD
     "title": "Marketing dhe Komunikim",
     "category": "Biznes",
-    "university": "Kolegji Bedër",
-    "description": "Mëso strategjitë moderne të marketingut dhe komunikimit në botën digjitale.",
+    "university": "Kolegji AAB",
+    "description": "Përqendrohet në strategjitë moderne të marketingut, komunikimit dhe mediave digjitale.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+=======
+    "title": "Mësimdhënie dhe Edukim",
+    "category": "Shkenca Sociale",
+    "university": "Universiteti i Gjakovës “Fehmi Agani”",
+    "description": "Përgatitje profesionale për punë në arsim fillor dhe të mesëm me metoda moderne mësimore.",
+    "duration": "4 vjet",
+    "degree": "Master",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 8,
+<<<<<<< HEAD
+    "title": "Stomatologji",
+    "category": "Shëndetësi",
+    "university": "Universiteti i Prishtinës",
+    "description": "Program profesional për kujdesin dentar, kirurgjinë orale dhe shëndetin oral publik.",
+=======
+    "title": "Arkitekturë",
+    "category": "Arkitekturë",
+    "university": "Universiteti i Gjilanit “Kadri Zeka”",
+    "description": "Program që përfshin dizajn arkitektonik, planifikim urban dhe teknologji ndërtimi.",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
+    "duration": "5 vjet",
+    "degree": "Master",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 9,
+<<<<<<< HEAD
+    "title": "Shkenca Kompjuterike",
+    "category": "IT",
+    "university": "Universiteti i Prizrenit “Ukshin Hoti”",
+    "description": "Thellim në zhvillimin e softuerit, analizën e të dhënave dhe teknologjitë cloud.",
     "duration": "3 vjet",
     "degree": "Bachelor",
     "buttonText": "Mëso më shumë"
   },
   {
-    "id": 8,
-    "title": "Stomatologji",
+    "id": 10,
+    "title": "E Drejtë Ndërkombëtare",
+    "category": "Juridik",
+    "university": "Universiteti i Prishtinës",
+    "description": "Përqendrohet në të drejtën ndërkombëtare publike dhe private, si dhe në institucionet globale ligjore.",
+=======
+    "title": "Inxhinieri Mekanike",
+    "category": "Inxhinieri",
+    "university": "Universiteti i Mitrovicës “Isa Boletini”",
+    "description": "Zhvillim i koncepteve të makinerive moderne, sistemeve energjetike dhe prodhimit industrial.",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
+    "duration": "4 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+<<<<<<< HEAD
+    "id": 11,
+    "title": "Gazetari dhe Media Digjitale",
+    "category": "Media",
+    "university": "Kolegji UBT",
+    "description": "Trajnim modern për prodhimin e përmbajtjes multimediale dhe gazetarinë e pavarur në epokën digjitale.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 12,
+    "title": "Ekonomi Ndërkombëtare",
+    "category": "Ekonomi",
+    "university": "Universiteti i Pejës “Haxhi Zeka”",
+    "description": "Analizon tregjet ndërkombëtare, tregtinë globale dhe politikat ekonomike ndërkombëtare.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 13,
+    "title": "Pedagogji",
+    "category": "Arsim",
+    "university": "Universiteti i Gjakovës “Fehmi Agani”",
+    "description": "Program i orientuar në zhvillimin profesional të mësuesve dhe metodologjisë bashkëkohore të mësimdhënies.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 14,
+    "title": "Inxhinieri Mekanike",
+    "category": "Inxhinieri",
+    "university": "Universiteti i Mitrovicës “Isa Boletini”",
+    "description": "Fokus në projektimin, ndërtimin dhe mirëmbajtjen e sistemeve mekanike dhe industriale.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 15,
+    "title": "Farmaci",
     "category": "Shëndetësi",
-    "university": "Universiteti i Tiranës",
-    "description": "Program i specializuar për kujdesin dentar dhe kirurgjinë orale.",
+    "university": "Universiteti i Prishtinës",
+    "description": "Studim i barnave, përbërjes kimike dhe efekteve të tyre për trajtimin e sëmundjeve.",
     "duration": "5 vjet",
     "degree": "Master Profesional",
     "buttonText": "Mëso më shumë"
   },
   {
-    "id": 9,
-    "title": "Shkenca Kompjuterike",
+    "id": 16,
+    "title": "Teknologji Informative dhe Siguri Kibernetike",
     "category": "IT",
-    "university": "Universiteti Politeknik",
-    "description": "Thellohuni në algoritmikë, inteligjencë artificiale dhe shkencën e të dhënave.",
+    "university": "Kolegji Riinvest",
+    "description": "Program që mbulon sigurinë e rrjeteve, kriptografinë dhe mbrojtjen nga kërcënimet digjitale.",
     "duration": "3 vjet",
     "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 17,
+    "title": "Shkenca Politike",
+    "category": "Shkenca Sociale",
+    "university": "Universiteti i Prishtinës",
+    "description": "Analizon sistemet politike, marrëdhëniet ndërkombëtare dhe proceset demokratike.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 18,
+    "title": "Menaxhim Turizmi dhe Hotelerie",
+    "category": "Turizëm",
+    "university": "Kolegji Fama",
+    "description": "Përgatit studentët për menaxhimin e hoteleve, agjencive turistike dhe sektorit të mikpritjes.",
+=======
+    "id": 10,
+    "title": "Inxhinieri Mjedisi",
+    "category": "Inxhinieri",
+    "university": "Universiteti i Mitrovicës “Isa Boletini”",
+    "description": "Studim i ndikimeve mjedisore, mbrojtjes së natyrës dhe zhvillimit të qëndrueshëm.",
+    "duration": "5 vjet",
+    "degree": "Master",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 11,
+    "title": "Menaxhim Ndërkombëtar",
+    "category": "Biznes & Ekonomi",
+    "university": "UBT College",
+    "description": "Program që ndërthur ekonominë, teknologjinë dhe menaxhimin global për sfidat e tregut modern.",
+>>>>>>> 29e25403cc5667f4c28822b8dca8bdd3752dd218
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 12,
+    "title": "Inxhinieri Softuerike",
+    "category": "IT & Teknologji",
+    "university": "UBT College",
+    "description": "Ndërtimi i aplikacioneve komplekse, bazave të të dhënave dhe sistemeve të integruara.",
+    "duration": "4 vjet",
+    "degree": "Master",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 13,
+    "title": "Shkenca Politike",
+    "category": "Shkenca Sociale",
+    "university": "Kolegji AAB",
+    "description": "Analizë e institucioneve politike, marrëdhënieve ndërkombëtare dhe politikave publike.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 14,
+    "title": "Gazetari dhe Media",
+    "category": "Shkenca Sociale",
+    "university": "Kolegji AAB",
+    "description": "Zhvillim profesional në fushën e medias, komunikimit publik dhe gazetarisë digjitale.",
+    "duration": "4 vjet",
+    "degree": "Master",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 15,
+    "title": "Dizajn Grafik dhe Multimedial",
+    "category": "IT & Teknologji",
+    "university": "Universum College",
+    "description": "Krijim grafik, media digjitale dhe zbatime interaktive për industrinë kreative.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 16,
+    "title": "Inxhinieri Ndërtimi",
+    "category": "Inxhinieri",
+    "university": "Universiteti “Haxhi Zeka” Pejë",
+    "description": "Program që përfshin projektimin dhe menaxhimin e strukturave ndërtimore.",
+    "duration": "5 vjet",
+    "degree": "Master",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 17,
+    "title": "Turizëm dhe Mikpritje",
+    "category": "Biznes & Ekonomi",
+    "university": "Kolegji FAMA",
+    "description": "Menaxhim në turizëm, marketing hotelier dhe zhvillim të qëndrueshëm turistik.",
+    "duration": "3 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 18,
+    "title": "Marrëdhënie Ndërkombëtare",
+    "category": "Shkenca Sociale",
+    "university": "RIT Kosovo",
+    "description": "Program anglisht-folës për diplomaci, marrëdhënie ndërkombëtare dhe drejtësi globale.",
+    "duration": "4 vjet",
+    "degree": "Bachelor",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 19,
+    "title": "Menaxhim Teknologjie",
+    "category": "IT & Teknologji",
+    "university": "RIT Kosovo",
+    "description": "Program inovativ që përzien teknologjinë, biznesin dhe lidershipin menaxherial.",
+    "duration": "5 vjet",
+    "degree": "Master",
+    "buttonText": "Mëso më shumë"
+  },
+  {
+    "id": 20,
+    "title": "Edukimi dhe Shkenca Sociale",
+    "category": "Shkenca Sociale",
+    "university": "Universiteti i Gjakovës “Fehmi Agani”",
+    "description": "Studime për edukim, shoqëri dhe zhvillim njerëzor në kontekstin modern arsimor.",
+    "duration": "6 vjet",
+    "degree": "Doktoraturë",
     "buttonText": "Mëso më shumë"
   }
 ]
