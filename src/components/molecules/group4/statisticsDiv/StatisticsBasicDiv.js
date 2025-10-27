@@ -8,6 +8,7 @@ const IconMap = {
   Users,
   Award,
 };
+
 const StatisticsBasicDiv = ({
   value,
   label,
@@ -29,10 +30,12 @@ const StatisticsBasicDiv = ({
       <div className="value-section-statistics">
         <p className="main-value-text-statistics">{value}</p>
       </div>
+
       <div className="label-section-statistics">
         <p className="label-text-statistics">{label}</p>
       </div>
     </div>
   );
 };
+
 export default StatisticsBasicDiv;
