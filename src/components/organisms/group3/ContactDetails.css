@@ -1,0 +1,75 @@
+/* ===== Contact Section (4 columns clean layout) ===== */
+.contact-section {
+  text-align: center;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+/* Cards grid */
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  background-color: #fffaf9;
+  padding: 4rem 6%;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  justify-items: center;
+  align-items: center;
+  animation: fadeSlide 1s ease forwards;
+}
+
+/* Each card */
+.contact-card {
+  background-color: #fff7f6;
+  border: 1px solid #ffe2de;
+  border-radius: 1rem;
+  padding: 2rem 1rem;
+  max-width: 260px;
+  width: 100%;
+  transition: all 0.3s ease;
+  animation: floatUp 1s ease forwards;
+}
+
+.contact-card:hover {
+  background-color: #fff0ee;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(231, 76, 60, 0.15);
+}
+
+/* Icon */
+.contact-card .icon {
+  font-size: 2rem;
+  color: #e74c3c;
+  margin-bottom: 0.5rem;
+  animation: pulse 2.5s infinite;
+}
+
+/* Text */
+.contact-card h4 {
+  color: #e74c3c;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.contact-card p {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .contact-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    max-width: 90%;
+  }
+}
