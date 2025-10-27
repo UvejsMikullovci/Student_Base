@@ -1,0 +1,53 @@
+.card-container-statistics {
+  background-color: #fffcf6;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  max-width: 20rem;
+  border: 1px solid rgba(254, 226, 226, 0.5);
+}
+.card-container-statistics:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+.card-header-statistics {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.icon-box-statistics {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  background-color: #e0e7ff;
+  color: #4f46e5;
+}
+.change-text-statistics {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.value-section-statistics {
+  margin-top: 1rem;
+  align-self: start;
+}
+.main-value-text-statistics {
+  font-size: 2.25rem;
+  color: #111827;
+  line-height: 1;
+}
+.label-section-statistics {
+  margin-top: 0.25rem;
+}
+.label-text-statistics {
+  font-size: 1rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+.statistics-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+  width: 100%;
+}

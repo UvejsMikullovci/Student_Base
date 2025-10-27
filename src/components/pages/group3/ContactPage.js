@@ -11,7 +11,7 @@ const ContactPage = () => {
         <div className="contact-page">
             <ContactHeader />
             <ContactDetails /> 
-            <h1>test</h1>
+            <h1>Dërgoni një mesazh</h1>
             <div className="contact-body">
                 <ContactForm />
                 <FAQSection />

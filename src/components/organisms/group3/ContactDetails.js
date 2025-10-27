@@ -1,13 +1,36 @@
 import React from "react";
-import ContactInfoCard from "../../molecules/group3/ContactInfoCard";
+import "./ContactDetails.css";
 
-const ContactDetails = () => (
-  <div className="contact-details">
-    <ContactInfoCard icon="📧" title="Email" text="info@eshkolla.com" />
-    <ContactInfoCard icon="📞" title="Telefon" text="+383 49 123 456" />
-    <ContactInfoCard icon="📍" title="Adresa" text="Prishtinë, Kosovë" />
-    <ContactInfoCard icon="⏰" title="Orari" text="E hënë – E premte: 9:00 – 17:00" />
-  </div>
-);
+const ContactDetails = () => {
+  return (
+    <section className="contact-section">
+      <div className="contact-cards">
+        <div className="contact-card">
+          <div className="icon">📧</div>
+          <h4>Email</h4>
+          <p>info@studo.com</p>
+        </div>
+
+        <div className="contact-card">
+          <div className="icon">📞</div>
+          <h4>Telefon</h4>
+          <p>+383 49 123 456</p>
+        </div>
+
+        <div className="contact-card">
+          <div className="icon">📍</div>
+          <h4>Adresa</h4>
+          <p>Prishtinë, Kosovë</p>
+        </div>
+
+        <div className="contact-card">
+          <div className="icon">⏰</div>
+          <h4>Orari</h4>
+          <p>E Hënë - E Premte: 9:00 - 17:00</p>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default ContactDetails;
