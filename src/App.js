@@ -18,6 +18,7 @@ import PanelPayment from "./components/pages/group4/panelPayment/Payments";
 import PanelNotifications from "./components/pages/group4/panelNotifications/PanelNotifications";
 import Collages from './components/pages/group1/Collages/Collages';
 import StatisticsPage from "./components/pages/group4/panelStatistics/StatisticsPage";
+import CollegeDetailsPage from "./components/pages/group1/IndividualColleges/CollegeDetailsPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/panel-payment" element={<PanelPayment />} />
           <Route path="/panel-notifications" element={<PanelNotifications />} />
           <Route path="/panel-statistics" element={<StatisticsPage />} />
+          <Route path="/kolegjte/aab" element={<CollegeDetailsPage />} />
         </Routes>
         <main style={{ minHeight: "10vh" }}>
           <Routes>
