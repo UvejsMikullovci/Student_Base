@@ -1,5 +1,6 @@
 import React from "react";
+import "./Paragraph.css";
 
-export default function Paragraph({ text, className }) {
-  return <p className={`text-gray-700 text-center mb-4 ${className}`}>{text}</p>;
+export default function Paragraph({ text, className = "" }) {
+  return <p className={`paragraph ${className}`}>{text}</p>;
 }

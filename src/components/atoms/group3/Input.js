@@ -1,10 +1,11 @@
 import React from "react";
+import "./Input.css";
 
-const Input = ({ label, type = "text", name, placeholder }) => (
+export default function Input({ label, type = "text", name, placeholder, required = false }) {
+  return (
     <div className="input-group">
-        <label>{label}</label>
-        <input type={type} name={name} placeholder={placeholder} required />
+      {label && <label className="input-label">{label}{required ? " *" : ""}</label>}
+      <input className="input-field" type={type} name={name} placeholder={placeholder} required={required} />
     </div>
-);
-
-export default Input;
+  );
+}

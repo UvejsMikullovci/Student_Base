@@ -1,0 +1,8 @@
+.paragraph {
+  text-align: center;
+  color: #fff;
+  max-width: 900px;
+  margin: 12px auto 0;
+  line-height: 1.6;
+}
+.paragraph.hero-sub { color: rgba(255,255,255,0.95); }

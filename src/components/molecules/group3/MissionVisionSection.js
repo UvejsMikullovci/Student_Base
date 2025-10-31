@@ -6,10 +6,11 @@ import "./MissionVisionSection.css";
 export default function MissionVisionSection() {
   return (
     <section className="mission-section">
-      <div className="mission-header">
-        {/* <h2>Misioni dhe Vlerat tona</h2>
-        <p>Gjithçka që bëjmë është e mbështetur nga vlerat tona themelore</p> */}
-      </div>
+      <div className="mission-vision-header">
+  <h2>Qëllimi dhe Parimet tona</h2>
+  <p>Ne udhëhiqemi nga përkushtimi, ndershmëria dhe bashkëpunimi për të krijuar një ndikim pozitiv.</p>
+</div>
+
 
       <div className="mission-container">
         <IconBox
