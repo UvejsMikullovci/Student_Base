@@ -13,7 +13,7 @@ import Programet from "./components/pages/group2/programet";
 import RrethNeshPage from "./components/pages/group3/RethNeshPage";
 import CmimetPage from "./components/pages/group2/CmimetPage";
 import HomePage from "./components/pages/group1/HomePage";
-import ContactPage from "./components/pages/group3/ContactPage";
+// import ContactPage from "./components/pages/group3/ContactPage";
 import PanelPayment from "./components/pages/group4/panelPayment/Payments";
 import PanelNotifications from "./components/pages/group4/panelNotifications/PanelNotifications";
 import Collages from './components/pages/group1/Collages/Collages';
@@ -42,7 +42,7 @@ function App() {
             <Route path="/programet" element={<Programet />} />
             <Route path="/cmimet" element={<CmimetPage />} />
             <Route path="/rreth-nesh" element={<RrethNeshPage />} />
-            <Route path="/kontakti" element={<ContactPage />} />
+            {/* <Route path="/kontakti" element={<ContactPage />} /> */}
             // TODO: include payment integration page here.
           </Routes>
         </main>
