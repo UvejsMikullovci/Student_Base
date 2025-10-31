@@ -97,6 +97,6 @@
 }
 
 .details-btn:hover {
-  background: #f6ece9;
-  border-color: #d6bbb4;
+  color: #b91c1c;
+  background-color: #ffe8e8;
 }

@@ -23,6 +23,7 @@
 
 .tabs-inner button:hover {
   color: #DF4C4A;
+  background-color: #fef9f4!important;
 }
 
 .tabs-inner button.active {

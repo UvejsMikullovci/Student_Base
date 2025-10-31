@@ -1,35 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import UserAvatar from "../../atoms/group5/UserAvatar";
 import SidebarMenu from "../../molecules/group5/SidebarMenu";
 import { motion, AnimatePresence } from "framer-motion";
-import "../../organisms/group5/Sidebar.css"
 
 const Sidebar = () => {
+  // Dummy user (replace later with your real auth data)
+  const [user] = useState({
+    name: "Erion Veliaj",
+    role: "Student",
+  });
+
   const [open, setOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
-      <div className="p-4 md:hidden flex justify-between items-center bg-white shadow">
-        <UserAvatar name="Erion Veliaj" role="Student" />
-        <button onClick={() => setOpen(!open)}>
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+      {/* MOBILE HEADER */}
+      {!isDesktop && (
+        <div className="sidebar-header">
+          <UserAvatar name={user.name} role={user.role} />
+          <button onClick={() => setOpen(!open)}>
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      )}
 
-      {/* Sidebar */}
+      {/* SIDEBAR */}
       <AnimatePresence>
-        {(open || window.innerWidth >= 768) && (
+        {(open || isDesktop) && (
           <motion.aside
-            initial={{ x: -250 }}
+            initial={{ x: -260 }}
             animate={{ x: 0 }}
-            exit={{ x: -250 }}
+            exit={{ x: -260 }}
             transition={{ duration: 0.3 }}
-            className="bg-[#FFFDF9] border-r border-gray-100 h-screen w-64 p-6 hidden md:flex md:flex-col md:justify-between fixed md:relative"
+            className={`sidebar ${open ? "open" : ""}`}
           >
-            <div className="flex flex-col gap-6">
-              <UserAvatar name="Erion Veliaj" role="Student" />
-              <div className="border-t border-gray-200" />
+            <div className="sidebar-top">
+              <UserAvatar name={user.name} role={user.role} />
+              <hr />
               <SidebarMenu active="Profili im" />
             </div>
           </motion.aside>
