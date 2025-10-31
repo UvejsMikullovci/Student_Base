@@ -3,10 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/organisms/group5/Header";
 import "./components/styles/variables.css";
-import Favorited from "./components/pages/group4/panelFavortied/favorited";
-import Settings from "./components/pages/group4/panelSettings/settings";
-import PanelAplications from "./components/pages/group4/panelAplications/panelAplications";
-import PanelProfile from "./components/pages/group4/panelProfile/Profile";
+import PanelProfile from "./components/pages/panelMain/PanelMainContainer";
 import Footer from "./components/organisms/group5/Footer";
 import "./components/styles/variables.css";
 import Programet from "./components/pages/group2/programet";
@@ -14,26 +11,21 @@ import RrethNeshPage from "./components/pages/group3/RethNeshPage";
 import CmimetPage from "./components/pages/group2/CmimetPage";
 import HomePage from "./components/pages/group1/HomePage";
 import ContactPage from "./components/pages/group3/ContactPage";
-import PanelPayment from "./components/pages/group4/panelPayment/Payments";
-import PanelNotifications from "./components/pages/group4/panelNotifications/PanelNotifications";
 import Collages from './components/pages/group1/Collages/Collages';
-import StatisticsPage from "./components/pages/group4/panelStatistics/StatisticsPage";
-import CollegeDetailsPage from "./components/pages/group1/IndividualColleges/CollegeDetailsPage";
+import Login from "./components/Account/Login/Login";
+import Register from "./components/Account/Register/Register";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <AuthProvider>
         <Header />
         <Routes>
-          <Route path="/panel-favorited" element={<Favorited />} />
-          <Route path="/panel-settings" element={<Settings />} />
-          <Route path="/panel-aplications" element={<PanelAplications />} />
-          <Route path="/panel-profile" element={<PanelProfile />} />
-          <Route path="/panel-payment" element={<PanelPayment />} />
-          <Route path="/panel-notifications" element={<PanelNotifications />} />
-          <Route path="/panel-statistics" element={<StatisticsPage />} />
-          <Route path="/kolegjte/aab" element={<CollegeDetailsPage />} />
+          <Route path="/panel" element={<PanelProfile />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
         <main style={{ minHeight: "10vh" }}>
           <Routes>
@@ -47,6 +39,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        </AuthProvider>
       </Router>
     </div>
   );

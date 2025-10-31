@@ -3,9 +3,11 @@ import "./Header.css";
 import Brand from "../../molecules/group5/Brand";
 import NavLinks from "../../molecules/group5/NavLinks";
 import Button from "../../atoms/group5/Button.jsx";
-import PanelAplications from "../../pages/group4/panelAplications/panelAplications.js";
+import { useAuth } from "../../../context/AuthContext";
 
 const Header = () => {
+  const { user, logout } = useAuth();
+
   return (
     <header className="navbar">
       <div className="container">
@@ -13,7 +15,23 @@ const Header = () => {
         <div className="nav-right">
           <NavLinks />
           <div className="cta">
-            <a href="/panel-aplications"><Button label="Paneli im" /></a>
+            {user ? (
+              <>
+                <a href="/panel">
+                  <Button label="Paneli Im" />
+                </a>
+              </>
+            ) : (
+              <>
+                <a href="/login">
+                  <Button label="Sign In" />
+                </a>
+                <h1>/</h1>
+                <a href="/register">
+                  <Button label="Sign Up" />
+                </a>
+              </>
+            )}
           </div>
         </div>
       </div>

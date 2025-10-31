@@ -3,9 +3,6 @@ body{
     background-color: #FFFCF6;
 }
 .settings-container {
-    width: 60%;
-    margin: auto;
-    margin-top: 50px;
     padding: 30px;
 }
 .card-head {

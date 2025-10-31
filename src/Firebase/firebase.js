@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import {getAuth} from "firebase/auth"
-import {getFirestore} from "firebase/firestore"
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
 const firebaseConfig = {
   apiKey: "AIzaSyA71wiMaudQSmc7neipQ2tUSUwYMJmCpHY",
   authDomain: "maindatabasepractise.firebaseapp.com",
@@ -8,8 +9,10 @@ const firebaseConfig = {
   projectId: "maindatabasepractise",
   storageBucket: "maindatabasepractise.firebasestorage.app",
   messagingSenderId: "727187357647",
-  appId: "1:727187357647:web:f8641722054004f8fedcba"
+  appId: "1:727187357647:web:f8641722054004f8fedcba",
 };
+
 const app = initializeApp(firebaseConfig);
+
 export const auth = getAuth(app);
 export const db = getFirestore(app);

@@ -1,0 +1,138 @@
+:root {
+  --color-primary: #df4c4a;
+  --color-text: #101010;
+  --color-bg: #fffcf6;
+  --font-family: "Poppins", sans-serif;
+  --transition-fast: 0.25s ease-in-out;
+}
+
+/* ===== SIDEBAR BASE ===== */
+.sidebar {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  width: 260px;
+  top: 0;
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid #e9e3dc;
+  padding: 8rem 1.5rem;
+  transition: var(--transition-fast);
+  z-index: 1;
+}
+
+/* ===== MOBILE HEADER ===== */
+.mobile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* ===== USER SECTION ===== */
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.user-info h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.user-info p {
+  margin: 0;
+  color: #777;
+  font-size: 0.85rem;
+}
+
+/* ===== MENU ===== */
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 10px;
+  transition: all var(--transition-fast);
+  position: relative;
+  cursor: pointer;
+}
+
+.sidebar-menu a:hover {
+  background-color: rgba(223, 76, 74, 0.08);
+  transform: translateX(3px);
+}
+
+.sidebar-menu a.active {
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.sidebar-menu a.active svg {
+  color: #fff;
+}
+
+/* Accent bar */
+.sidebar-menu a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  border-radius: 2px;
+  background: transparent;
+  transition: all var(--transition-fast);
+}
+
+.sidebar-menu a:hover::before,
+.sidebar-menu a.active::before {
+  background: var(--color-primary);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 767px) {
+  .sidebar {
+    transform: translateX(-100%);
+    z-index: 999;
+    top: 0; /* mobile doesn't have fixed header */
+    height: 100vh;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  }
+}

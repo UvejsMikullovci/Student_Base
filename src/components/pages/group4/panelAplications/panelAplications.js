@@ -4,7 +4,7 @@ import ApplicationsHeader from "../../../organisms/group4/panelAplications/Aplic
 import StatsRow from "../../../molecules/group4/panelAplications/StatsRow";
 import FilterTabs from "../../../organisms/group4/panelAplications/FilterTabs";
 import ApplicationsList from "../../../molecules/group4/panelAplications/ApplicationsList";
-import SideBar from "../../../organisms/group5/Sidebar"
+
 import "./panelAplications.css";
 
 
@@ -66,7 +66,6 @@ const PanelAplications = () => {
 
     
     <div className="panel-applications">
-      <SideBar /> 
       <h1 className="applications-title">Aplikimet e mia</h1>
       <p className="applications-subtitle">
         Ndjek statusin e të gjitha aplikimeve tuaja
