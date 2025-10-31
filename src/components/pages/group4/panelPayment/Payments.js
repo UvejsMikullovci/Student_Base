@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { use, useState ,useEffect } from "react";
+import {db} from "../../../../Firebase/firebase";
+import { collection, onSnapshot, addDoc, doc, updateDoc } from "firebase/firestore";
+
 function GlobalStyles() {
   return (
     <style>{`
@@ -734,7 +737,6 @@ function TextInput({ label, id, ...props }) {
   );
 }
 
-// --- Molecules ---
 function CardDetail({ label, value }) {
   return (
     <div className="card-detail">
@@ -746,7 +748,6 @@ function CardDetail({ label, value }) {
 
 function CardLogo({ type = "mastercard" }) {
   const normalizedType = type.toLowerCase();
-
   if (normalizedType === "mastercard") {
     return (
       <div className="card-logo">
@@ -766,36 +767,8 @@ function CardLogo({ type = "mastercard" }) {
 
 function CardNumberDisplay({ number, dark = false }) {
   return (
-    <div
-      className={`card-number-display ${
-        dark ? "card-number-display-dark" : ""
-      }`}
-    >
+    <div className={`card-number-display ${dark ? "card-number-display-dark" : ""}`}>
       {number}
-    </div>
-  );
-}
-
-function InvoiceActions({ amount, pdfUrl }) {
-  return (
-    <div className="invoice-actions">
-      <span className="invoice-actions-amount">${amount}</span>
-      <a
-        href={pdfUrl}
-        className="invoice-actions-link"
-        onClick={(e) => e.preventDefault()}
-      >
-        <FileTextIcon /> PDF
-      </a>
-    </div>
-  );
-}
-
-function InvoiceInfo({ date, id }) {
-  return (
-    <div className="invoice-info">
-      <span className="invoice-info-date">{date}</span>
-      <span className="invoice-info-id">#{id}</span>
     </div>
   );
 }
@@ -822,29 +795,30 @@ function CardFormModal({ show, onClose, onAddCard }) {
     return "mastercard";
   };
 
-  const handleContentClick = (e) => {
-    e.stopPropagation();
-  };
+  const handleContentClick = (e) => e.stopPropagation();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!cardName || cardNumber.length < 13 || !cardExpiry) {
-      console.log("Please fill out all fields correctly");
+      alert("Please fill all fields correctly.");
       return;
     }
 
-    const cardType = detectCardType(cardNumber);
+    try {
+      await onAddCard({
+        holder: cardName.toUpperCase(),
+        number: cardNumber,
+        expires: cardExpiry,
+        type: detectCardType(cardNumber),
+      });
 
-    onAddCard({
-      cardName,
-      cardNumber,
-      cardExpiry,
-      cardType,
-    });
-
-    setCardName("");
-    setCardNumber("");
-    setCardExpiry("");
-    onClose();
+      setCardName("");
+      setCardNumber("");
+      setCardExpiry("");
+      onClose();
+    } catch (error) {
+      console.error("Failed to add card:", error);
+      alert("Failed to add card. Check console.");
+    }
   };
 
   return (
@@ -852,37 +826,14 @@ function CardFormModal({ show, onClose, onAddCard }) {
       <div className="modal-content" onClick={handleContentClick}>
         <div className="modal-header">
           <h2 className="modal-title">Add New Card</h2>
-          <button onClick={onClose} className="modal-close-btn">
-            &times;
-          </button>
+          <button onClick={onClose} className="modal-close-btn">&times;</button>
         </div>
         <div className="modal-body">
-          <TextInput
-            label="Cardholder Name"
-            id="cardName"
-            type="text"
-            placeholder="Jack Peterson"
-            value={cardName}
-            onChange={(e) => setCardName(e.target.value)}
-          />
-          <TextInput
-            label="Card Number"
-            id="cardNum"
-            type="text"
-            placeholder="4562 1122 4594 7852"
-            value={cardNumber}
-            onChange={(e) => setCardNumber(e.target.value)}
-          />
+          <TextInput label="Cardholder Name" id="cardName" value={cardName} onChange={(e) => setCardName(e.target.value)} />
+          <TextInput label="Card Number" id="cardNum" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} />
           <div className="modal-form-row">
-            <TextInput
-              label="Expiry Date"
-              id="cardExpiry"
-              type="text"
-              placeholder="11 / 22"
-              value={cardExpiry}
-              onChange={(e) => setCardExpiry(e.target.value)}
-            />
-            <TextInput label="CVC" id="cardCVC" type="text" placeholder="123" />
+            <TextInput label="Expiry Date" id="cardExpiry" value={cardExpiry} onChange={(e) => setCardExpiry(e.target.value)} />
+            <TextInput label="CVC" id="cardCVC" />
           </div>
         </div>
         <div className="modal-footer">
@@ -895,14 +846,12 @@ function CardFormModal({ show, onClose, onAddCard }) {
 }
 
 function CreditCard({ data }) {
-  const cardType = data.type || "mastercard";
-  const cardTypeClass = cardType.toLowerCase().replace("-", "");
-
+  const cardTypeClass = (data.type || "mastercard").toLowerCase().replace("-", "");
   return (
     <div className={`credit-card-container ${cardTypeClass}`}>
       <div className="credit-card-header">
         <WifiIcon />
-        <CardLogo type={cardType} />
+        <CardLogo type={data.type} />
       </div>
       <div className="credit-card-body">
         <CardNumberDisplay number={data.number} />
@@ -927,6 +876,25 @@ function FeatureBox({ icon, title, subtitle, amount, type }) {
     </div>
   );
 }
+function InvoiceInfo({ date, id }) {
+  return (
+    <div className="invoice-info">
+      <span className="invoice-info-date">{date}</span>
+      <span className="invoice-info-id">#{id}</span>
+    </div>
+  );
+}
+
+function InvoiceActions({ amount, pdfUrl }) {
+  return (
+    <div className="invoice-actions">
+      <span className="invoice-actions-amount">${amount}</span>
+      <a href={pdfUrl} className="invoice-actions-link" onClick={(e) => e.preventDefault()}>
+        <FileTextIcon /> PDF
+      </a>
+    </div>
+  );
+}
 
 function InvoiceItem({ invoice }) {
   return (
@@ -939,16 +907,10 @@ function InvoiceItem({ invoice }) {
 
 function PaymentMethodCard({ method, isActive, onSelect, onToggleFavorite }) {
   return (
-    <div
-      className={`payment-method-card-container ${isActive ? "active" : ""}`}
-      onClick={onSelect}
-    >
+    <div className={`payment-method-card-container ${isActive ? "active" : ""}`} onClick={onSelect}>
       <PaymentMethodDetails type={method.type} number={method.number} />
       <div className="payment-method-actions">
-        <ActionButton
-          className={method.isFavorite ? "active" : ""}
-          onClick={onToggleFavorite}
-        >
+        <ActionButton className={method.isFavorite ? "active" : ""} onClick={onToggleFavorite}>
           <HeartIcon />
         </ActionButton>
         <ActionButton onClick={() => console.log("Edit clicked")}>
@@ -959,156 +921,115 @@ function PaymentMethodCard({ method, isActive, onSelect, onToggleFavorite }) {
   );
 }
 
-const cardData = {
-  number: "4562 1122 4594 7852",
-  holder: "JACK PETERSON",
-  expires: "11/22",
-};
-
+const userId = "user_id1"; 
 const featureBoxesData = [
-  {
-    icon: <BanknoteIcon />,
-    title: "Salary",
-    subtitle: "Belong Interactive",
-    amount: "+$2000",
-    type: "salary",
-  },
-  {
-    icon: <WalletIcon />,
-    title: "Paypal",
-    subtitle: "Freelance Payment",
-    amount: "$455.00",
-    type: "paypal",
-  },
+  { icon: <BanknoteIcon />, title: "Salary", subtitle: "Belong Interactive", amount: "+$2000", type: "salary" },
+  { icon: <WalletIcon />, title: "Paypal", subtitle: "Freelance Payment", amount: "$455.00", type: "paypal" },
 ];
-
-const initialPaymentMethods = [
-  {
-    id: 1,
-    type: "mastercard",
-    number: "**** **** **** 7852",
-    isFavorite: true,
-    holder: "JACK PETERSON",
-    fullNumber: "4562 1122 4594 7852",
-    expires: "11/22",
-  },
-  {
-    id: 2,
-    type: "VISA",
-    number: "**** **** **** 5248",
-    isFavorite: false,
-    holder: "JACK PETERSON",
-    fullNumber: "4562 1122 4594 5248",
-    expires: "08/24",
-  },
-  {
-    id: 3,
-    type: "AMEX",
-    number: "**** **** **** 9105",
-    isFavorite: false,
-    holder: "JACK PETERSON",
-    fullNumber: "3782 8224 6310 9105",
-    expires: "04/23",
-  },
-  {
-    id: 4,
-    type: "V-WLT",
-    number: "**** **** **** 0000",
-    isFavorite: false,
-    holder: "VIRTUAL WALLET",
-    fullNumber: "9876 5432 1098 0000",
-    expires: "N/A",
-  },
-];
-
 const invoicesData = [
   { id: "MS-415646", date: "March, 01, 2020", amount: 180, pdfUrl: "#" },
   { id: "RV-126749", date: "February, 10, 2021", amount: 250, pdfUrl: "#" },
   { id: "DW-103578", date: "April, 05, 2020", amount: 120, pdfUrl: "#" },
-  { id: "MS-415646", date: "June, 25, 2019", amount: 180, pdfUrl: "#" },
-  { id: "AR-803481", date: "March, 01, 2019", amount: 300, pdfUrl: "#" },
 ];
 
 function Dashboard() {
-  const [showModal, setShowModal] = useState(false);
+  const [paymentMethods, setPaymentMethods] = useState([]);
+  const [activeCardId, setActiveCardId] = useState(null);
   const [mainCard, setMainCard] = useState({
-    ...cardData,
+    number: "**** **** **** 7852",
+    holder: "JACK PETERSON",
+    expires: "11/22",
     type: "mastercard",
   });
-  const [paymentMethods, setPaymentMethods] = useState(initialPaymentMethods);
-  const [activeCardId, setActiveCardId] = useState(initialPaymentMethods[0].id);
+  const [showModal, setShowModal] = useState(false);
 
-  const handleCardSelect = (cardId) => {
-    setActiveCardId(cardId);
-  };
-
-  const handleToggleFavorite = (cardId) => {
-    const newFavoriteCard = paymentMethods.find((m) => m.id === cardId);
-
-    if (newFavoriteCard) {
-      setMainCard({
-        holder: newFavoriteCard.holder,
-        number: newFavoriteCard.fullNumber,
-        expires: newFavoriteCard.expires,
-        type: newFavoriteCard.type,
+  useEffect(() => {
+    const creditCardsRef = collection(db, "users", userId, "creditcards");
+    const unsubscribe = onSnapshot(creditCardsRef, (snapshot) => {
+      const cardsFromDB = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          type: data.type || "mastercard",
+          number: `**** **** **** ${data.number.slice(-4)}`,
+          fullNumber: data.number,
+          holder: data.holder || "N/A",
+          expires: data.expires || "MM/YY",
+          isFavorite: data.isFavorite || false,
+        };
       });
+      setPaymentMethods(cardsFromDB);
 
-      setPaymentMethods((prevMethods) =>
-        prevMethods.map((method) => ({
-          ...method,
-          isFavorite: method.id === cardId,
-        }))
-      );
+      const favoriteCard = cardsFromDB.find((c) => c.isFavorite) || cardsFromDB[0];
+      if (favoriteCard) {
+        setActiveCardId(favoriteCard.id);
+        setMainCard({
+          holder: favoriteCard.holder,
+          number: favoriteCard.fullNumber,
+          expires: favoriteCard.expires,
+          type: favoriteCard.type,
+        });
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
+  const handleCardSelect = (cardId) => setActiveCardId(cardId);
+
+  const handleToggleFavorite = async (cardId) => {
+    const selectedCard = paymentMethods.find((m) => m.id === cardId);
+    if (!selectedCard) return;
+
+    try {
+      const batchUpdates = paymentMethods.map((m) => {
+        const docRef = doc(db, "users", userId, "creditcards", m.id);
+        return updateDoc(docRef, { isFavorite: m.id === cardId });
+      });
+      await Promise.all(batchUpdates);
+
+      setMainCard({
+        holder: selectedCard.holder,
+        number: selectedCard.fullNumber,
+        expires: selectedCard.expires,
+        type: selectedCard.type,
+      });
       setActiveCardId(cardId);
+    } catch (error) {
+      console.error("Error updating favorite:", error);
     }
   };
 
-  const handleAddNewCard = ({ cardName, cardNumber, cardExpiry, cardType }) => {
-    setMainCard({
-      holder: cardName.toUpperCase(),
-      number: cardNumber,
-      expires: cardExpiry,
-      type: cardType,
-    });
-    const newId = Date.now();
-    const newPaymentMethod = {
-      id: newId,
-      type: cardType,
-      number: `**** **** **** ${cardNumber.slice(-4)}`,
-      isFavorite: true,
-      holder: cardName.toUpperCase(),
-      fullNumber: cardNumber,
-      expires: cardExpiry,
-    };
-
-    setPaymentMethods((prevMethods) => [
-      ...prevMethods.map((m) => ({ ...m, isFavorite: false })),
-      newPaymentMethod,
-    ]);
-
-    setActiveCardId(newId);
+  const handleAddNewCard = async ({ holder, number, expires, type }) => {
+    try {
+      const creditCardsRef = collection(db, "users", userId, "creditcards");
+      const docRef = await addDoc(creditCardsRef, {
+        holder,
+        number,
+        expires,
+        type,
+        isFavorite: true,
+      });
+      const unfavoritePromises = paymentMethods.map((m) =>
+        updateDoc(doc(db, "users", userId, "creditcards", m.id), { isFavorite: false })
+      );
+      await Promise.all(unfavoritePromises);
+    } catch (error) {
+      console.error("Failed to add card:", error);
+      throw error;
+    }
   };
 
   return (
     <>
       <GlobalStyles />
-      <CardFormModal
-        show={showModal}
-        onClose={() => setShowModal(false)}
-        onAddCard={handleAddNewCard}
-      />
-
+      <CardFormModal show={showModal} onClose={() => setShowModal(false)} onAddCard={handleAddNewCard} />
       <div className="app-container">
         <main className="main-column">
           <CreditCard data={mainCard} />
-
           <section className="payment-methods">
             <div className="section-header">
               <h2 className="section-title">Payment Method</h2>
-              <PrimaryButton onClick={() => setShowModal(true)}>
-                + Add New Card
-              </PrimaryButton>
+              <PrimaryButton onClick={() => setShowModal(true)}>+ Add New Card</PrimaryButton>
             </div>
             <div className="flex-col gap-4">
               {paymentMethods.map((method) => (
@@ -1127,23 +1048,14 @@ function Dashboard() {
         <aside className="sidebar-column">
           <div className="flex-col gap-4">
             {featureBoxesData.map((box) => (
-              <FeatureBox
-                key={box.title}
-                icon={box.icon}
-                title={box.title}
-                subtitle={box.subtitle}
-                amount={box.amount}
-                type={box.type}
-              />
+              <FeatureBox key={box.title} {...box} />
             ))}
           </div>
 
           <section className="invoices card-base">
             <div className="section-header">
               <h2 className="section-title">Invoices</h2>
-              <SecondaryButton onClick={() => console.log("View All Invoices")}>
-                View All
-              </SecondaryButton>
+              <SecondaryButton onClick={() => console.log("View All Invoices")}>View All</SecondaryButton>
             </div>
             <div className="flex-col">
               {invoicesData.map((invoice, index) => (
@@ -1158,3 +1070,4 @@ function Dashboard() {
 }
 
 export default Dashboard;
+//comment me kallzu qe su kon ai lmaoo
