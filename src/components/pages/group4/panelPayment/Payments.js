@@ -1,6 +1,12 @@
-import React, { use, useState ,useEffect } from "react";
-import {db} from "../../../../Firebase/firebase";
-import { collection, onSnapshot, addDoc, doc, updateDoc } from "firebase/firestore";
+import React, { use, useState, useEffect } from "react";
+import { db } from "../../../../Firebase/firebase";
+import {
+  collection,
+  onSnapshot,
+  addDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 
 function GlobalStyles() {
   return (
@@ -767,7 +773,11 @@ function CardLogo({ type = "mastercard" }) {
 
 function CardNumberDisplay({ number, dark = false }) {
   return (
-    <div className={`card-number-display ${dark ? "card-number-display-dark" : ""}`}>
+    <div
+      className={`card-number-display ${
+        dark ? "card-number-display-dark" : ""
+      }`}
+    >
       {number}
     </div>
   );
@@ -826,13 +836,30 @@ function CardFormModal({ show, onClose, onAddCard }) {
       <div className="modal-content" onClick={handleContentClick}>
         <div className="modal-header">
           <h2 className="modal-title">Add New Card</h2>
-          <button onClick={onClose} className="modal-close-btn">&times;</button>
+          <button onClick={onClose} className="modal-close-btn">
+            &times;
+          </button>
         </div>
         <div className="modal-body">
-          <TextInput label="Cardholder Name" id="cardName" value={cardName} onChange={(e) => setCardName(e.target.value)} />
-          <TextInput label="Card Number" id="cardNum" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} />
+          <TextInput
+            label="Cardholder Name"
+            id="cardName"
+            value={cardName}
+            onChange={(e) => setCardName(e.target.value)}
+          />
+          <TextInput
+            label="Card Number"
+            id="cardNum"
+            value={cardNumber}
+            onChange={(e) => setCardNumber(e.target.value)}
+          />
           <div className="modal-form-row">
-            <TextInput label="Expiry Date" id="cardExpiry" value={cardExpiry} onChange={(e) => setCardExpiry(e.target.value)} />
+            <TextInput
+              label="Expiry Date"
+              id="cardExpiry"
+              value={cardExpiry}
+              onChange={(e) => setCardExpiry(e.target.value)}
+            />
             <TextInput label="CVC" id="cardCVC" />
           </div>
         </div>
@@ -846,7 +873,9 @@ function CardFormModal({ show, onClose, onAddCard }) {
 }
 
 function CreditCard({ data }) {
-  const cardTypeClass = (data.type || "mastercard").toLowerCase().replace("-", "");
+  const cardTypeClass = (data.type || "mastercard")
+    .toLowerCase()
+    .replace("-", "");
   return (
     <div className={`credit-card-container ${cardTypeClass}`}>
       <div className="credit-card-header">
@@ -889,7 +918,11 @@ function InvoiceActions({ amount, pdfUrl }) {
   return (
     <div className="invoice-actions">
       <span className="invoice-actions-amount">${amount}</span>
-      <a href={pdfUrl} className="invoice-actions-link" onClick={(e) => e.preventDefault()}>
+      <a
+        href={pdfUrl}
+        className="invoice-actions-link"
+        onClick={(e) => e.preventDefault()}
+      >
         <FileTextIcon /> PDF
       </a>
     </div>
@@ -905,15 +938,32 @@ function InvoiceItem({ invoice }) {
   );
 }
 
-function PaymentMethodCard({ method, isActive, onSelect, onToggleFavorite }) {
+function PaymentMethodCard({
+  method,
+  isActive,
+  onSelect,
+  onToggleFavorite,
+  onEdit,
+}) {
   return (
-    <div className={`payment-method-card-container ${isActive ? "active" : ""}`} onClick={onSelect}>
+    <div
+      className={`payment-method-card-container ${isActive ? "active" : ""}`}
+      onClick={onSelect}
+    >
       <PaymentMethodDetails type={method.type} number={method.number} />
       <div className="payment-method-actions">
-        <ActionButton className={method.isFavorite ? "active" : ""} onClick={onToggleFavorite}>
+        <ActionButton
+          className={method.isFavorite ? "active" : ""}
+          onClick={onToggleFavorite}
+        >
           <HeartIcon />
         </ActionButton>
-        <ActionButton onClick={() => console.log("Edit clicked")}>
+        <ActionButton
+          onClick={(e) => {
+            e.stopPropagation();
+            onEdit();
+          }}
+        >
           <PencilIcon />
         </ActionButton>
       </div>
@@ -921,18 +971,120 @@ function PaymentMethodCard({ method, isActive, onSelect, onToggleFavorite }) {
   );
 }
 
-const userId = "user_id1"; 
+const userId = "user_id1";
 const featureBoxesData = [
-  { icon: <BanknoteIcon />, title: "Salary", subtitle: "Belong Interactive", amount: "+$2000", type: "salary" },
-  { icon: <WalletIcon />, title: "Paypal", subtitle: "Freelance Payment", amount: "$455.00", type: "paypal" },
+  {
+    icon: <BanknoteIcon />,
+    title: "Salary",
+    subtitle: "Belong Interactive",
+    amount: "+$2000",
+    type: "salary",
+  },
+  {
+    icon: <WalletIcon />,
+    title: "Paypal",
+    subtitle: "Freelance Payment",
+    amount: "$455.00",
+    type: "paypal",
+  },
 ];
 const invoicesData = [
   { id: "MS-415646", date: "March, 01, 2020", amount: 180, pdfUrl: "#" },
   { id: "RV-126749", date: "February, 10, 2021", amount: 250, pdfUrl: "#" },
   { id: "DW-103578", date: "April, 05, 2020", amount: 120, pdfUrl: "#" },
 ];
+function EditCardModal({ show, onClose, cardData, onSave }) {
+  const [cardName, setCardName] = useState(cardData?.holder || "");
+  const [cardNumber, setCardNumber] = useState(
+    cardData?.fullNumber || cardData?.number || ""
+  );
+  const [cardExpiry, setCardExpiry] = useState(cardData?.expires || "");
 
+  useEffect(() => {
+    if (cardData) {
+      setCardName(cardData.holder || "");
+      setCardNumber(cardData.fullNumber || cardData.number || "");
+      setCardExpiry(cardData.expires || "");
+    }
+  }, [cardData]);
+
+  const handleContentClick = (e) => e.stopPropagation();
+
+  const handleSubmit = () => {
+    if (!cardName || cardNumber.length < 13 || !cardExpiry) {
+      alert("Please fill all fields correctly.");
+      return;
+    }
+
+    onSave({
+      ...cardData,
+      holder: cardName.toUpperCase(),
+      number: cardNumber,
+      fullNumber: cardNumber,
+      expires: cardExpiry,
+    });
+  };
+
+  return (
+    <div className={`modal-overlay ${show ? "show" : ""}`} onClick={onClose}>
+      <div className="modal-content" onClick={handleContentClick}>
+        <div className="modal-header">
+          <h2 className="modal-title">Edit Card</h2>
+          <button onClick={onClose} className="modal-close-btn">
+            &times;
+          </button>
+        </div>
+        <div className="modal-body">
+          <TextInput
+            label="Cardholder Name"
+            id="editCardName"
+            value={cardName}
+            onChange={(e) => setCardName(e.target.value)}
+          />
+          <TextInput
+            label="Card Number"
+            id="editCardNum"
+            value={cardNumber}
+            onChange={(e) => setCardNumber(e.target.value)}
+          />
+          <TextInput
+            label="Expiry Date"
+            id="editCardExpiry"
+            value={cardExpiry}
+            onChange={(e) => setCardExpiry(e.target.value)}
+          />
+        </div>
+        <div className="modal-footer">
+          <ModalCancelButton onClick={onClose}>Cancel</ModalCancelButton>
+          <PrimaryButton onClick={handleSubmit}>Save Changes</PrimaryButton>
+        </div>
+      </div>
+    </div>
+  );
+}
 function Dashboard() {
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingCard, setEditingCard] = useState(null);
+
+  const handleEditCardClick = (card) => {
+    setEditingCard(card);
+    setShowEditModal(true);
+  };
+
+  const handleSaveCard = async (updatedCard) => {
+    try {
+      const cardRef = doc(db, "users", userId, "creditcards", updatedCard.id);
+      await updateDoc(cardRef, {
+        holder: updatedCard.holder,
+        number: updatedCard.fullNumber || updatedCard.number,
+        expires: updatedCard.expires,
+      });
+      setShowEditModal(false);
+    } catch (error) {
+      console.error("Failed to update card:", error);
+      alert("Failed to update card. Check console.");
+    }
+  };
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [activeCardId, setActiveCardId] = useState(null);
   const [mainCard, setMainCard] = useState({
@@ -960,7 +1112,8 @@ function Dashboard() {
       });
       setPaymentMethods(cardsFromDB);
 
-      const favoriteCard = cardsFromDB.find((c) => c.isFavorite) || cardsFromDB[0];
+      const favoriteCard =
+        cardsFromDB.find((c) => c.isFavorite) || cardsFromDB[0];
       if (favoriteCard) {
         setActiveCardId(favoriteCard.id);
         setMainCard({
@@ -1010,7 +1163,9 @@ function Dashboard() {
         isFavorite: true,
       });
       const unfavoritePromises = paymentMethods.map((m) =>
-        updateDoc(doc(db, "users", userId, "creditcards", m.id), { isFavorite: false })
+        updateDoc(doc(db, "users", userId, "creditcards", m.id), {
+          isFavorite: false,
+        })
       );
       await Promise.all(unfavoritePromises);
     } catch (error) {
@@ -1022,14 +1177,20 @@ function Dashboard() {
   return (
     <>
       <GlobalStyles />
-      <CardFormModal show={showModal} onClose={() => setShowModal(false)} onAddCard={handleAddNewCard} />
+      <CardFormModal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        onAddCard={handleAddNewCard}
+      />
       <div className="app-container">
         <main className="main-column">
           <CreditCard data={mainCard} />
           <section className="payment-methods">
             <div className="section-header">
               <h2 className="section-title">Payment Method</h2>
-              <PrimaryButton onClick={() => setShowModal(true)}>+ Add New Card</PrimaryButton>
+              <PrimaryButton onClick={() => setShowModal(true)}>
+                + Add New Card
+              </PrimaryButton>
             </div>
             <div className="flex-col gap-4">
               {paymentMethods.map((method) => (
@@ -1039,8 +1200,15 @@ function Dashboard() {
                   isActive={activeCardId === method.id}
                   onSelect={() => handleCardSelect(method.id)}
                   onToggleFavorite={() => handleToggleFavorite(method.id)}
+                  onEdit={() => handleEditCardClick(method)}
                 />
               ))}
+              <EditCardModal
+                show={showEditModal}
+                onClose={() => setShowEditModal(false)}
+                cardData={editingCard}
+                onSave={handleSaveCard}
+              />
             </div>
           </section>
         </main>
@@ -1055,7 +1223,9 @@ function Dashboard() {
           <section className="invoices card-base">
             <div className="section-header">
               <h2 className="section-title">Invoices</h2>
-              <SecondaryButton onClick={() => console.log("View All Invoices")}>View All</SecondaryButton>
+              <SecondaryButton onClick={() => console.log("View All Invoices")}>
+                View All
+              </SecondaryButton>
             </div>
             <div className="flex-col">
               {invoicesData.map((invoice, index) => (
