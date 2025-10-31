@@ -1,13 +1,13 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 :root {
-  --color-primary: #DF4C4A; /* Red accent */
+  --color-primary: #df4c4a; /* Red accent */
   --color-text: #101010;
-  --color-bg: #FFFCF6; /* Light cream background */
-  --font-family: 'Poppins', sans-serif;
+  --color-bg: #fffcf6; /* Light cream background */
+  --font-family: "Poppins", sans-serif;
   --transition-fast: 0.2s ease-in-out;
 }
