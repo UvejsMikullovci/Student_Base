@@ -12,17 +12,35 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Sidebar.css";
+import { auth, db } from "../../../Firebase/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const Sidebar = ({ active, setActive }) => {
   const [open, setOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
-
-  const user = { name: "Erion Veliaj", role: "Student" };
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const currentUser = auth.currentUser;
+      if (!currentUser) return;
+      try {
+        const docRef = doc(db, "registrations", currentUser.uid);
+        const snap = await getDoc(docRef);
+        if (snap.exists()) {
+          setUserData(snap.data());
+        }
+      } catch (err) {
+        console.error("Gabim gjatë marrjes së të dhënave të përdoruesit:", err);
+      }
+    };
+    fetchUserData();
   }, []);
 
   const menuItems = [
@@ -35,16 +53,19 @@ const Sidebar = ({ active, setActive }) => {
     { title: "Cilësimet", icon: <Settings size={18} /> },
   ];
 
+  const name = userData ? `${userData.name || ""} ${userData.surname || ""}`.trim() : "Ngarkim...";
+  const role = userData?.role || "Student";
+  const avatar = name ? name.charAt(0).toUpperCase() : "?";
+
   return (
     <>
-      {/* Mobile header */}
       {!isDesktop && (
         <div className="mobile-header">
           <div className="user-section">
-            <div className="avatar">{user.name[0]}</div>
+            <div className="avatar">{avatar}</div>
             <div className="user-info">
-              <h3>{user.name}</h3>
-              <p>{user.role}</p>
+              <h3>{name}</h3>
+              <p>{role}</p>
             </div>
           </div>
           <button onClick={() => setOpen(!open)}>
@@ -53,7 +74,6 @@ const Sidebar = ({ active, setActive }) => {
         </div>
       )}
 
-      {/* Sidebar */}
       <AnimatePresence>
         {(open || isDesktop) && (
           <motion.aside
@@ -65,10 +85,10 @@ const Sidebar = ({ active, setActive }) => {
           >
             <div>
               <div className="user-section">
-                <div className="avatar">{user.name[0]}</div>
+                <div className="avatar">{avatar}</div>
                 <div className="user-info">
-                  <h3>{user.name}</h3>
-                  <p>{user.role}</p>
+                  <h3>{name}</h3>
+                  <p>{role}</p>
                 </div>
               </div>
               <hr />

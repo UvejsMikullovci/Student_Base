@@ -1073,7 +1073,7 @@ function Dashboard() {
 
   const handleSaveCard = async (updatedCard) => {
     try {
-      const cardRef = doc(db, "users", userId, "creditcards", updatedCard.id);
+      const cardRef = doc(db, "registrations", userId, "creditcards", updatedCard.id);
       await updateDoc(cardRef, {
         holder: updatedCard.holder,
         number: updatedCard.fullNumber || updatedCard.number,
@@ -1096,7 +1096,7 @@ function Dashboard() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    const creditCardsRef = collection(db, "users", userId, "creditcards");
+    const creditCardsRef = collection(db, "registrations", userId, "creditcards");
     const unsubscribe = onSnapshot(creditCardsRef, (snapshot) => {
       const cardsFromDB = snapshot.docs.map((doc) => {
         const data = doc.data();
@@ -1135,7 +1135,7 @@ function Dashboard() {
 
     try {
       const batchUpdates = paymentMethods.map((m) => {
-        const docRef = doc(db, "users", userId, "creditcards", m.id);
+        const docRef = doc(db, "registrations", userId, "creditcards", m.id);
         return updateDoc(docRef, { isFavorite: m.id === cardId });
       });
       await Promise.all(batchUpdates);
@@ -1154,7 +1154,7 @@ function Dashboard() {
 
   const handleAddNewCard = async ({ holder, number, expires, type }) => {
     try {
-      const creditCardsRef = collection(db, "users", userId, "creditcards");
+      const creditCardsRef = collection(db, "registrations", userId, "creditcards");
       const docRef = await addDoc(creditCardsRef, {
         holder,
         number,
@@ -1163,7 +1163,7 @@ function Dashboard() {
         isFavorite: true,
       });
       const unfavoritePromises = paymentMethods.map((m) =>
-        updateDoc(doc(db, "users", userId, "creditcards", m.id), {
+        updateDoc(doc(db, "registrations", userId, "creditcards", m.id), {
           isFavorite: false,
         })
       );

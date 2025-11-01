@@ -34,7 +34,7 @@ function AddStatModal({ visible, onClose, onSave, fieldLabel, currentValue }) {
 
 function StatisticsLanding() {
   const userId = "user_id1";
-  const statsCollection = collection(db, "users", userId, "stats");
+  const statsCollection = collection(db, "registrations", userId, "stats");
 
   const [stats, setStats] = useState({
     average: "0",

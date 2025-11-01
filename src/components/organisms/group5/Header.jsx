@@ -6,7 +6,7 @@ import Button from "../../atoms/group5/Button.jsx";
 import { useAuth } from "../../../context/AuthContext";
 
 const Header = () => {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
   return (
     <header className="navbar">
