@@ -33,7 +33,7 @@ function App() {
           <Route path="/panel-payment" element={<PanelPayment />} />
           <Route path="/panel-notifications" element={<PanelNotifications />} />
           <Route path="/panel-statistics" element={<StatisticsPage />} />
-          <Route path="/kolegjte/aab" element={<CollegeDetailsPage />} />
+            <Route path="/kolegjte/:collegeId" element={<CollegeDetailsPage />} />
         </Routes>
         <main style={{ minHeight: "10vh" }}>
           <Routes>
