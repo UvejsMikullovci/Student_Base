@@ -1,58 +1,99 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 .div-panelProfile {
-    width: 80%;
-    margin: 2% auto;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-}
-
-.div-panelContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.div-leftSide {
-    width: 55%;
-}
-
-.div-rightSidet {
-    width: 45%;
+  width: 95%;
+  margin: 2% auto;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: #1d1d1d;
 }
 
 .div-headerPart {
-    width: 100%;
-}
-
-.div-littleBoxi {
-    width: 60%;
-    border: 2px solid #df4d4a90;
-    padding: 20px;
-    text-align: start;
-    border-radius: 5px;
-}
-
-.div-littleBoxContent {
-    display: flex;
-    flex-direction: row;
-    border: none!important;
-    justify-content: space-between;
-}
-
-.div-littleBoxComponent {
-    width: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .div-Heading {
-    width: 100%;
-    text-align: start;
+  text-align: left;
+}
+
+.div-Heading h1 {
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #DF4C4A;
+}
+
+.div-Heading p {
+  font-size: 1rem;
+  color: #5b5b5b;
+  margin-top: 6px;
+}
+
+.div-littleBoxi {
+  width: 100%;
+  background: #fff;
+  border: 1.5px solid #df4d4a80;
+  border-radius: 12px;
+  padding: 22px 26px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+
+.div-littleBoxContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.div-littleBoxComponent {
+  width: 70%;
+}
+
+.div-littleBoxPercentage h2 {
+  font-size: 1.6rem;
+  color: #DF4C4A;
+  font-weight: 600;
 }
 
 #hrLine-littleBox {
-    width: 75%;
-    height: 5px;
+  width: 100%;
+  height: 6px;
   border: none;
   border-radius: 50px;
-  background-color: #DF4C4A;
+  margin-top: 20px;
+  background: linear-gradient(90deg, #DF4C4A 75%, #f2f2f2 75%);
+}
+
+.div-panelContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.div-leftSide {
+  width: 72%;
+}
+
+.div-rightSide {
+  width: 28%;
+}
+
+@media (max-width: 900px) {
+  .div-panelContent {
+    flex-direction: column;
+  }
+
+  .div-leftSide, .div-rightSide {
+    width: 100%;
+  }
+
+  .div-littleBoxContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }

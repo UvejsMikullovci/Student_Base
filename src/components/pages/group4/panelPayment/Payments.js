@@ -1,4 +1,13 @@
-import React, { useState } from "react";
+import React, { use, useState, useEffect } from "react";
+import { db } from "../../../../Firebase/firebase";
+import {
+  collection,
+  onSnapshot,
+  addDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
+
 function GlobalStyles() {
   return (
     <style>{`
@@ -734,7 +743,6 @@ function TextInput({ label, id, ...props }) {
   );
 }
 
-// --- Molecules ---
 function CardDetail({ label, value }) {
   return (
     <div className="card-detail">
@@ -746,7 +754,6 @@ function CardDetail({ label, value }) {
 
 function CardLogo({ type = "mastercard" }) {
   const normalizedType = type.toLowerCase();
-
   if (normalizedType === "mastercard") {
     return (
       <div className="card-logo">
@@ -776,30 +783,6 @@ function CardNumberDisplay({ number, dark = false }) {
   );
 }
 
-function InvoiceActions({ amount, pdfUrl }) {
-  return (
-    <div className="invoice-actions">
-      <span className="invoice-actions-amount">${amount}</span>
-      <a
-        href={pdfUrl}
-        className="invoice-actions-link"
-        onClick={(e) => e.preventDefault()}
-      >
-        <FileTextIcon /> PDF
-      </a>
-    </div>
-  );
-}
-
-function InvoiceInfo({ date, id }) {
-  return (
-    <div className="invoice-info">
-      <span className="invoice-info-date">{date}</span>
-      <span className="invoice-info-id">#{id}</span>
-    </div>
-  );
-}
-
 function PaymentMethodDetails({ type, number }) {
   return (
     <div className="payment-method-details">
@@ -822,29 +805,30 @@ function CardFormModal({ show, onClose, onAddCard }) {
     return "mastercard";
   };
 
-  const handleContentClick = (e) => {
-    e.stopPropagation();
-  };
+  const handleContentClick = (e) => e.stopPropagation();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!cardName || cardNumber.length < 13 || !cardExpiry) {
-      console.log("Please fill out all fields correctly");
+      alert("Please fill all fields correctly.");
       return;
     }
 
-    const cardType = detectCardType(cardNumber);
+    try {
+      await onAddCard({
+        holder: cardName.toUpperCase(),
+        number: cardNumber,
+        expires: cardExpiry,
+        type: detectCardType(cardNumber),
+      });
 
-    onAddCard({
-      cardName,
-      cardNumber,
-      cardExpiry,
-      cardType,
-    });
-
-    setCardName("");
-    setCardNumber("");
-    setCardExpiry("");
-    onClose();
+      setCardName("");
+      setCardNumber("");
+      setCardExpiry("");
+      onClose();
+    } catch (error) {
+      console.error("Failed to add card:", error);
+      alert("Failed to add card. Check console.");
+    }
   };
 
   return (
@@ -860,16 +844,12 @@ function CardFormModal({ show, onClose, onAddCard }) {
           <TextInput
             label="Cardholder Name"
             id="cardName"
-            type="text"
-            placeholder="Jack Peterson"
             value={cardName}
             onChange={(e) => setCardName(e.target.value)}
           />
           <TextInput
             label="Card Number"
             id="cardNum"
-            type="text"
-            placeholder="4562 1122 4594 7852"
             value={cardNumber}
             onChange={(e) => setCardNumber(e.target.value)}
           />
@@ -877,12 +857,10 @@ function CardFormModal({ show, onClose, onAddCard }) {
             <TextInput
               label="Expiry Date"
               id="cardExpiry"
-              type="text"
-              placeholder="11 / 22"
               value={cardExpiry}
               onChange={(e) => setCardExpiry(e.target.value)}
             />
-            <TextInput label="CVC" id="cardCVC" type="text" placeholder="123" />
+            <TextInput label="CVC" id="cardCVC" />
           </div>
         </div>
         <div className="modal-footer">
@@ -895,14 +873,14 @@ function CardFormModal({ show, onClose, onAddCard }) {
 }
 
 function CreditCard({ data }) {
-  const cardType = data.type || "mastercard";
-  const cardTypeClass = cardType.toLowerCase().replace("-", "");
-
+  const cardTypeClass = (data.type || "mastercard")
+    .toLowerCase()
+    .replace("-", "");
   return (
     <div className={`credit-card-container ${cardTypeClass}`}>
       <div className="credit-card-header">
         <WifiIcon />
-        <CardLogo type={cardType} />
+        <CardLogo type={data.type} />
       </div>
       <div className="credit-card-body">
         <CardNumberDisplay number={data.number} />
@@ -927,6 +905,29 @@ function FeatureBox({ icon, title, subtitle, amount, type }) {
     </div>
   );
 }
+function InvoiceInfo({ date, id }) {
+  return (
+    <div className="invoice-info">
+      <span className="invoice-info-date">{date}</span>
+      <span className="invoice-info-id">#{id}</span>
+    </div>
+  );
+}
+
+function InvoiceActions({ amount, pdfUrl }) {
+  return (
+    <div className="invoice-actions">
+      <span className="invoice-actions-amount">${amount}</span>
+      <a
+        href={pdfUrl}
+        className="invoice-actions-link"
+        onClick={(e) => e.preventDefault()}
+      >
+        <FileTextIcon /> PDF
+      </a>
+    </div>
+  );
+}
 
 function InvoiceItem({ invoice }) {
   return (
@@ -937,7 +938,13 @@ function InvoiceItem({ invoice }) {
   );
 }
 
-function PaymentMethodCard({ method, isActive, onSelect, onToggleFavorite }) {
+function PaymentMethodCard({
+  method,
+  isActive,
+  onSelect,
+  onToggleFavorite,
+  onEdit,
+}) {
   return (
     <div
       className={`payment-method-card-container ${isActive ? "active" : ""}`}
@@ -951,7 +958,12 @@ function PaymentMethodCard({ method, isActive, onSelect, onToggleFavorite }) {
         >
           <HeartIcon />
         </ActionButton>
-        <ActionButton onClick={() => console.log("Edit clicked")}>
+        <ActionButton
+          onClick={(e) => {
+            e.stopPropagation();
+            onEdit();
+          }}
+        >
           <PencilIcon />
         </ActionButton>
       </div>
@@ -959,12 +971,7 @@ function PaymentMethodCard({ method, isActive, onSelect, onToggleFavorite }) {
   );
 }
 
-const cardData = {
-  number: "4562 1122 4594 7852",
-  holder: "JACK PETERSON",
-  expires: "11/22",
-};
-
+const userId = "user_id1";
 const featureBoxesData = [
   {
     icon: <BanknoteIcon />,
@@ -981,113 +988,190 @@ const featureBoxesData = [
     type: "paypal",
   },
 ];
-
-const initialPaymentMethods = [
-  {
-    id: 1,
-    type: "mastercard",
-    number: "**** **** **** 7852",
-    isFavorite: true,
-    holder: "JACK PETERSON",
-    fullNumber: "4562 1122 4594 7852",
-    expires: "11/22",
-  },
-  {
-    id: 2,
-    type: "VISA",
-    number: "**** **** **** 5248",
-    isFavorite: false,
-    holder: "JACK PETERSON",
-    fullNumber: "4562 1122 4594 5248",
-    expires: "08/24",
-  },
-  {
-    id: 3,
-    type: "AMEX",
-    number: "**** **** **** 9105",
-    isFavorite: false,
-    holder: "JACK PETERSON",
-    fullNumber: "3782 8224 6310 9105",
-    expires: "04/23",
-  },
-  {
-    id: 4,
-    type: "V-WLT",
-    number: "**** **** **** 0000",
-    isFavorite: false,
-    holder: "VIRTUAL WALLET",
-    fullNumber: "9876 5432 1098 0000",
-    expires: "N/A",
-  },
-];
-
 const invoicesData = [
   { id: "MS-415646", date: "March, 01, 2020", amount: 180, pdfUrl: "#" },
   { id: "RV-126749", date: "February, 10, 2021", amount: 250, pdfUrl: "#" },
   { id: "DW-103578", date: "April, 05, 2020", amount: 120, pdfUrl: "#" },
-  { id: "MS-415646", date: "June, 25, 2019", amount: 180, pdfUrl: "#" },
-  { id: "AR-803481", date: "March, 01, 2019", amount: 300, pdfUrl: "#" },
 ];
+function EditCardModal({ show, onClose, cardData, onSave }) {
+  const [cardName, setCardName] = useState(cardData?.holder || "");
+  const [cardNumber, setCardNumber] = useState(
+    cardData?.fullNumber || cardData?.number || ""
+  );
+  const [cardExpiry, setCardExpiry] = useState(cardData?.expires || "");
 
-function Dashboard() {
-  const [showModal, setShowModal] = useState(false);
-  const [mainCard, setMainCard] = useState({
-    ...cardData,
-    type: "mastercard",
-  });
-  const [paymentMethods, setPaymentMethods] = useState(initialPaymentMethods);
-  const [activeCardId, setActiveCardId] = useState(initialPaymentMethods[0].id);
+  useEffect(() => {
+    if (cardData) {
+      setCardName(cardData.holder || "");
+      setCardNumber(cardData.fullNumber || cardData.number || "");
+      setCardExpiry(cardData.expires || "");
+    }
+  }, [cardData]);
 
-  const handleCardSelect = (cardId) => {
-    setActiveCardId(cardId);
+  const handleContentClick = (e) => e.stopPropagation();
+
+  const handleSubmit = () => {
+    if (!cardName || cardNumber.length < 13 || !cardExpiry) {
+      alert("Please fill all fields correctly.");
+      return;
+    }
+
+    onSave({
+      ...cardData,
+      holder: cardName.toUpperCase(),
+      number: cardNumber,
+      fullNumber: cardNumber,
+      expires: cardExpiry,
+    });
   };
 
-  const handleToggleFavorite = (cardId) => {
-    const newFavoriteCard = paymentMethods.find((m) => m.id === cardId);
+  return (
+    <div className={`modal-overlay ${show ? "show" : ""}`} onClick={onClose}>
+      <div className="modal-content" onClick={handleContentClick}>
+        <div className="modal-header">
+          <h2 className="modal-title">Edit Card</h2>
+          <button onClick={onClose} className="modal-close-btn">
+            &times;
+          </button>
+        </div>
+        <div className="modal-body">
+          <TextInput
+            label="Cardholder Name"
+            id="editCardName"
+            value={cardName}
+            onChange={(e) => setCardName(e.target.value)}
+          />
+          <TextInput
+            label="Card Number"
+            id="editCardNum"
+            value={cardNumber}
+            onChange={(e) => setCardNumber(e.target.value)}
+          />
+          <TextInput
+            label="Expiry Date"
+            id="editCardExpiry"
+            value={cardExpiry}
+            onChange={(e) => setCardExpiry(e.target.value)}
+          />
+        </div>
+        <div className="modal-footer">
+          <ModalCancelButton onClick={onClose}>Cancel</ModalCancelButton>
+          <PrimaryButton onClick={handleSubmit}>Save Changes</PrimaryButton>
+        </div>
+      </div>
+    </div>
+  );
+}
+function Dashboard() {
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingCard, setEditingCard] = useState(null);
 
-    if (newFavoriteCard) {
-      setMainCard({
-        holder: newFavoriteCard.holder,
-        number: newFavoriteCard.fullNumber,
-        expires: newFavoriteCard.expires,
-        type: newFavoriteCard.type,
+  const handleEditCardClick = (card) => {
+    setEditingCard(card);
+    setShowEditModal(true);
+  };
+
+  const handleSaveCard = async (updatedCard) => {
+    try {
+      const cardRef = doc(db, "registrations", userId, "creditcards", updatedCard.id);
+      await updateDoc(cardRef, {
+        holder: updatedCard.holder,
+        number: updatedCard.fullNumber || updatedCard.number,
+        expires: updatedCard.expires,
       });
+      setShowEditModal(false);
+    } catch (error) {
+      console.error("Failed to update card:", error);
+      alert("Failed to update card. Check console.");
+    }
+  };
+  const [paymentMethods, setPaymentMethods] = useState([]);
+  const [activeCardId, setActiveCardId] = useState(null);
+  const [mainCard, setMainCard] = useState({
+    number: "**** **** **** 7852",
+    holder: "JACK PETERSON",
+    expires: "11/22",
+    type: "mastercard",
+  });
+  const [showModal, setShowModal] = useState(false);
 
-      setPaymentMethods((prevMethods) =>
-        prevMethods.map((method) => ({
-          ...method,
-          isFavorite: method.id === cardId,
-        }))
-      );
+  useEffect(() => {
+    const creditCardsRef = collection(db, "registrations", userId, "creditcards");
+    const unsubscribe = onSnapshot(creditCardsRef, (snapshot) => {
+      const cardsFromDB = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          type: data.type || "mastercard",
+          number: `**** **** **** ${data.number.slice(-4)}`,
+          fullNumber: data.number,
+          holder: data.holder || "N/A",
+          expires: data.expires || "MM/YY",
+          isFavorite: data.isFavorite || false,
+        };
+      });
+      setPaymentMethods(cardsFromDB);
 
+      const favoriteCard =
+        cardsFromDB.find((c) => c.isFavorite) || cardsFromDB[0];
+      if (favoriteCard) {
+        setActiveCardId(favoriteCard.id);
+        setMainCard({
+          holder: favoriteCard.holder,
+          number: favoriteCard.fullNumber,
+          expires: favoriteCard.expires,
+          type: favoriteCard.type,
+        });
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleCardSelect = (cardId) => setActiveCardId(cardId);
+
+  const handleToggleFavorite = async (cardId) => {
+    const selectedCard = paymentMethods.find((m) => m.id === cardId);
+    if (!selectedCard) return;
+
+    try {
+      const batchUpdates = paymentMethods.map((m) => {
+        const docRef = doc(db, "registrations", userId, "creditcards", m.id);
+        return updateDoc(docRef, { isFavorite: m.id === cardId });
+      });
+      await Promise.all(batchUpdates);
+
+      setMainCard({
+        holder: selectedCard.holder,
+        number: selectedCard.fullNumber,
+        expires: selectedCard.expires,
+        type: selectedCard.type,
+      });
       setActiveCardId(cardId);
+    } catch (error) {
+      console.error("Error updating favorite:", error);
     }
   };
 
-  const handleAddNewCard = ({ cardName, cardNumber, cardExpiry, cardType }) => {
-    setMainCard({
-      holder: cardName.toUpperCase(),
-      number: cardNumber,
-      expires: cardExpiry,
-      type: cardType,
-    });
-    const newId = Date.now();
-    const newPaymentMethod = {
-      id: newId,
-      type: cardType,
-      number: `**** **** **** ${cardNumber.slice(-4)}`,
-      isFavorite: true,
-      holder: cardName.toUpperCase(),
-      fullNumber: cardNumber,
-      expires: cardExpiry,
-    };
-
-    setPaymentMethods((prevMethods) => [
-      ...prevMethods.map((m) => ({ ...m, isFavorite: false })),
-      newPaymentMethod,
-    ]);
-
-    setActiveCardId(newId);
+  const handleAddNewCard = async ({ holder, number, expires, type }) => {
+    try {
+      const creditCardsRef = collection(db, "registrations", userId, "creditcards");
+      const docRef = await addDoc(creditCardsRef, {
+        holder,
+        number,
+        expires,
+        type,
+        isFavorite: true,
+      });
+      const unfavoritePromises = paymentMethods.map((m) =>
+        updateDoc(doc(db, "registrations", userId, "creditcards", m.id), {
+          isFavorite: false,
+        })
+      );
+      await Promise.all(unfavoritePromises);
+    } catch (error) {
+      console.error("Failed to add card:", error);
+      throw error;
+    }
   };
 
   return (
@@ -1098,11 +1182,9 @@ function Dashboard() {
         onClose={() => setShowModal(false)}
         onAddCard={handleAddNewCard}
       />
-
       <div className="app-container">
         <main className="main-column">
           <CreditCard data={mainCard} />
-
           <section className="payment-methods">
             <div className="section-header">
               <h2 className="section-title">Payment Method</h2>
@@ -1118,8 +1200,15 @@ function Dashboard() {
                   isActive={activeCardId === method.id}
                   onSelect={() => handleCardSelect(method.id)}
                   onToggleFavorite={() => handleToggleFavorite(method.id)}
+                  onEdit={() => handleEditCardClick(method)}
                 />
               ))}
+              <EditCardModal
+                show={showEditModal}
+                onClose={() => setShowEditModal(false)}
+                cardData={editingCard}
+                onSave={handleSaveCard}
+              />
             </div>
           </section>
         </main>
@@ -1127,14 +1216,7 @@ function Dashboard() {
         <aside className="sidebar-column">
           <div className="flex-col gap-4">
             {featureBoxesData.map((box) => (
-              <FeatureBox
-                key={box.title}
-                icon={box.icon}
-                title={box.title}
-                subtitle={box.subtitle}
-                amount={box.amount}
-                type={box.type}
-              />
+              <FeatureBox key={box.title} {...box} />
             ))}
           </div>
 
@@ -1158,3 +1240,4 @@ function Dashboard() {
 }
 
 export default Dashboard;
+//comment me kallzu qe su kon ai lmaoo

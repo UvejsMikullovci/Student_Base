@@ -1,24 +1,10 @@
 import React from "react";
-import "./ContactPage.css";
-import ContactHeader from "../../organisms/group3/ContactHeader";
-import ContactDetails from "../../organisms/group3/ContactDetails";
-import ContactForm from "../../molecules/group3/ContactForm";
-import FAQSection from "../../organisms/group3/FAQSection";
-import MapSection from "../../organisms/group3/MapSection";
+import ContactContent from "../../organisms/group3/ContactContent";
 
-const ContactPage = () => {
-    return (
-        <div className="contact-page">
-            <ContactHeader />
-            <ContactDetails /> 
-            <h1>test</h1>
-            <div className="contact-body">
-                <ContactForm />
-                <FAQSection />
-            </div>
-            <MapSection />
-        </div>
-    );
-};
-
-export default ContactPage;
+export default function ContactPage() {
+  return (
+    <main>
+      <ContactContent />
+    </main>
+  );
+}

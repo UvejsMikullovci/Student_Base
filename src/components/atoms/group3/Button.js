@@ -1,9 +1,10 @@
 import React from "react";
+import "./Button.css";
 
-const Button = ({ text, type = "button", onClick }) => (
-    <button type={type} onClick={onClick}>
-        {text}
+export default function Button({ children, type = "button" }) {
+  return (
+    <button type={type} className="primary-btn">
+      {children}
     </button>
-);
-
-export default Button;
+  );
+}

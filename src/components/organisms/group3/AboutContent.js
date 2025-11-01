@@ -48,8 +48,8 @@ export default function AboutContent() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <Heading text="Misioni dhe Vizioni jonë" />
-        <Paragraph text="Gjithçka që bëjmë është e ndërtuar nga vlerat tona themelore." />
+        {/* <Heading text="Misioni dhe Vizioni jonë" />
+        <Paragraph text="Gjithçka që bëjmë është e ndërtuar nga vlerat tona themelore." /> */}
         <MissionVisionSection />
       </motion.div>
 

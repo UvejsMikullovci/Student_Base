@@ -1,0 +1,53 @@
+.contact-page {
+  background-color: #fff8f6;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+
+/* HERO */
+.contact-hero {
+  position: relative;
+  background-color: #e04e45;
+  color: white;
+  text-align: center;
+  padding: 90px 20px 64px;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+.contact-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(224,78,69,0.95);
+}
+.contact-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Main two-column layout */
+.main-wrap {
+  max-width: 1100px;
+  margin: 40px auto 80px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 30px;
+  align-items: start;
+}
+
+/* left and right column specifics */
+.right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* smaller screens stack */
+@media (max-width: 1024px) {
+  .main-wrap { grid-template-columns: 1fr; }
+}

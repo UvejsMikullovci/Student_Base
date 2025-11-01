@@ -1,0 +1,93 @@
+.personal-info-container {
+  width: 100%;
+  background: #fff;
+  border: 1.5px solid #df4d4a70;
+  border-radius: 12px;
+  padding: 35px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+}
+
+.personal-info-container h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #DF4C4A;
+  margin-bottom: 25px;
+}
+
+.input-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px 25px;
+  margin-bottom: 25px;
+}
+
+.input-fields input,
+.input-fields select {
+  width: 100%;
+  padding: 11px 13px;
+  font-size: 0.95rem;
+  color: #333;
+  background-color: #fafafa;
+  border: 1px solid #e0dcd6;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.input-fields input:focus,
+.input-fields select:focus {
+  border-color: #DF4C4A;
+  box-shadow: 0 0 0 2px rgba(223, 76, 74, 0.15);
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.buttons button:first-child {
+  background-color: #DF4C4A;
+  color: white;
+}
+
+.buttons button:first-child:hover {
+  background-color: #c54341;
+}
+
+.buttons button:last-child {
+  background-color: #f1f1f1;
+  color: #444;
+}
+
+.buttons button:last-child:hover {
+  background-color: #e5e5e5;
+}
+
+.message {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #2f2f2f;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .personal-info-container {
+    padding: 25px 25px;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+}

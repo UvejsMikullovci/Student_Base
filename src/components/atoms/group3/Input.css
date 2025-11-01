@@ -1,0 +1,32 @@
+.input-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.input-field {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ece3e1;
+  font-size: 1rem;
+  background: #fff;
+  outline: none;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.input-field:focus {
+  border-color: #d13d36;
+  box-shadow: 0 4px 16px rgba(209,61,54,0.06);
+}
+
+.textarea-field {
+  min-height: 140px;
+  resize: vertical;
+}

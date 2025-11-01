@@ -1,36 +1,112 @@
-import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
-import UserAvatar from "../../atoms/group5/UserAvatar";
-import SidebarMenu from "../../molecules/group5/SidebarMenu";
+import React, { useState, useEffect } from "react";
+import {
+  Menu,
+  X,
+  User,
+  FileText,
+  CreditCard,
+  BarChart2,
+  Bell,
+  Heart,
+  Settings,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import "../../organisms/group5/Sidebar.css"
+import "./Sidebar.css";
+import { auth, db } from "../../../Firebase/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
-const Sidebar = () => {
+const Sidebar = ({ active, setActive }) => {
   const [open, setOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const currentUser = auth.currentUser;
+      if (!currentUser) return;
+      try {
+        const docRef = doc(db, "registrations", currentUser.uid);
+        const snap = await getDoc(docRef);
+        if (snap.exists()) {
+          setUserData(snap.data());
+        }
+      } catch (err) {
+        console.error("Gabim gjatë marrjes së të dhënave të përdoruesit:", err);
+      }
+    };
+    fetchUserData();
+  }, []);
+
+  const menuItems = [
+    { title: "Profili im", icon: <User size={18} /> },
+    { title: "Aplikimet", icon: <FileText size={18} /> },
+    { title: "Pagesat", icon: <CreditCard size={18} /> },
+    { title: "Statistikat", icon: <BarChart2 size={18} /> },
+    { title: "Njoftimet", icon: <Bell size={18} /> },
+    { title: "Të preferuarat", icon: <Heart size={18} /> },
+    { title: "Cilësimet", icon: <Settings size={18} /> },
+  ];
+
+  const name = userData ? `${userData.name || ""} ${userData.surname || ""}`.trim() : "Ngarkim...";
+  const role = userData?.role || "Student";
+  const avatar = name ? name.charAt(0).toUpperCase() : "?";
 
   return (
     <>
-      <div className="p-4 md:hidden flex justify-between items-center bg-white shadow">
-        <UserAvatar name="Erion Veliaj" role="Student" />
-        <button onClick={() => setOpen(!open)}>
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+      {!isDesktop && (
+        <div className="mobile-header">
+          <div className="user-section">
+            <div className="avatar">{avatar}</div>
+            <div className="user-info">
+              <h3>{name}</h3>
+              <p>{role}</p>
+            </div>
+          </div>
+          <button onClick={() => setOpen(!open)}>
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      )}
 
-      {/* Sidebar */}
       <AnimatePresence>
-        {(open || window.innerWidth >= 768) && (
+        {(open || isDesktop) && (
           <motion.aside
-            initial={{ x: -250 }}
+            initial={{ x: -260 }}
             animate={{ x: 0 }}
-            exit={{ x: -250 }}
+            exit={{ x: -260 }}
             transition={{ duration: 0.3 }}
-            className="bg-[#FFFDF9] border-r border-gray-100 h-screen w-64 p-6 hidden md:flex md:flex-col md:justify-between fixed md:relative"
+            className={`sidebar ${open ? "open" : ""}`}
           >
-            <div className="flex flex-col gap-6">
-              <UserAvatar name="Erion Veliaj" role="Student" />
-              <div className="border-t border-gray-200" />
-              <SidebarMenu active="Profili im" />
+            <div>
+              <div className="user-section">
+                <div className="avatar">{avatar}</div>
+                <div className="user-info">
+                  <h3>{name}</h3>
+                  <p>{role}</p>
+                </div>
+              </div>
+              <hr />
+              <nav className="sidebar-menu">
+                {menuItems.map((item) => (
+                  <a
+                    key={item.title}
+                    onClick={() => {
+                      setActive(item.title);
+                      if (!isDesktop) setOpen(false);
+                    }}
+                    className={active === item.title ? "active" : ""}
+                  >
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </a>
+                ))}
+              </nav>
             </div>
           </motion.aside>
         )}

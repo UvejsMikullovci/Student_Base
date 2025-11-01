@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./PanelNotifications.css";
-import { faEnvelope as faEnvelopeRegular } from "@fortawesome/fontawesome-free";
 
 const dummyData = [
     {
@@ -8,7 +7,6 @@ const dummyData = [
         title: "Aplikimi juaj është pranuar! ",
         sender: "Universiteti i Tiranës",
         time: "Sot, 10:30",
-        important: true,
         unread: true,
         message: `Urime! Jemi të lumtur të ju njoftojmë që aplikimi juaj për programin Inxhinieri Informatike është pranuar...
 
@@ -35,16 +33,21 @@ Universiteti i Tiranës`
 ];
 
 export default function NotificationsPanel() {
+    const [notifications, setNotifications] = useState(dummyData);
     const [filter, setFilter] = useState("all");
     const [selected, setSelected] = useState(null);
     const [search, setSearch] = useState("");
 
-    const filtered = dummyData.filter(n => {
+    const handleDelete = (id) => {
+        setNotifications(prev => prev.filter(n => n.id !== id));
+        setSelected(null);
+    };
+
+    const filtered = notifications.filter(n => {
         const match =
             n.title.toLowerCase().includes(search.toLowerCase()) ||
             n.sender.toLowerCase().includes(search.toLowerCase());
         if (filter === "unread") return n.unread && match;
-        if (filter === "important") return n.important && match;
         return match;
     });
 
@@ -61,10 +64,10 @@ export default function NotificationsPanel() {
                 />
                 <div className="notif-filters">
                     <button className={filter === "all" ? "active" : ""} onClick={() => setFilter("all")}>
-                        Te gjitha <span>{dummyData.length}</span>
+                        Te gjitha <span>{notifications.length}</span>
                     </button>
                     <button className={filter === "unread" ? "active" : ""} onClick={() => setFilter("unread")}>
-                        Pa lexuar <span>{dummyData.filter(n => n.unread).length}</span>
+                        Pa lexuar <span>{notifications.filter(n => n.unread).length}</span>
                     </button>
                 </div>
 
@@ -75,7 +78,13 @@ export default function NotificationsPanel() {
                             className={`notif-item ${selected?.id === n.id ? "selected" : ""} ${n.unread ? "unread" : ""}`}
                             onClick={() => setSelected(n)}
                         >
-                            <div className="notif-title">{n.sender}</div>
+                            <div className="notif-title">
+                                <i
+                                    className="fa-solid fa-envelope"
+                                    style={{ color: "#9b9b9b", marginRight: "8px" }}
+                                ></i>
+                                {n.sender}
+                            </div>
                             <div className="notif-text">{n.title}</div>
                             <div className="notif-time">{n.time}</div>
                         </li>
@@ -86,7 +95,7 @@ export default function NotificationsPanel() {
             <div className="notif-right">
                 {!selected ? (
                     <div className="empty-state">
-                        <i class="fa-solid fa-envelope"></i>
+                        <i className="fa-solid fa-envelope"></i>
                         <p>Zgjidh një mesazh për ta lexuar</p>
                     </div>
                 ) : (
@@ -94,16 +103,21 @@ export default function NotificationsPanel() {
                         <div className="notif-header">
                             <div>
                                 <h3>{selected.title}</h3>
-                                <p>{selected.sender} • {selected.time}</p>
+                                <p>
+                                    <i
+                                        className="fa-solid fa-envelope"
+                                        style={{ color: "#888", marginRight: "8px" }}
+                                    ></i>
+                                    {selected.sender} • {selected.time}
+                                </p>
                             </div>
-                            {selected.important && (
-                                <span className="important-badge">🔔 I rëndësishëm</span>
-                            )}
                         </div>
 
                         <div className="notif-actions">
-                            <button><i class="fa-solid fa-box-archive"></i> Arkivo</button>
-                            <button><i class="fa-solid fa-trash-can"></i> Fshi</button>
+                            <button><i className="fa-solid fa-box-archive"></i> Arkivo</button>
+                            <button onClick={() => handleDelete(selected.id)}>
+                                <i className="fa-solid fa-trash-can"></i> Fshi
+                            </button>
                         </div>
 
                         <hr />

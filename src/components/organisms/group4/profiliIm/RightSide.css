@@ -1,45 +1,107 @@
-.div-profileBox {
-    margin: 2% auto;
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #df4d4a90;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.RightSide {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
+
+.div-profileBoxi,
+.div-profileFastStatistics {
+  background: #fff;
+  border: 1.5px solid #df4d4a70;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.div-profileBoxi {
+  text-align: center;
+}
+
+.div-profileBoxTitle {
+  border-bottom: 1px solid #df4d4a50;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: #3c3c3c;
+}
+
 .div-profileBox h1 {
-    background-color: #DF4C4ABF;
-    color: var(--color-blue-600);
-    border-radius: 300px;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: #DF4C4A;
+  color: white;
+  font-weight: 500;
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px auto;
+  font-size: 1.8rem;
 }
+
 .div-profileBox button {
-    width: 90%;
-    background-color: white;
-    border: 1px solid #df4d4a90;
-    height: 10px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  background: white;
+  border: 1px solid #df4d4a70;
+  color: #DF4C4A;
+  font-weight: 500;
+  padding: 10px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.div-profileBox button:hover {
+  background-color: #DF4C4A;
+  color: white;
+  border-color: #DF4C4A;
 }
 
 .div-profileFastStatistics {
-    margin: 2% auto;
-    font-weight: 100;
-    width: 100%;
-    padding: 30px;
-    text-align: start;
-    border: 1px solid #df4d4a90;
-    border-radius: 25px;
+  text-align: left;
 }
-.div-profileBoxTitle {
-    border-bottom: 1px solid #df4d4a90;
-    width: 100%;
+
+.div-profileFastStatistics h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #3a3a3a;
+}
+
+@media (max-width: 768px) {
+  .div-profileBoxi, .div-profileFastStatistics {
+    padding: 20px;
+  }
+
+  .div-profileBox h1 {
+    width: 80px;
+    height: 80px;
+    font-size: 1.4rem;
+  }
+}
+
+.div-littleBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  color: #2d2d2d;
+}
+
+.div-littleBox h1 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #DF4C4A;
+}
+
+.div-littleBox h3 {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #3e3e3e;
+}
+
+.div-littleBox p {
+  font-size: 0.92rem;
+  color: #555;
 }
