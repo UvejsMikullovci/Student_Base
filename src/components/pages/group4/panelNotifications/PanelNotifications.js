@@ -52,6 +52,9 @@ export default function NotificationsPanel() {
     });
 
     return (
+        <>
+        <h1 className="notif-heading-main">Njoftimet</h1>
+        <p className="notif-paragraph-main">Menaxho të gjitha njoftimet dhe mesazhet tuaja</p>
         <div className="notif-wrapper">
             <div className="notif-left">
                 <h2>Njoftimet & Mesazhet</h2>
@@ -136,5 +139,6 @@ export default function NotificationsPanel() {
                 )}
             </div>
         </div>
+        </>
     );
 }

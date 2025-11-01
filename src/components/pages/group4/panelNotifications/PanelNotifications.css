@@ -14,7 +14,7 @@ body {
 .notif-wrapper {
   display: flex;
   width: 100%;
-  padding: 2rem 3rem;
+  padding: 2rem 0rem;
 }
 
 .notif-left {
@@ -288,3 +288,19 @@ hr {
 .notif-actions button:hover i {
   color: #666;
 }
+
+.notif-heading-main {
+    text-align: left!important;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+
+.notif-paragraph-main {
+    text-align: left!important;
+    font-size: .95rem;
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+}
+

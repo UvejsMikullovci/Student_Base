@@ -119,14 +119,8 @@ function Settings() {
 
   return (
     <div className="settings-container">
-      <h1 className="card-head">
-        <i
-          className="fa-solid fa-gear"
-          style={{ fontSize: "24px", color: "#DF4C4A", marginRight: "15px" }}
-        ></i>
-        Cilësimet
-      </h1>
-      <p className="card-paragraph">Menaxho profilin dhe preferencat tua</p>
+        <h1 className="notif-heading-main">Cilesimet</h1>
+        <p className="notif-paragraph-main">Menaxho të gjitha dhenat të llogarisë</p>
 
       {/* Personal Information */}
       <div className="personal-information">
@@ -307,7 +301,7 @@ function Settings() {
           Menaxho metodat e pagesës
         </p>
 
-        <div className="payment-methods">
+        <div className="payment-methods-settings">
           <i
             className="fa-solid fa-credit-card"
             style={{

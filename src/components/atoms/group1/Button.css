@@ -1,4 +1,4 @@
- button {
+ #button {
   cursor: pointer;
   border-radius: 5px;
   font-weight: 600;
@@ -19,7 +19,7 @@
   border: 0.5px solid #e04e45;
 }
 
-button:hover {
+#button:hover {
   opacity: 0.9;
   background-color: #e04e45;
   color:white;

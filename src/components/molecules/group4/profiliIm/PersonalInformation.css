@@ -1,6 +1,6 @@
 .personal-info-container {
   width: 100%;
-  background: #fff;
+  background: #fffbfb;
   border: 1.5px solid #df4d4a70;
   border-radius: 12px;
   padding: 35px 40px;
@@ -11,7 +11,7 @@
 .personal-info-container h2 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #DF4C4A;
+  color: #000000;
   margin-bottom: 25px;
 }
 

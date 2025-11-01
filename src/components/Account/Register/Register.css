@@ -76,7 +76,7 @@
 }
 
 /* Button */
-button {
+.register-container button {
   width: 100%;
   padding: 14px;
   background-color: var(--color-primary);
@@ -90,12 +90,12 @@ button {
   transition: var(--transition);
 }
 
-button:hover {
+.register-container button:hover {
   background-color: #c64543;
   transform: translateY(-1px);
 }
 
-button:disabled {
+.register-container button:disabled {
   background-color: #df4c4a90;
   cursor: not-allowed;
 }
