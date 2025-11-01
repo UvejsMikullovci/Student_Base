@@ -11,3 +11,11 @@
  justify-content: center;
 }
 
+
+.div-fastStatistics h4 {
+    font-weight: 500;
+}
+
+.div-fastStatistics h3 {
+    font-weight: 700;
+}

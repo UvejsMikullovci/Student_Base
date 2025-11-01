@@ -13,8 +13,8 @@ body {
 
 .notif-wrapper {
   display: flex;
-  justify-content: flex-end;
-  padding: 2rem 3rem;
+  width: 100%;
+  padding: 2rem 0rem;
 }
 
 .notif-left {
@@ -126,7 +126,7 @@ body {
 }
 
 .notif-right {
-  width: 50%;
+  width: 100%;
   background: #fffaf5;
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px;
@@ -288,3 +288,19 @@ hr {
 .notif-actions button:hover i {
   color: #666;
 }
+
+.notif-heading-main {
+    text-align: left!important;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+
+.notif-paragraph-main {
+    text-align: left!important;
+    font-size: .95rem;
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+}
+

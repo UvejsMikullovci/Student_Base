@@ -18,10 +18,10 @@ export default function FastStatistics({title, headingOne, headingTwo, headingTh
         </div>
         <div className='div-profileBoxNumber'>
           <br></br>
-        <h3>5</h3>
-        <h3>2</h3>
-        <h3>3</h3>
-        <h3>4/5</h3>
+        <p>5</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4/5</p>
         </div>
       </div>
     </div>

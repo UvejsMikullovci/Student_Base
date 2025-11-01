@@ -1,0 +1,129 @@
+:root {
+    --color-primary: #df4c4a;
+    --color-text: #101010;
+    --color-bg: #fffcf6;
+    --font-family: "Poppins", sans-serif;
+    --transition: 0.25s ease-in-out;
+}
+
+.login-container {
+    background-color: var(--color-bg);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.login-form {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 16px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 480px;
+    font-family: var(--font-family);
+}
+
+.login-form h1 {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    padding: 12px 14px;
+    border: 1.3px solid #e2dad2;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: var(--font-family);
+    transition: var(--transition);
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(223, 76, 74, 0.15);
+}
+
+.login-container button {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--color-primary);
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.login-containerbutton:hover {
+    background-color: #c64543;
+    transform: translateY(-1px);
+}
+
+.login-containerbutton:disabled {
+    background-color: #df4c4a90;
+    cursor: not-allowed;
+}
+
+.success {
+    color: var(--color-primary);
+    font-weight: 500;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+
+.error {
+    color: #d32f2f;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+
+.redirect-text {
+    margin-top: 25px;
+    text-align: center;
+    color: #444;
+    font-size: 0.9rem;
+}
+
+.register-link {
+    color: var(--color-primary);
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
