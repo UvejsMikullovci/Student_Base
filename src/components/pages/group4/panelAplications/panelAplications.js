@@ -4,6 +4,7 @@ import ApplicationsHeader from "../../../organisms/group4/panelAplications/Aplic
 import StatsRow from "../../../molecules/group4/panelAplications/StatsRow";
 import FilterTabs from "../../../organisms/group4/panelAplications/FilterTabs";
 import ApplicationsList from "../../../molecules/group4/panelAplications/ApplicationsList";
+
 import "./panelAplications.css";
 
 

@@ -17,14 +17,20 @@ const StatisticsPieChart = ({ title, data, dataKey, nameKey }) => (
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
-            data={data}
+            data={data.map((d) => ({
+              ...d,
+              [dataKey]:
+                typeof d[dataKey] === "string"
+                  ? parseFloat(d[dataKey])
+                  : d[dataKey],
+            }))}
             dataKey={dataKey}
             nameKey={nameKey}
             cx="50%"
             cy="50%"
             outerRadius={100}
             fill="#8884d8"
-            label={(entry) => `${entry[nameKey]} ${entry[dataKey]}%`}
+            label={(entry) => `${entry[nameKey]}: ${entry[dataKey]}`}
           >
             {data.map((entry, index) => (
               <Cell

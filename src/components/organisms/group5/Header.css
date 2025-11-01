@@ -6,6 +6,8 @@
   display: flex;
   justify-content: center;
   font-family: 'Poppins', sans-serif;
+  position: relative;
+  z-index: 1000;
 }
 
 .container {
@@ -26,4 +28,16 @@
 .cta {
   display: flex;
   align-items: center;
+}
+
+.btn {
+  margin: 0px!important;
+}
+
+
+.navbar h1 {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(80, 80, 80);
+  margin: 0 10px;
 }

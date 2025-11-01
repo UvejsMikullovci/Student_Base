@@ -99,3 +99,21 @@
     font-size: 1rem;
   }
 }
+.mission-vision-header {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 40px 20px;
+}
+
+.mission-vision-header h2 {
+  font-size: 2rem;
+  color: #b91c1c;
+  margin-bottom: 10px;
+}
+
+.mission-vision-header p {
+  color: #444;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}

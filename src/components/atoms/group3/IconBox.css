@@ -1,0 +1,34 @@
+.contact-icon-box {
+  background-color: #fffaf9;
+  border: 1px solid #f5d8d7;
+  border-radius: 20px;
+  text-align: center;
+  padding: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-icon-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.contact-icon {
+  background-color: #fbe8e7;
+  color: #d13d36;
+  font-size: 24px;
+  display: inline-block;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.contact-icon-box h3 {
+  font-size: 1.1rem;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+.contact-icon-box p {
+  color: #555;
+  font-size: 0.95rem;
+}

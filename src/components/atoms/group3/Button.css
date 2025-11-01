@@ -1,0 +1,12 @@
+.primary-btn {
+  background-color: #d84a44;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: transform .12s ease, background-color .12s ease;
+}
+.primary-btn:hover { transform: translateY(-3px); background-color: #b73b36; }
