@@ -15,6 +15,7 @@ import Collages from './components/pages/group1/Collages/Collages';
 import Login from "./components/Account/Login/Login";
 import Register from "./components/Account/Register/Register";
 import { AuthProvider } from "./context/AuthContext";
+import CollegeDetailsPage from "./components/pages/group1/IndividualColleges/CollegeDetailsPage";
 
 function App() {
   return (
