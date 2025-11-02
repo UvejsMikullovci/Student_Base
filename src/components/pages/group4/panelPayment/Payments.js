@@ -1,213 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { db, auth } from "../../../../Firebase/firebase";
 import { doc, getDoc, updateDoc, onSnapshot } from "firebase/firestore";
+import { Edit, Trash2 } from "lucide-react"; // Lucide icons
+import "./Dashboard.css";
 
-// =================== GLOBAL STYLES ===================
-function GlobalStyles() {
-  return (
-    <style>{`
-      :root {
-        --font-family: 'Poppins', sans-serif;
-        --bg-main: #F9FAFB;
-        --bg-white: #FFFFFF;
-        --text-dark: #111827;
-        --text-secondary: #6B7280;
-        --text-blue: #4F46E5;
-        --border-color: #E5E7EB;
-        --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
-        --radius-xl: 1rem;
-      }
-
-      * {
-        margin: 0; padding: 0; box-sizing: border-box;
-        font-family: var(--font-family);
-      }
-
-      body { background-color: #fffaf7; }
-
-      .app-container {
-        display: flex;
-        gap: 2rem;
-        padding: 2rem;
-        justify-content: center;
-        align-items: flex-start;
-      }
-
-      .main-column { flex: 2; }
-      .sidebar-column { flex: 1; display: flex; flex-direction: column; gap: 1.5rem; }
-
-      .notif-heading-main {
-        font-size: 2rem;
-        font-weight: 600;
-        color: var(--text-dark);
-        margin-bottom: 0.3rem;
-      }
-
-      .notif-paragraph-main {
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-      }
-
-      .credit-card-container {
-        position: relative;
-        width: 100%;
-        min-height: 230px;
-        border-radius: var(--radius-xl);
-        padding: 2rem;
-        color: #fff;
-        box-shadow: var(--shadow-md);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        overflow: hidden;
-      }
-
-      .credit-card-container.mastercard {
-        background: linear-gradient(105deg, #F97316, #EA580C);
-      }
-      .credit-card-container.visa {
-        background: linear-gradient(105deg, #1A1F71, #0055A4);
-      }
-      .credit-card-container.amex {
-        background: linear-gradient(105deg, #00A6E6, #00C2C2);
-      }
-
-      .credit-card-container::after {
-        content: '';
-        position: absolute;
-        bottom: -80px;
-        right: -60px;
-        width: 300px;
-        height: 200px;
-        background-color: rgba(0,0,0,0.35);
-        border-radius: 45%;
-        transform: rotate(-30deg);
-        opacity: 0.9;
-      }
-
-      .credit-card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 2;
-      }
-
-      .credit-card-body {
-        font-size: 1.6rem;
-        font-weight: 500;
-        letter-spacing: 0.15em;
-        z-index: 2;
-      }
-
-      .credit-card-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        z-index: 2;
-      }
-
-      .card-detail-label {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        opacity: 0.8;
-      }
-
-      .card-detail-value {
-        font-size: 1rem;
-        font-weight: 600;
-      }
-
-      .section-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 2rem;
-      }
-
-      .btn {
-        border: none;
-        border-radius: 8px;
-        padding: 0.6rem 1rem;
-        font-weight: 500;
-        cursor: pointer;
-      }
-      .btn-primary {
-        background-color: var(--text-blue);
-        color: white;
-      }
-      .btn-primary:hover { opacity: 0.9; }
-
-      .feature-box {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #fff;
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-xl);
-        padding: 1rem 1.5rem;
-      }
-
-      .feature-title { font-weight: 600; font-size: 1rem; }
-      .feature-subtitle { color: var(--text-secondary); font-size: 0.9rem; }
-      .feature-amount { font-weight: 600; }
-
-      .invoices {
-        background: #fff;
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-xl);
-        padding: 1.5rem;
-      }
-
-      .invoice-item {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid #eee;
-        padding: 0.75rem 0;
-        font-size: 0.9rem;
-      }
-
-      .modal-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 50;
-      }
-
-      .modal-content {
-        background: white;
-        border-radius: var(--radius-xl);
-        padding: 2rem;
-        width: 100%;
-        max-width: 480px;
-        box-shadow: var(--shadow-md);
-      }
-
-      .text-input-group { margin-bottom: 1rem; }
-      .text-input-label { font-weight: 500; margin-bottom: 0.25rem; display: block; }
-      .text-input {
-        width: 100%;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
-        font-size: 0.9rem;
-      }
-
-      .modal-footer {
-        display: flex;
-        justify-content: flex-end;
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-    `}</style>
-  );
-}
-// =================== SMALL COMPONENTS ===================
 const CardDetail = ({ label, value }) => (
   <div>
-    <span className="card-detail-label">{label}</span><br />
+    <span className="card-detail-label">{label}</span>
+    <br />
     <span className="card-detail-value">{value}</span>
   </div>
 );
@@ -229,11 +29,23 @@ const CreditCard = ({ data }) => {
   );
 };
 
-// =================== ADD CARD MODAL ===================
-function CardFormModal({ show, onClose, onAddCard }) {
+// =================== ADD / EDIT CARD MODAL ===================
+function CardFormModal({ show, onClose, onSave, editData }) {
   const [cardName, setCardName] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cardExpiry, setCardExpiry] = useState("");
+
+  useEffect(() => {
+    if (editData) {
+      setCardName(editData.holder);
+      setCardNumber(editData.number);
+      setCardExpiry(editData.expires);
+    } else {
+      setCardName("");
+      setCardNumber("");
+      setCardExpiry("");
+    }
+  }, [editData]);
 
   const detectCardType = (num) => {
     const n = num.replace(/\D/g, "");
@@ -258,23 +70,17 @@ function CardFormModal({ show, onClose, onAddCard }) {
 
   const handleSubmit = async () => {
     const cleanNum = cardNumber.replace(/-/g, "");
-    if (!cardName || cleanNum.length < 13 || !/^\d{2}\/\d{2}$/.test(cardExpiry)) {
-      alert("Please fill all fields correctly.");
-      return;
-    }
+    if (!cardName || cleanNum.length < 13 || !/^\d{2}\/\d{2}$/.test(cardExpiry)) return;
 
-    const newCard = {
+    const cardObj = {
       holder: cardName.toUpperCase(),
       number: cardNumber,
       expires: cardExpiry,
       type: detectCardType(cardNumber),
-      isFavorite: true,
+      isFavorite: editData?.isFavorite || false,
     };
 
-    await onAddCard(newCard);
-    setCardName("");
-    setCardNumber("");
-    setCardExpiry("");
+    await onSave(cardObj, editData);
     onClose();
   };
 
@@ -283,9 +89,8 @@ function CardFormModal({ show, onClose, onAddCard }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <h2>Add New Card</h2>
+        <h2>{editData ? "Edit Card" : "Add New Card"}</h2>
 
-        {/* Preview */}
         <div style={{ margin: "1.5rem 0" }}>
           <CreditCard
             data={{
@@ -297,7 +102,6 @@ function CardFormModal({ show, onClose, onAddCard }) {
           />
         </div>
 
-        {/* Inputs */}
         <div className="text-input-group">
           <label className="text-input-label">Cardholder Name</label>
           <input
@@ -331,8 +135,12 @@ function CardFormModal({ show, onClose, onAddCard }) {
         </div>
 
         <div className="modal-footer">
-          <button className="btn" onClick={onClose}>Cancel</button>
-          <button className="btn btn-primary" onClick={handleSubmit}>Add Card</button>
+          <button className="btn" onClick={onClose}>
+            Cancel
+          </button>
+          <button className="btn btn-primary" onClick={handleSubmit}>
+            {editData ? "Save Changes" : "Add Card"}
+          </button>
         </div>
       </div>
     </div>
@@ -342,11 +150,11 @@ function CardFormModal({ show, onClose, onAddCard }) {
 // =================== MAIN DASHBOARD ===================
 export default function Dashboard() {
   const [showModal, setShowModal] = useState(false);
+  const [editData, setEditData] = useState(null);
   const [userId, setUserId] = useState(null);
   const [mainCard, setMainCard] = useState(null);
   const [savedCards, setSavedCards] = useState([]);
 
-  // --- get current user ---
   useEffect(() => {
     const unsubscribeAuth = auth.onAuthStateChanged((user) => {
       if (user) setUserId(user.uid);
@@ -354,7 +162,6 @@ export default function Dashboard() {
     return () => unsubscribeAuth();
   }, []);
 
-  // --- load cards on login ---
   useEffect(() => {
     if (!userId) return;
     const userRef = doc(db, "registrations", userId);
@@ -370,27 +177,43 @@ export default function Dashboard() {
     return () => unsubscribe();
   }, [userId]);
 
-  // --- add new card ---
-  const handleAddNewCard = async (card) => {
+  const handleSaveCard = async (card, editCard) => {
     if (!userId) return;
     try {
       const userRef = doc(db, "registrations", userId);
       const snap = await getDoc(userRef);
       const data = snap.data();
-      const existing = data.creditcards || [];
+      let updated = data.creditcards || [];
 
-      // Unfavorite others
-      const updated = existing.map((c) => ({ ...c, isFavorite: false }));
+      if (editCard) {
+        updated = updated.map((c) =>
+          c.number === editCard.number ? { ...card } : c
+        );
+      } else {
+        updated = [...updated.map((c) => ({ ...c, isFavorite: false })), card];
+      }
 
-      // Add new card
-      const newCards = [...updated, card];
-      await updateDoc(userRef, { creditcards: newCards });
+      await updateDoc(userRef, { creditcards: updated });
+      setEditData(null);
     } catch (error) {
       console.error("Error saving card:", error);
     }
   };
 
-  // --- display fallback ---
+  const handleDeleteCard = async (card) => {
+    try {
+      const userRef = doc(db, "registrations", userId);
+      const snap = await getDoc(userRef);
+      const data = snap.data();
+      const filtered = (data.creditcards || []).filter(
+        (c) => c.number !== card.number
+      );
+      await updateDoc(userRef, { creditcards: filtered });
+    } catch (error) {
+      console.error("Error deleting card:", error);
+    }
+  };
+
   const currentCard = mainCard || {
     holder: "No Card",
     number: "**** **** **** ****",
@@ -400,14 +223,17 @@ export default function Dashboard() {
 
   return (
     <>
-      <GlobalStyles />
       <h1 className="notif-heading-main">Pagesat</h1>
       <p className="notif-paragraph-main">Menaxho të gjitha pagesat dhe faturat</p>
 
       <CardFormModal
         show={showModal}
-        onClose={() => setShowModal(false)}
-        onAddCard={handleAddNewCard}
+        onClose={() => {
+          setShowModal(false);
+          setEditData(null);
+        }}
+        onSave={handleSaveCard}
+        editData={editData}
       />
 
       <div className="app-container">
@@ -421,8 +247,14 @@ export default function Dashboard() {
             </button>
           </div>
 
-          {/* Small cards list */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginTop: "1rem" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem",
+              marginTop: "1rem",
+            }}
+          >
             {savedCards.map((card, i) => (
               <div
                 key={i}
@@ -434,14 +266,44 @@ export default function Dashboard() {
                   borderRadius: "12px",
                   padding: "1rem 1.2rem",
                   backgroundColor: "#fff",
-                  boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
                 }}
               >
                 <div>
                   <strong>{card.type}</strong>
-                  <div style={{ color: "#555", fontSize: "0.9rem" }}>{card.number}</div>
+                  <div style={{ color: "#555", fontSize: "0.9rem" }}>
+                    {card.number}
+                  </div>
                 </div>
-                <div style={{ color: "#333", fontWeight: "600" }}>{card.holder}</div>
+
+                <div style={{ display: "flex", alignItems: "center", gap: "0.8rem" }}>
+                  <div style={{ color: "#333", fontWeight: "600" }}>
+                    {card.holder}
+                  </div>
+
+                  {/* Lucide Edit Icon */}
+                  <Edit
+                    size={18}
+                    strokeWidth={2}
+                    color="#007bff"
+                    className="lucide"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      setEditData(card);
+                      setShowModal(true);
+                    }}
+                  />
+
+                  {/* Lucide Trash Icon */}
+                  <Trash2
+                    size={18}
+                    strokeWidth={2}
+                    color="#dc3545"
+                    className="lucide"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleDeleteCard(card)}
+                  />
+                </div>
               </div>
             ))}
           </div>

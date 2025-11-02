@@ -19,13 +19,16 @@ const Sidebar = ({ active, setActive }) => {
   const [open, setOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
   const [userData, setUserData] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
 
+  // Detect screen size
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Fetch user data
   useEffect(() => {
     const fetchUserData = async () => {
       const currentUser = auth.currentUser;
@@ -42,6 +45,29 @@ const Sidebar = ({ active, setActive }) => {
     };
     fetchUserData();
   }, []);
+
+  // Load local profile photo (saved from ProfileBox)
+  useEffect(() => {
+    const savedImage = localStorage.getItem("profileImage");
+    if (savedImage) setProfileImage(savedImage);
+  }, []);
+
+  // Handle uploading a new photo directly from sidebar
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setProfileImage(reader.result);
+      localStorage.setItem("profileImage", reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const triggerFileInput = () => {
+    document.getElementById("sidebarFileInput").click();
+  };
 
   const menuItems = [
     { title: "Profili im", icon: <User size={18} /> },
@@ -62,7 +88,19 @@ const Sidebar = ({ active, setActive }) => {
       {!isDesktop && (
         <div className="mobile-header">
           <div className="user-section">
-            <div className="avatar">{avatar}</div>
+            {profileImage ? (
+              <img
+                src={profileImage}
+                alt="Profile"
+                className="avatar-image"
+                onClick={triggerFileInput}
+                style={{ cursor: "pointer" }}
+              />
+            ) : (
+              <div className="avatar" onClick={triggerFileInput}>
+                {avatar}
+              </div>
+            )}
             <div className="user-info">
               <h3>{name}</h3>
               <p>{role}</p>
@@ -85,13 +123,36 @@ const Sidebar = ({ active, setActive }) => {
           >
             <div>
               <div className="user-section">
-                <div className="avatar">{avatar}</div>
+                {profileImage ? (
+                  <img
+                    src={profileImage}
+                    alt="Profile"
+                    className="avatar-image"
+                    onClick={triggerFileInput}
+                    style={{ cursor: "pointer" }}
+                  />
+                ) : (
+                  <div className="avatar" onClick={triggerFileInput}>
+                    {avatar}
+                  </div>
+                )}
+
+                <input
+                  type="file"
+                  id="sidebarFileInput"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  onChange={handleImageUpload}
+                />
+
                 <div className="user-info">
                   <h3>{name}</h3>
                   <p>{role}</p>
                 </div>
               </div>
+
               <hr />
+
               <nav className="sidebar-menu">
                 {menuItems.map((item) => (
                   <a

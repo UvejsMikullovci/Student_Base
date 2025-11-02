@@ -19,3 +19,7 @@
 .div-fastStatistics h3 {
     font-weight: 700;
 }
+
+.div-fastStatistics p {
+    text-align: center;
+}
