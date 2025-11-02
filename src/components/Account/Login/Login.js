@@ -9,7 +9,6 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -23,27 +22,22 @@ export default function Login() {
     setSuccess(false);
 
     try {
-      // Sign in using Firebase Authentication
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
       setSuccess(true);
-
-      // Redirect to /panel after a short delay
       setTimeout(() => {
         navigate("/panel");
       }, 800);
-    } catch (err) {
-      console.error("Login error:", err);
-      setError("❌ Email ose fjalëkalim i pasaktë.");
+    } catch {
+      setError("Email ose fjalëkalim i pasaktë.");
     }
-
     setLoading(false);
   };
 
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
-        <h1>Hyr</h1>
-        <p className="subtitle">Shkruaj kredencialet e tua për t’u futur</p>
+        <h1>Hyrje</h1>
+        <p className="subtitle">Shkruaj kredencialet për të vazhduar</p>
 
         <div className="form-grid">
           <div className="form-group">
@@ -53,7 +47,6 @@ export default function Login() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Shkruaj email-in"
               required
             />
           </div>
@@ -65,18 +58,26 @@ export default function Login() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Shkruaj fjalëkalimin"
               required
             />
           </div>
         </div>
 
         <button type="submit" disabled={loading}>
-          {loading ? "Duke hyrë..." : "Hyr"}
+          {loading ? "Duke u futur..." : "Hyr"}
         </button>
 
-        {error && <p className="error">{error}</p>}
-        {success && <p className="success">✅ Mirë se erdhe përsëri!</p>}
+        {error && (
+          <p className="error">
+            {error}
+          </p>
+        )}
+
+        {success && (
+          <p className="success">
+            Mirë se u ktheve përsëri!
+          </p>
+        )}
 
         <p className="redirect-text">
           Nuk ke llogari?{" "}

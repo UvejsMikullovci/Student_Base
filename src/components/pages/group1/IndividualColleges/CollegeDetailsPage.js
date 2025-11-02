@@ -1,24 +1,26 @@
+
 import React from "react";
 import { useParams } from "react-router-dom";
 import CollegeDetailsSection from "../../../organisms/group1/IndividualColleges/CollegeDetailsSection";
+import programsData from '../../../pages/group2/programet.json';
 
 
 const collegeData = {
   aab: {
     name: "Kolegji AAB",
-    type: "Privat",
     location: "Prishtinë, Kosovë",
     students: "10,000",
     rating: "4.6",
     reviews: "1,200",
     programs: 35,
     description:
-      "Kolegji AAB është një ndër institucionet më të njohura private në Kosovë që ofron programe në drejtësi, ekonomi, shkenca kompjuterike, arte, media dhe shumë fusha tjera.",
+      "Kolegji AAB është një ndër institucionet më të njohura të arsimit të lartë privat në Kosovë, i themeluar në vitin 2000.\n\n" +
+      "Që nga themelimi i tij, AAB është bërë qendër e rëndësishme akademike dhe kulturore, duke ofruar arsim cilësor dhe bashkëkohor në përputhje me standardet evropiane të arsimit. Me mijëra studentë të regjistruar dhe një staf akademik të kualifikuar vendas e ndërkombëtar, \n\n" +
+      "Kolegji AAB ofron programe studimi në nivelet Bachelor dhe Master në fusha të ndryshme si shkencat juridike, ekonomia, gazetaria, arte, shkencat kompjuterike, shkencat sociale, dhe edukimi. AAB është i akredituar nga Agjencia e Akreditimit të Kosovës (AKA) dhe ka vendosur bashkëpunime të gjera me universitete dhe organizata ndërkombëtare. Përveç mësimdhënies, institucioni është aktiv në kërkime shkencore, zhvillim profesional dhe aktivitete kulturore, duke kontribuar në përgatitjen e gjeneratave të reja për tregun modern të punës dhe shoqërinë demokratike.",
     contact: "Email: info@aab-edu.net | Tel: +383 44 123 456",
   },
   ubt: {
     name: "UBT – Higher Education Institution",
-    type: "Privat",
     location: "Prishtinë, Kosovë",
     students: "15,000",
     rating: "4.7",
@@ -30,7 +32,6 @@ const collegeData = {
   },
   riinvest: {
     name: "Kolegji Riinvest",
-    type: "Privat",
     location: "Prishtinë, Kosovë",
     students: "7,000",
     rating: "4.5",
@@ -42,7 +43,6 @@ const collegeData = {
   },
   universum: {
     name: "Kolegji Universum",
-    type: "Privat",
     location: "Prishtinë, Kosovë",
     students: "6,000",
     rating: "4.6",
@@ -54,7 +54,6 @@ const collegeData = {
   },
   iliria: {
     name: "Kolegji Iliria",
-    type: "Privat",
     location: "Prishtinë, Kosovë",
     students: "5,500",
     rating: "4.4",
@@ -66,7 +65,6 @@ const collegeData = {
   },
   fama: {
     name: "Kolegji FAMA",
-    type: "Privat",
     location: "Prishtinë, Kosovë",
     students: "4,500",
     rating: "4.3",
@@ -78,7 +76,6 @@ const collegeData = {
   },
   kadri: {
     name: "Universiteti ‘Kadri Zeka’",
-    type: "Publik",
     location: "Gjilan, Kosovë",
     students: "3,200",
     rating: "4.2",
@@ -90,7 +87,6 @@ const collegeData = {
   },
   haxhi: {
     name: "Universiteti ‘Haxhi Zeka’",
-    type: "Publik",
     location: "Pejë, Kosovë",
     students: "4,000",
     rating: "4.4",
@@ -104,8 +100,19 @@ const collegeData = {
 
 const CollegeDetailsPage = () => {
   const { collegeId } = useParams();
-  const college = collegeData[collegeId] || collegeData["aab"];
-  return <CollegeDetailsSection college={college} />;
+  const college = collegeData[collegeId];
+
+  if (!college) {
+    return <p>Kolegji me këtë ID nuk u gjet.</p>;
+  }
+
+
+  const programsForCollege = programsData.filter(
+    program => program.university === college.name
+  );
+
+  return <CollegeDetailsSection college={college} programs={programsForCollege} />;
 };
 
 export default CollegeDetailsPage;
+

@@ -1,4 +1,4 @@
-// src/pages/group1/CollegeAabPage.js
+
 import React from 'react';
 import CollegeAabSection from '../../organisms/group1/CollegeAabSection';
 

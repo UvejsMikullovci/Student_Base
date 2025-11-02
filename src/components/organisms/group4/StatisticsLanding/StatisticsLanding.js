@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import { db } from "../../../../Firebase/firebase";
 import { Plus } from "lucide-react";
 import "./StatisticsLanding.css";
@@ -33,8 +34,12 @@ function AddStatModal({ visible, onClose, onSave, fieldLabel, currentValue }) {
 }
 
 function StatisticsLanding() {
-  const userId = "user_id1";
-  const statsCollection = collection(db, "users", userId, "stats");
+  const auth = getAuth();
+  const userId = auth.currentUser?.uid;
+
+  const statsCollection = userId
+    ? collection(db, "registrations", userId, "stats")
+    : null;
 
   const [stats, setStats] = useState({
     average: "0",
@@ -48,25 +53,22 @@ function StatisticsLanding() {
   const [modalCurrentValue, setModalCurrentValue] = useState("");
 
   useEffect(() => {
+    if (!userId) return;
+
     const fetchStats = async () => {
       const snapshot = await getDocs(statsCollection);
       const data = snapshot.docs.map((doc) => doc.data());
 
-      const averageObj = data.find((d) => d.type === "average");
-      const rankObj = data.find((d) => d.type === "rank");
-      const objectivesObj = data.find((d) => d.type === "objectives");
-      const studyHoursObj = data.find((d) => d.type === "studyHours");
-
       setStats({
-        average: averageObj ? averageObj.value : "0",
-        rank: rankObj ? rankObj.value : "0/0",
-        objectives: objectivesObj ? objectivesObj.value : "0/0",
-        studyHours: studyHoursObj ? studyHoursObj.value : "0h",
+        average: data.find((d) => d.type === "average")?.value || "0",
+        rank: data.find((d) => d.type === "rank")?.value || "0/0",
+        objectives: data.find((d) => d.type === "objectives")?.value || "0/0",
+        studyHours: data.find((d) => d.type === "studyHours")?.value || "0h",
       });
     };
 
     fetchStats();
-  }, []);
+  }, [userId]);
 
   const openModal = (field, currentValue) => {
     setModalField(field);
@@ -75,17 +77,15 @@ function StatisticsLanding() {
   };
 
   const saveStat = async (value) => {
-    await addDoc(statsCollection, { type: modalField, value });
-    const snapshot = await getDocs(statsCollection);
-    const data = snapshot.docs.map((doc) => doc.data());
+    if (!userId) return;
 
-    setStats({
-      average: data.find((d) => d.type === "average")?.value || "0",
-      rank: data.find((d) => d.type === "rank")?.value || "0/0",
-      objectives: data.find((d) => d.type === "objectives")?.value || "0/0",
-      studyHours: data.find((d) => d.type === "studyHours")?.value || "0h",
-    });
+    const statDocRef = doc(db, "registrations", userId, "stats", modalField);
+    await setDoc(statDocRef, { type: modalField, value }, { merge: true });
+
+    setStats((prev) => ({ ...prev, [modalField]: value }));
   };
+
+  if (!userId) return <p>Please log in to see your statistics.</p>;
 
   return (
     <div>

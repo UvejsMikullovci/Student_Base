@@ -1,46 +1,45 @@
 .personal-info-container {
-  width: 95%;
-  border: 1px solid #df4d4a90;
-  border-radius: 10px;
-  padding: 30px 40px;
-  color: #333;
+  width: 100%;
+  background: #fffbfb;
+  border: 1.5px solid #df4d4a70;
+  border-radius: 12px;
+  padding: 35px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
   box-sizing: border-box;
 }
 
-
 .personal-info-container h2 {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  color: #4a4a4a;
+  color: #000000;
   margin-bottom: 25px;
 }
-
 
 .input-fields {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px 25px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px 25px;
   margin-bottom: 25px;
 }
 
-
-.input-fields input {
+.input-fields input,
+.input-fields select {
   width: 100%;
-  padding: 10px 12px;
+  padding: 11px 13px;
   font-size: 0.95rem;
   color: #333;
-  background-color: #fff;
+  background-color: #fafafa;
   border: 1px solid #e0dcd6;
   border-radius: 8px;
   outline: none;
   transition: border 0.2s, box-shadow 0.2s;
 }
 
-.input-fields input:focus {
-  border-color: #dca67a;
-  box-shadow: 0 0 0 2px rgba(220, 166, 122, 0.2);
+.input-fields input:focus,
+.input-fields select:focus {
+  border-color: #DF4C4A;
+  box-shadow: 0 0 0 2px rgba(223, 76, 74, 0.15);
 }
-
 
 .buttons {
   display: flex;
@@ -49,29 +48,46 @@
 }
 
 .buttons button {
-  padding: 10px 18px;
+  padding: 10px 20px;
   font-size: 0.95rem;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .buttons button:first-child {
-  background-color: #e74c3c;
+  background-color: #DF4C4A;
   color: white;
 }
 
 .buttons button:first-child:hover {
-  background-color: #cf3b2e;
+  background-color: #c54341;
 }
 
 .buttons button:last-child {
-  background-color: #f2f2f2;
+  background-color: #f1f1f1;
   color: #444;
 }
 
 .buttons button:last-child:hover {
-  background-color: #e4e4e4;
+  background-color: #e5e5e5;
+}
+
+.message {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #2f2f2f;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .personal-info-container {
+    padding: 25px 25px;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
 }
