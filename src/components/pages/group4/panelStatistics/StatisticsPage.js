@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, onSnapshot } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import { db } from "../../../../Firebase/firebase";
 import { Plus } from "lucide-react";
 
@@ -45,8 +46,12 @@ function AddDataModal({ visible, onClose, onSave, fields }) {
 }
 
 function StatisticsPage() {
-  const userId = "user_id1";
-  const statsCollection = collection(db, "registrations", userId, "stats");
+  const auth = getAuth();
+  const userId = auth.currentUser?.uid;
+
+  const statsCollection = userId
+    ? collection(db, "registrations", userId, "stats")
+    : null;
 
   const [progressData, setProgressData] = useState([]);
   const [subjectData, setSubjectData] = useState([]);
@@ -56,18 +61,22 @@ function StatisticsPage() {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalFields, setModalFields] = useState([]);
   const [modalSaveCallback, setModalSaveCallback] = useState(() => {});
+
+  // Real-time Firestore listener
   useEffect(() => {
-    const fetchStats = async () => {
-      const snapshot = await getDocs(statsCollection);
-      const data = snapshot.docs.map((doc) => doc.data());
+    if (!userId) return;
+
+    const unsubscribe = onSnapshot(statsCollection, (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
       setProgressData(data.filter((d) => d.type === "progress"));
       setSubjectData(data.filter((d) => d.type === "subject"));
       setBarData(data.filter((d) => d.type === "bar"));
       setPieData(data.filter((d) => d.type === "pie"));
-    };
-    fetchStats();
-  }, []);
+    });
+
+    return () => unsubscribe();
+  }, [userId]);
 
   const openModal = (fields, saveCallback) => {
     setModalFields(fields);
@@ -76,15 +85,16 @@ function StatisticsPage() {
   };
 
   const saveDataToFirestore = async (data) => {
-    await addDoc(statsCollection, data);
-    // Refresh data
-    const snapshot = await getDocs(statsCollection);
-    const allData = snapshot.docs.map((doc) => doc.data());
-    setProgressData(allData.filter((d) => d.type === "progress"));
-    setSubjectData(allData.filter((d) => d.type === "subject"));
-    setBarData(allData.filter((d) => d.type === "bar"));
-    setPieData(allData.filter((d) => d.type === "pie"));
+    if (!userId) return;
+
+    try {
+      await addDoc(statsCollection, data);
+    } catch (error) {
+      console.error("Failed to save data:", error);
+    }
   };
+
+  if (!userId) return <p>Please log in to view statistics.</p>;
 
   return (
     <div>
@@ -157,6 +167,7 @@ function StatisticsPage() {
             barKey="Nota mesatare"
           />
         </div>
+
         <div className="statistics-bar-chart">
           <h2>
             Shpërndarja e aktiviteteve{" "}

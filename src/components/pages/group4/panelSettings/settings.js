@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./settings.css";
 import { auth, db } from "../../../../Firebase/firebase";
-import { signOut, updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
+import {
+  signOut,
+  updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+} from "firebase/auth";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { CreditCard, Lock, User } from "lucide-react"; // 🧩 Lucide icons
 
 function Settings() {
   const navigate = useNavigate();
@@ -24,10 +30,11 @@ function Settings() {
     confirmPassword: "",
   });
   const [passwordMessage, setPasswordMessage] = useState("");
+  const [cards, setCards] = useState([]); // 🔹 Saved cards
 
-  // Fetch user data
+  // Fetch user data + cards
   useEffect(() => {
-    const fetchUserData = async () => {
+    const fetchData = async () => {
       const currentUser = auth.currentUser;
       if (!currentUser) return;
 
@@ -35,27 +42,27 @@ function Settings() {
         const docRef = doc(db, "registrations", currentUser.uid);
         const snap = await getDoc(docRef);
         if (snap.exists()) {
+          const data = snap.data();
           setUserData({
-            ...snap.data(),
+            ...data,
             email: currentUser.email,
           });
+          setCards(data.creditcards || []);
         }
       } catch (error) {
         console.error("Gabim gjatë marrjes së të dhënave:", error);
       }
     };
 
-    fetchUserData();
+    fetchData();
   }, []);
 
-  // Input changes
-  const handleChange = (e) => {
+  // Handle inputs
+  const handleChange = (e) =>
     setUserData({ ...userData, [e.target.name]: e.target.value });
-  };
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e) =>
     setPasswords({ ...passwords, [e.target.name]: e.target.value });
-  };
 
   // Save personal info
   const handleSave = async () => {
@@ -86,7 +93,6 @@ function Settings() {
   const handlePasswordSave = async () => {
     const { currentPassword, newPassword, confirmPassword } = passwords;
     const currentUser = auth.currentUser;
-
     if (!currentUser) return;
     if (newPassword !== confirmPassword) {
       setPasswordMessage("Fjalëkalimet nuk përputhen.");
@@ -94,14 +100,19 @@ function Settings() {
     }
 
     try {
-      const credential = EmailAuthProvider.credential(currentUser.email, currentPassword);
+      const credential = EmailAuthProvider.credential(
+        currentUser.email,
+        currentPassword
+      );
       await reauthenticateWithCredential(currentUser, credential);
       await updatePassword(currentUser, newPassword);
       setPasswordMessage("Fjalëkalimi u përditësua me sukses.");
       setPasswords({ currentPassword: "", newPassword: "", confirmPassword: "" });
     } catch (error) {
       console.error("Gabim gjatë përditësimit të fjalëkalimit:", error);
-      setPasswordMessage("Gabim gjatë ndryshimit të fjalëkalimit. Kontrollo kredencialet.");
+      setPasswordMessage(
+        "Gabim gjatë ndryshimit të fjalëkalimit. Kontrollo kredencialet."
+      );
     } finally {
       setTimeout(() => setPasswordMessage(""), 3000);
     }
@@ -117,23 +128,25 @@ function Settings() {
     }
   };
 
+  // Redirect to Payments if no cards
+  const handleAddPayment = () => {
+    navigate("/panel/pagesat");
+  };
+
   return (
     <div className="settings-container">
-        <h1 className="notif-heading-main">Cilesimet</h1>
-        <p className="notif-paragraph-main">Menaxho të gjitha dhenat të llogarisë</p>
+      <h1 className="notif-heading-main">Cilësimet</h1>
+      <p className="notif-paragraph-main">Menaxho të gjitha të dhënat e llogarisë</p>
 
       {/* Personal Information */}
       <div className="personal-information">
         <h1 className="card-head">
-          <i
-            className="fa-regular fa-user"
-            style={{
-              fontSize: "24px",
-              color: "#DF4C4A",
-              marginRight: "15px",
-              marginTop: "15px",
-            }}
-          ></i>
+          <User
+            size={24}
+            strokeWidth={2}
+            color="#DF4C4A"
+            style={{ marginRight: "10px", marginTop: "10px" }}
+          />
           Informacioni Personal
         </h1>
         <p className="card-paragraph" style={{ marginBottom: "20px" }}>
@@ -214,11 +227,7 @@ function Settings() {
             </div>
           </div>
 
-          <button
-            className="save-button"
-            onClick={handleSave}
-            disabled={saving}
-          >
+          <button className="save-button" onClick={handleSave} disabled={saving}>
             {saving ? "Duke ruajtur..." : "Ruaj Ndryshimet"}
           </button>
           {message && <p className="message">{message}</p>}
@@ -228,20 +237,18 @@ function Settings() {
       {/* Password Section */}
       <div className="safety-information">
         <h1 className="card-head">
-          <i
-            className="fa-solid fa-lock"
-            style={{
-              fontSize: "24px",
-              color: "#DF4C4A",
-              marginRight: "15px",
-              marginTop: "15px",
-            }}
-          ></i>
+          <Lock
+            size={24}
+            strokeWidth={2}
+            color="#DF4C4A"
+            style={{ marginRight: "10px", marginTop: "10px" }}
+          />
           Ndrysho Fjalëkalimin
         </h1>
         <p className="card-paragraph" style={{ marginBottom: "20px" }}>
           Përditëso fjalëkalimin tënd
         </p>
+
         <div className="inputs-container">
           <div className="input-group">
             <label className="input-label">Fjalëkalimi Aktual</label>
@@ -286,38 +293,65 @@ function Settings() {
       {/* Payment Section */}
       <div className="payment-container">
         <h1 className="card-head">
-          <i
-            className="fa-solid fa-credit-card"
-            style={{
-              fontSize: "24px",
-              color: "#DF4C4A",
-              marginRight: "15px",
-              marginTop: "15px",
-            }}
-          ></i>
+          <CreditCard
+            size={24}
+            strokeWidth={2}
+            color="#DF4C4A"
+            style={{ marginRight: "10px", marginTop: "10px" }}
+          />
           Metodat e Pagesës
         </h1>
         <p className="card-paragraph" style={{ marginBottom: "20px" }}>
           Menaxho metodat e pagesës
         </p>
 
-        <div className="payment-methods-settings">
-          <i
-            className="fa-solid fa-credit-card"
-            style={{
-              fontSize: "48px",
-              color: "#DF4C4A",
-              marginRight: "20px",
-              backgroundColor: "#ffd9d9ff",
-              padding: "12px",
-              borderRadius: "20px",
-            }}
-          ></i>
-          <p style={{ marginBottom: "20px" }}>
-            Nuk ke shtuar asnjë metodë pagese ende
-          </p>
-          <button className="payment-button">Shto Metodë Pagese</button>
-        </div>
+        {cards.length > 0 ? (
+          <div className="payment-methods-settings" style={{ flexDirection: "column" }}>
+            {cards.map((card, i) => (
+              <div
+                key={i}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  border: "1px solid #eee",
+                  borderRadius: "12px",
+                  padding: "1rem 1.2rem",
+                  backgroundColor: "#fff",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+                  width: "100%",
+                  marginBottom: "1rem",
+                }}
+              >
+                <div>
+                  <strong>{card.type}</strong>
+                  <div style={{ color: "#555", fontSize: "0.9rem" }}>{card.number}</div>
+                </div>
+                <div style={{ color: "#333", fontWeight: "600" }}>{card.holder}</div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="payment-methods-settings">
+            <CreditCard
+              size={48}
+              strokeWidth={2}
+              color="#DF4C4A"
+              style={{
+                marginRight: "20px",
+                backgroundColor: "#ffd9d9ff",
+                padding: "12px",
+                borderRadius: "20px",
+              }}
+            />
+            <p style={{ marginBottom: "20px" }}>
+              Nuk ke shtuar asnjë metodë pagese ende
+            </p>
+            <button className="payment-button" onClick={handleAddPayment}>
+              Shto Metodë Pagese
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Logout */}

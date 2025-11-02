@@ -3,6 +3,7 @@ import "./LeftSide.css";
 import PersonalInformation from "../../../molecules/group4/profiliIm/personalInformation";
 import { auth, db } from "../../../../Firebase/firebase";
 import { doc, getDoc, updateDoc, collection, onSnapshot } from "firebase/firestore";
+import ProfileDocuments from '../../../molecules/group4/profiliIm/Documents';
 
 export default function LeftSide() {
   const [tests, setTests] = useState([]);
@@ -153,6 +154,7 @@ export default function LeftSide() {
 
       {/* Personal Info */}
       <PersonalInformation />
+      <ProfileDocuments />
     </div>
   );
 }

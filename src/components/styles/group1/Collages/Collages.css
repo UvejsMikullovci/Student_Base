@@ -1,197 +1,274 @@
+/* ===== General Section ===== */
 .collages-section {
-    width: 81%;
-    margin: 0 auto;
+  width: 85%;
+  margin: 0 auto;
+  background-color: #fffaf7;
+  padding-top: 40px;
 }
 
 .collages-section h2 {
-    text-align: left;
-    font-size: 50px;
-    font-weight: 300;
-    color: #0a0a0a;
-    margin-top: 30px;
+  text-align: left;
+  font-size: 48px;
+  font-weight: 500;
+  color: #0a0a0a;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .collages-section p {
-    text-align: left;
-}
-
-.filter-bar input {
-    border: 1px solid #00000000;
-    width: 100%;
-    border-radius: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 30px;
-    margin-bottom: 10px;
-    margin-top: 50px;
-}
-
-.select-inp {
-    display: flex;
-    column-gap: 10px;
-}
-
-.select-inp select {
-    border-radius: 10px;
-    margin-top: 20px;
-    margin-bottom: 60px;
-}
-
-.city-type {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
-}
-
-.college-card img {
-    width: 100%;
-    height: 55%;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-}
-
-.college-card h3 {
-    text-align: left;
-    font-weight: 400;
-    color: black;
-    font-size: 18px;
-}
-
-.college-info {
-    border-left: 1px solid #eee;
-    border-right: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    padding-top: 50px;
-    padding-bottom: 40px;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-.college-card p {
-    padding-bottom: 10px;
-    font-size: 14px;
-}
-
-.college-card button {
-    text-align: center;
-    width: 100%;
-    border: none;
-    background-color: #e04e45;
-    color: white;
-    font-weight: 400;
-    font-size: 14px;
-    padding: 8px;
-}
-
-.cards-container {
-    width: 100%;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    /* slightly wider */
-    gap: 28px;
-    /* less space between */
-    justify-content: flex-start;
-}
-
-.cards-container .city-type .type {
-    background-color: #fdebe6;
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-weight: 600;
-}
-
-.cards-container .city-type p {
-    padding: 0;
-}
-
-.svg-city {
-    display: flex;
-    color: #545351;
-    gap: 4px;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.svg-city svg {
-    width: 6%;
-}
-
-.svg-city .city {
-    padding: 0;
-}
-
-.student-rating {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-.people {
-    display: flex;
-    color: #545351;
-    gap: 4px;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.people svg {
-    width: 12%;
-}
-
-.people p {
-    padding-bottom: 0;
-}
-
-.cards-container .tuition {
-    color: #e04e45;
-    font-size: 19px;
-    padding-top: 20px;
-}
-
-.search-icon {
-    display: flex;
-    align-items: center;
-}
-
-.search-icon input {
-    margin: 0;
-    padding: 15px 30px;
-}
-
-.search-icon svg {
-    position: absolute;
-    padding-left: 10px;
-    color: #9d9b98;
+  text-align: left;
+  color: #555;
+  margin-bottom: 40px;
 }
 
 .paragraph-collage {
-    margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
+/* ===== Search Bar ===== */
+.filter-bar {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.filter-bar input {
+  border: 1px solid #f3d7cf;
+  width: 100%;
+  border-radius: 10px;
+  padding: 12px 16px 12px 40px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: 0.2s ease;
+}
+
+.filter-bar input:focus {
+  border-color: #df4c4a;
+  box-shadow: 0 0 0 3px rgba(223, 76, 74, 0.15);
+  outline: none;
+}
+
+.search-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon svg {
+  position: absolute;
+  left: 12px;
+  color: #9d9b98;
+}
+
+/* ===== Dropdown Filters ===== */
+.select-inp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.select-inp select {
+  flex: 1;
+  min-width: 200px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #f3d7cf;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.select-inp select:hover {
+  border-color: #df4c4a;
+  background-color: #fff8f6;
+}
+
+.select-inp select:focus {
+  border-color: #df4c4a;
+  box-shadow: 0 0 0 3px rgba(223, 76, 74, 0.15);
+}
+
+.select-inp button {
+  background-color: #fff;
+  border: 1px solid #f3d7cf;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.select-inp button:hover {
+  background-color: #fdebe6;
+  border-color: #f3b8ae;
+}
+
+/* ===== Cards Layout ===== */
+.cards-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  justify-content: center;
+  padding-bottom: 60px;
+}
+
+/* ===== Card ===== */
 .college-card {
-    width: 100%;
-    border-radius: 30px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-    background: #fff;
+  width: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  border: 1px solid #f3d7cf;
 }
 
 .college-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    transition: transform 0.3s;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 
 .college-card:hover {
-    box-shadow: 0 10px 20px #eee;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transform: translateY(-4px);
 }
 
 .college-card:hover img {
-    transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+/* ===== Card Info Section ===== */
+.college-info {
+  border-top: 1px solid #f3d7cf;
+  padding: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  text-align: left;
+}
+
+.college-card h3 {
+  font-weight: 600;
+  color: #222;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.college-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* ===== Card Details ===== */
+.city-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.cards-container .city-type .type {
+  background-color: #fdebe6;
+  padding: 5px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #df4c4a;
+  font-size: 0.85rem;
+}
+
+.svg-city,
+.people {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #545351;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.svg-city svg,
+.people svg {
+  width: 16px;
+  height: 16px;
+  color: #df4c4a;
+}
+
+/* ===== Rating & Tuition ===== */
+.student-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.cards-container .tuition {
+  color: #e04e45;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* ===== Button ===== */
+.college-card button {
+  width: 100%;
+  border: none;
+  background-color: #df4c4a;
+  color: white;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.college-card button:hover {
+  background-color: #c93f3e;
+}
+
+/* ===== Responsive Fixes ===== */
+@media (max-width: 1024px) {
+  .collages-section {
+    width: 90%;
+  }
+
+  .collages-section h2 {
+    font-size: 40px;
+  }
+
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .select-inp {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .select-inp select,
+  .select-inp button {
+    width: 100%;
+  }
+
+  .filter-bar input {
+    margin-top: 30px;
+  }
 }

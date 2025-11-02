@@ -38,3 +38,31 @@
 .h4-Role {
     color:#df4c4a;
 }
+
+.profile-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #df4c4a;
+}
+
+.change-photo-btn {
+  border: none;
+  background-color: #df4c4a;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.change-photo-btn:hover {
+  background-color: #c93f3e;
+}

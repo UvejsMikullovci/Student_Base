@@ -15,7 +15,7 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* 🔸 Ikonat pa background në header, tag dhe tab buttons */
+
 .college-header i,
 .college-header svg,
 .tag i,
@@ -31,6 +31,7 @@
 .tag {
   background-color: #e57b72cc; 
   color: #fff;
+  width: 200px;
   padding: 4px 10px;
   border-radius: 8px;
   font-size: 0.9rem;

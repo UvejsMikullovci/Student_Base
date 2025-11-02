@@ -27,7 +27,9 @@
   font-size: 0.9rem;
   margin-top: 8px;
 }
-
+ span.icon{
+  background: none !important;
+ }
 
 .college-meta {
   display: flex;

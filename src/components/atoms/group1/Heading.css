@@ -1,4 +1,4 @@
-.heading {
+.HomePageheading {
     text-align: left;
     font-size: 4rem;
     font-weight: 400;
@@ -7,7 +7,7 @@
     max-width: 600px;
 }
 
-.heading span {
+.HomePageheading span {
   color: #e04e45;
   font-weight: 400;
 }

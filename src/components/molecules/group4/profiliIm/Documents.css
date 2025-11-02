@@ -1,0 +1,129 @@
+.documents-container {
+  background-color: #fffaf5;
+  border-radius: 16px;
+  border: 1px solid #f0e0d9;
+  padding: 30px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.03);
+}
+
+.documents-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.documents-header h2 {
+  color: #df4c4a;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.documents-header p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-btn,
+.open-btn {
+  background-color: #df4c4a;
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.add-btn:hover,
+.open-btn:hover {
+  background-color: #c93f3e;
+}
+
+.documents-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.document-card {
+  background: #fff;
+  border: 1px solid #f0e0d9;
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.document-card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.doc-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.doc-icon {
+  color: #df4c4a;
+}
+
+.doc-info h4 {
+  font-weight: 600;
+  color: #2e2e2e;
+}
+
+.doc-info p {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.doc-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.doc-actions button {
+  background: none;
+  border: none;
+  color: #df4c4a;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.doc-actions button:hover {
+  color: #c93f3e;
+}
+
+.empty-text {
+  text-align: center;
+  color: #777;
+  margin-top: 20px;
+  font-size: 0.95rem;
+}
+
+.limit-message {
+  color: #df4c4a;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-top: 8px;
+  background-color: #ffecec;
+  border-radius: 8px;
+  padding: 10px 14px;
+  border: 1px solid #ffcaca;
+}
