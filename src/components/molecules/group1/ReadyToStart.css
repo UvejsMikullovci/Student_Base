@@ -1,0 +1,15 @@
+.ready-buttons button{
+background-color: white;
+color:#e04e45;
+}
+
+.ready-buttons{
+        gap: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.ready-buttons  :hover{
+    background-color: #e04e4526;
+}
