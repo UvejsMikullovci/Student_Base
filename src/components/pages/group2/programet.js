@@ -17,7 +17,7 @@ function Programet() {
     "Biznes",
     "Shëndetësi",
     "Inxhinieri",
-    "Shkenca Sociale",
+    "Sociale",
     "Arkitekturë",
   ];
 

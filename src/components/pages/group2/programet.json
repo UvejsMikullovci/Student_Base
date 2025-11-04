@@ -42,7 +42,7 @@
   {
     "id": 5,
     "title": "Psikologji",
-    "category": "Shkenca Sociale",
+    "category": "Sociale",
     "university": "Universiteti “Kadri Zeka” – Gjilan",
     "description": "Studim i proceseve mendore, emocionale dhe sjelljeve njerëzore në kontekste të ndryshme sociale.",
     "duration": "3 vjet",
@@ -162,7 +162,7 @@
   {
     "id": 17,
     "title": "Shkenca Politike",
-    "category": "Shkenca Sociale",
+    "category": "Sociale",
     "university": "Universiteti i Prishtinës",
     "description": "Analizon sistemet politike, marrëdhëniet ndërkombëtare dhe proceset demokratike.",
     "duration": "3 vjet",
