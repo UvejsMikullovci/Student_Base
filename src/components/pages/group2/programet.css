@@ -34,7 +34,7 @@
 .Programet .searchInput {
   display: flex;
   align-items: center;
-  background-color: #fff;
+  background-color: #fffcf6;
   padding: 10px 20px;
   border-radius: 12px;
   gap: 12px;
@@ -53,6 +53,7 @@
   padding: 10px;
   font-size: 1rem;
   color: #333;
+  background-color: #fffcf6;
 }
 
 /* ===== Dropdown Filters ===== */
@@ -73,7 +74,7 @@
   padding: 10px 14px 10px 14px;
   font-size: 0.95rem;
   color: #333;
-  width: 240px;
+  width: 25%;
   transition: 0.2s ease;
 }
 
@@ -105,13 +106,18 @@
   align-items: center;
   flex-wrap: wrap;
   margin: 40px auto;
-  width: 85%;
+  width: 81%;
   gap: 8px;
   padding: 10px;
   border-radius: 50px;
+  background-color: #fdf2ee;
 }
 
 .Programet .category-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   background-color: #fdf2ee;
   color: #333;
   padding: 10px 24px;
@@ -120,6 +126,7 @@
   border: 1px solid transparent;
   transition: 0.2s ease;
   font-weight: 500;
+  width: 12%;
 }
 
 .Programet .category-item:hover {
@@ -127,7 +134,7 @@
 }
 
 .Programet .category-item.active {
-  background-color: #fff;
+  background-color: #fffcf6;
   border: 1px solid #f8d6cf;
   color: #000;
 }
@@ -137,15 +144,16 @@
   width: 90%;
   max-width: 1200px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   gap: 25px;
   padding: 20px;
   justify-items: center;
   margin: 0 auto 70px auto;
 }
 
+
 .Programet .card {
-  background: #fff;
+  background: #fffcf6;
   border: 1px solid #f3d7cf;
   border-radius: 16px;
   padding: 25px;

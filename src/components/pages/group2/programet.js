@@ -16,7 +16,7 @@ function Programet({ showOnlyCards = false }) {
     "Biznes",
     "Shëndetësi",
     "Inxhinieri",
-    "Shkenca Sociale",
+    "Sociale",
     "Arkitekturë",
   ];
 
