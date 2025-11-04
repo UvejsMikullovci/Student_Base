@@ -213,3 +213,39 @@
   background: #fdebe6;
   border-color: #f3b8ae;
 }
+
+/* ===== Slider Section for HomePage ===== */
+.cards-slider {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+.slick-slide {
+  padding: 10px;
+}
+
+.slick-dots li button:before {
+  color: #f3b200;
+  font-size: 12px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #222;
+  font-size: 25px;
+}
+
+/* Optional: Enhancing card appearance inside slider */
+.cards-slider .card {
+  background: #fffcf6;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
+}
+
+.cards-slider .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}

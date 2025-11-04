@@ -1,8 +1,6 @@
 .stats-group {
   display: flex;
-  display: flex
-;
-    gap: 200px;
+  gap: 50px;
     margin-top: 32px;
   margin-top: 32px;
 }

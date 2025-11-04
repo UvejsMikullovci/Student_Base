@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
 import { HeroText } from "../../molecules/group1/HeroText";
 import { StatsGroup } from "../../molecules/group1/StatsGroup";
 import { ImageGrid } from "../../molecules/group1/ImageGrid";
 import "./HeroSection.css";
-
 
 export function HeroSection() {
   return (
@@ -16,7 +15,5 @@ export function HeroSection() {
         <ImageGrid />
       </div>
     </section>
-
-    
   );
 }

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import programet from "./programet.json";
 import { FaSearch } from "react-icons/fa";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "./programet.css";
 
 function Programet({ showOnlyCards = false }) {
@@ -16,7 +19,7 @@ function Programet({ showOnlyCards = false }) {
     "Biznes",
     "Shëndetësi",
     "Inxhinieri",
-    "Sociale",
+    "Shkenca Sociale",
     "Arkitekturë",
   ];
 
@@ -29,34 +32,33 @@ function Programet({ showOnlyCards = false }) {
   };
 
   const filteredPrograms = programet.filter((card) => {
-    const matchesSearch = card.title
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
+    const matchesSearch = card.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesField = fieldFilter === "Të gjitha fushat" || card.category === fieldFilter;
+    const matchesDuration = durationFilter === "Të gjitha" || card.duration === durationFilter;
+    const matchesLevel = levelFilter === "Të gjitha nivelet" || card.degree === levelFilter;
+    const matchesCategory = activeCategory === "Të gjitha" || card.category === activeCategory;
 
-    const matchesField =
-      fieldFilter === "Të gjitha fushat" || card.category === fieldFilter;
-
-    const matchesDuration =
-      durationFilter === "Të gjitha" || card.duration === durationFilter;
-
-    const matchesLevel =
-      levelFilter === "Të gjitha nivelet" || card.degree === levelFilter;
-
-    const matchesCategory =
-      activeCategory === "Të gjitha" || card.category === activeCategory;
-
-    return (
-      matchesSearch &&
-      matchesField &&
-      matchesDuration &&
-      matchesLevel &&
-      matchesCategory
-    );
+    return matchesSearch && matchesField && matchesDuration && matchesLevel && matchesCategory;
   });
+
+  // Vendos slider settings
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 600, settings: { slidesToShow: 1 } },
+    ],
+  };
+
+  // Vetëm 3 karta në HomePage
+  const cardsToShow = showOnlyCards ? filteredPrograms.slice(0, 3) : filteredPrograms;
 
   return (
     <div className="Programet">
-      {/* Kjo pjesë shfaqet vetëm në faqen Programet (jo në Home) */}
       {!showOnlyCards && (
         <>
           <div className="baner">
@@ -75,10 +77,7 @@ function Programet({ showOnlyCards = false }) {
           </div>
 
           <div className="dropDown">
-            <select
-              value={fieldFilter}
-              onChange={(e) => setFieldFilter(e.target.value)}
-            >
+            <select value={fieldFilter} onChange={(e) => setFieldFilter(e.target.value)}>
               <option value="Të gjitha fushat">Të gjitha fushat</option>
               <option value="IT">IT</option>
               <option value="Biznes">Biznes</option>
@@ -88,10 +87,7 @@ function Programet({ showOnlyCards = false }) {
               <option value="Arkitekturë">Arkitekturë</option>
             </select>
 
-            <select
-              value={durationFilter}
-              onChange={(e) => setDurationFilter(e.target.value)}
-            >
+            <select value={durationFilter} onChange={(e) => setDurationFilter(e.target.value)}>
               <option value="Të gjitha">Të gjitha</option>
               <option value="3 vjet">3 vjet</option>
               <option value="4 vjet">4 vjet</option>
@@ -99,10 +95,7 @@ function Programet({ showOnlyCards = false }) {
               <option value="6 vjet">6 vjet</option>
             </select>
 
-            <select
-              value={levelFilter}
-              onChange={(e) => setLevelFilter(e.target.value)}
-            >
+            <select value={levelFilter} onChange={(e) => setLevelFilter(e.target.value)}>
               <option value="Të gjitha nivelet">Të gjitha nivelet</option>
               <option value="Bachelor">Bachelor</option>
               <option value="Master Profesional">Master Profesional</option>
@@ -118,9 +111,7 @@ function Programet({ showOnlyCards = false }) {
             {categories.map((cat) => (
               <div
                 key={cat}
-                className={`category-item ${
-                  activeCategory === cat ? "active" : ""
-                }`}
+                className={`category-item ${activeCategory === cat ? "active" : ""}`}
                 onClick={() => setActiveCategory(cat)}
               >
                 {cat}
@@ -130,26 +121,36 @@ function Programet({ showOnlyCards = false }) {
         </>
       )}
 
-      {/* Këtu gjithmonë dalin kartat */}
-      <div className="cards-container">
-        {filteredPrograms.length > 0 ? (
-          filteredPrograms.map((card) => (
+      {/* Slider për HomePage */}
+      {showOnlyCards ? (
+        <Slider {...sliderSettings}>
+          {cardsToShow.map((card) => (
             <div key={card.id} className="card">
               <h2>{card.title}</h2>
-              <p className="category">
-                {card.category} - {card.university}
-              </p>
+              <p className="category">{card.category} - {card.university}</p>
               <p className="description">{card.description}</p>
-              <p className="details">
-                {card.duration} | {card.degree}
-              </p>
+              <p className="details">{card.duration} | {card.degree}</p>
               <button>{card.buttonText}</button>
             </div>
-          ))
-        ) : (
-          <p className="no-results">Asnjë program nuk u gjet.</p>
-        )}
-      </div>
+          ))}
+        </Slider>
+      ) : (
+        <div className="cards-container">
+          {filteredPrograms.length > 0 ? (
+            filteredPrograms.map((card) => (
+              <div key={card.id} className="card">
+                <h2>{card.title}</h2>
+                <p className="category">{card.category} - {card.university}</p>
+                <p className="description">{card.description}</p>
+                <p className="details">{card.duration} | {card.degree}</p>
+                <button>{card.buttonText}</button>
+              </div>
+            ))
+          ) : (
+            <p className="no-results">Asnjë program nuk u gjet.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

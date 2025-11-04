@@ -7,10 +7,13 @@ import SuccessSection from "../../organisms/group1/SuccessSection";
 import ReadyToStartSection from "../../organisms/group1/ReadyToStartSection";
 import Programet from "../group2/programet";
 import SectionHeader from "../../molecules/group1/SectionHeader";
+import { useNavigate } from "react-router-dom";
 
 export function HomePage() {
+  const navigate = useNavigate();
+
   const handleViewAll = () => {
-    console.log("Klikuar: Shiko të gjitha programet");
+    navigate("/programet"); // navigon te faqja e plotë e programeve
   };
 
   return (
@@ -25,7 +28,7 @@ export function HomePage() {
           buttonText="Shiko të gjitha"
           onButtonClick={handleViewAll}
         />
-        <Programet showOnlyCards />
+        <Programet showOnlyCards /> {/* Vetëm 3 karta + slider */}
       </div>
 
       <HowItWorksSection />
