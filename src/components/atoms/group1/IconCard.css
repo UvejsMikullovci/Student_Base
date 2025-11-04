@@ -1,13 +1,11 @@
 .icon-card {
-height: 30vh;
+    height: 40vh;
     background-color: #ffffff63;
     border-radius: 12px;
-   
     padding: 20px;
     text-align: center;
     width: 320px;
-    display: flex
-;
+    display: flex;
     flex-direction: column;
     align-items: center;
     transition: transform 0.2s 
@@ -47,8 +45,9 @@ ease;
 }
 
 .icon-card p {
-  font-weight:200;
-  font-size: 0.5rem;
-  color: #555;
-  line-height: 1.5;
+     color: #555;
+    font-size: 1rem;
+    max-width: 650px;
+    margin: 0 auto 40px;
+    line-height: 1.5;
 }

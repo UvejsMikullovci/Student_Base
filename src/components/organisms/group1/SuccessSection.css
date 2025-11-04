@@ -33,16 +33,18 @@
 }
 
 .success-item h4 {
-   font-size: 1.1rem;
-  color: #111;
-  margin-bottom: 6px;
+     font-size: 1.1rem;
+    color: #111;
+    font-weight: 400;
+    margin-bottom: 6px;
 }
 
 .success-item p {
   color: #555;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.5;
-  max-width: 500px;
+  text-align: start;
+  width: 600px;
 }
 
 .success-images {
@@ -94,4 +96,14 @@
 
 .img4 img{
   height:220px;
+}
+.success-section .success-content h3.title{
+  font-weight: 100;
+  text-align: start;
+}
+
+.success-section .success-content p.text{
+  font-weight: 300;
+  text-align: start;
+  align-items: start;
 }

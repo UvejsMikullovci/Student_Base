@@ -2,3 +2,7 @@
   background-color: #fafafa;
   min-height: 100vh;
 }
+body {
+
+  overflow-x: hidden;
+}

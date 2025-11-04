@@ -10,9 +10,9 @@ const SuccessSection = () => {
   return (
     <section className="success-section">
       <div className="success-content">
-        <h2>Suksesi i studentëve tanë</h2>
-        <p>
-          Mijëra studentë kanë gjetur rrugën e tyre drejt arsimit të lartë me
+        <h3 clsssName="title">Suksesi i studentëve tanë</h3>
+        <p className="text">
+         Mijëra studentë kanë gjetur rrugën e tyre drejt arsimit të lartë me
           Studo. Bashkohu me ta dhe fillo udhëtimin tënd akademik.
         </p>
 
