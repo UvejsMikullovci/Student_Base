@@ -19,7 +19,7 @@ function Programet({ showOnlyCards = false }) {
     "Biznes",
     "Shëndetësi",
     "Inxhinieri",
-    "Shkenca Sociale",
+    "Sociale",
     "Arkitekturë",
   ];
 
@@ -41,7 +41,7 @@ function Programet({ showOnlyCards = false }) {
     return matchesSearch && matchesField && matchesDuration && matchesLevel && matchesCategory;
   });
 
-  // Vendos slider settings
+  // Vendos slider settingsnpm start
   const sliderSettings = {
     dots: true,
     infinite: true,
