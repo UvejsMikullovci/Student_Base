@@ -1,48 +1,65 @@
-
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/organisms/group5/Header";
 import "./components/styles/variables.css";
 import PanelProfile from "./components/pages/panelMain/PanelMainContainer";
 import Footer from "./components/organisms/group5/Footer";
-import "./components/styles/variables.css";
 import Programet from "./components/pages/group2/programet";
-import RrethNeshPage from "./components/pages/group3/RethNeshPage";
 import CmimetPage from "./components/pages/group2/CmimetPage";
 import HomePage from "./components/pages/group1/HomePage";
 import ContactPage from "./components/pages/group3/ContactPage";
-import Collages from './components/pages/group1/Collages/Collages';
+import Collages from "./components/pages/group1/Collages/Collages";
 import Login from "./components/Account/Login/Login";
 import Register from "./components/Account/Register/Register";
 import { AuthProvider } from "./context/AuthContext";
 import CollegeDetailsPage from "./components/pages/group1/IndividualColleges/CollegeDetailsPage";
-import PanelApplicants from "./components/pages/panelColleges/panelApplicants.js"
+import PanelApplicants from "./components/pages/panelColleges/panelApplicants";
+import PanelCollege from "./components/pages/panelCollege/panelCollage";
+import "./components/styles/panelCollage.css";
 
 function App() {
+  const HeaderWrapper = () => {
+    const location = useLocation();
+    if (location.pathname === "/panel-college" || location.pathname === "/panel") {
+      return null;
+    }
+    return <Header />;
+  };
+
+  const FooterWrapper = () => {
+    const location = useLocation();
+    if (location.pathname === "/panel-college" || location.pathname === "/panel") {
+      return null;
+    }
+    return <Footer />;
+  };
+
   return (
     <div className="App">
       <Router>
         <AuthProvider>
-        <Header />
-        <Routes>
-          <Route path="/panel" element={<PanelProfile />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/kolegjte/:collegeId" element={<CollegeDetailsPage />} />
-          <Route path="/panelApplicants" element={<PanelApplicants />} />
-        </Routes>
-        <main style={{ minHeight: "10vh" }}>
+          <HeaderWrapper />
           <Routes>
-            <Route path="/" element={<HomePage/>} />
-            <Route path="/kolegjte" element={<Collages />} />
-            <Route path="/programet" element={<Programet />} />
-            <Route path="/cmimet" element={<CmimetPage />} />
-            <Route path="/rreth-nesh" element={<RrethNeshPage />} />
-            { <Route path="/kontakti" element={<ContactPage />} /> }
-            // TODO: include payment integration page here.
+            <Route path="/panel" element={<PanelProfile />} />
+            <Route path="/panel-college" element={<PanelCollege />} />
+            <Route path="/panelApplicants" element={<PanelApplicants />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/kolegjte/:collegeId" element={<CollegeDetailsPage />} />
           </Routes>
-        </main>
-        <Footer />
+
+          <main style={{ minHeight: "10vh" }}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/kolegjte" element={<Collages />} />
+              <Route path="/programet" element={<Programet />} />
+              <Route path="/cmimet" element={<CmimetPage />} />
+              {/* Rreth Nesh page temporarily disabled due to build issues */}
+              <Route path="/kontakti" element={<ContactPage />} />
+            </Routes>
+          </main>
+
+          <FooterWrapper />
         </AuthProvider>
       </Router>
     </div>
