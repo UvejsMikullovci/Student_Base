@@ -17,6 +17,9 @@ import PanelApplicants from "./components/pages/panelColleges/panelApplicants";
 import PanelCollege from "./components/pages/panelColleges/panelCollage";
 import Dorms from "./components/pages/group1/Dorms.js"
 import "./components/styles/panelCollage.css";
+import PanelDormsMain from "./components/pages/panelDorms/PanelDormsMain/PanelDormsMain.js";
+
+
 
 function App() {
   const HeaderWrapper = () => {
@@ -58,6 +61,7 @@ function App() {
               <Route path="/cmimet" element={<CmimetPage />} />
               {/* Rreth Nesh page temporarily disabled due to build issues */}
               <Route path="/kontakti" element={<ContactPage />} />
+              <Route path="/PanelDorms" element={<PanelDormsMain />} />
             </Routes>
           </main>
 
