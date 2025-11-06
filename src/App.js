@@ -18,7 +18,7 @@ import PanelCollege from "./components/pages/panelColleges/panelCollage";
 import Dorms from "./components/pages/group1/Dorms.js"
 import "./components/styles/panelCollage.css";
 import PanelDormsMain from "./components/pages/panelDorms/PanelDormsMain/PanelDormsMain.js";
-
+import PanelProfMain from "./components/pages/panelProf/panelProfMain/PanelProf.js";
 
 
 function App() {
@@ -62,6 +62,7 @@ function App() {
               {/* Rreth Nesh page temporarily disabled due to build issues */}
               <Route path="/kontakti" element={<ContactPage />} />
               <Route path="/PanelDorms" element={<PanelDormsMain />} />
+              <Route path="/PanelProf" element={<PanelProfMain />} />
             </Routes>
           </main>
 
