@@ -108,6 +108,31 @@
   font-size: 0.95rem;
 }
 
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+input.invalid,
+select.invalid {
+  border: 1px solid #e74c3c;
+  background-color: #fdecea;
+}
+
+.error-text {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.success {
+  color: #2ecc71;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+
 /* Responsive */
 @media (max-width: 600px) {
   .register-form {

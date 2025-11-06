@@ -14,7 +14,8 @@ import Register from "./components/Account/Register/Register";
 import { AuthProvider } from "./context/AuthContext";
 import CollegeDetailsPage from "./components/pages/group1/IndividualColleges/CollegeDetailsPage";
 import PanelApplicants from "./components/pages/panelColleges/panelApplicants";
-import PanelCollege from "./components/pages/panelCollege/panelCollage";
+import PanelCollege from "./components/pages/panelColleges/panelCollage";
+import Dorms from "./components/pages/group1/Dorms.js"
 import "./components/styles/panelCollage.css";
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
             <Route path="/panelApplicants" element={<PanelApplicants />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/konviktet" element={<Dorms />} />
             <Route path="/kolegjte/:collegeId" element={<CollegeDetailsPage />} />
           </Routes>
 
