@@ -1,8 +1,15 @@
 .home-page {
-  background-color: #fafafa;
+  background-color: white;
   min-height: 100vh;
 }
 body {
 
   overflow-x: hidden;
+}
+
+.programet-section {
+  width: 80%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
 }

@@ -1,9 +1,8 @@
 import React from "react";
 
-const IconText = ({ icon, text }) => {
+const IconText = ({ text }) => {
   return (
     <div className="icon-text">
-      <span className="icon">{icon}</span>
       <span>{text}</span>
     </div>
   );

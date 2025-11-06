@@ -141,8 +141,7 @@
 
 /* ===== Cards Section ===== */
 .Programet .cards-container {
-  width: 90%;
-  max-width: 1200px;
+  width: 75%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   gap: 25px;

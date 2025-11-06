@@ -21,14 +21,18 @@ export function HomePage() {
       <HeroSection />
       <WhyChooseSection />
 
-      <div className="programet-section" style={{ backgroundColor: "#fffcf6", padding: "40px 0" }}>
-        <SectionHeader
+      <div className="programet-section">
+        <div className="programet-header">
+   <SectionHeader
           title="Programet e zgjedhura"
           subtitle="Zbulo institucionet më të mira arsimore"
           buttonText="Shiko të gjitha"
           onButtonClick={handleViewAll}
         />
+        </div>
+        <div className="programet-cards">
         <Programet showOnlyCards /> {/* Vetëm 3 karta + slider */}
+        </div> 
       </div>
 
       <HowItWorksSection />

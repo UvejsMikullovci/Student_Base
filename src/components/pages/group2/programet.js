@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./programet.css";
 
-function Programet({ showOnlyCards = false }) {
+function Programet({ showOnlyCards = false, }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [fieldFilter, setFieldFilter] = useState("Të gjitha fushat");
   const [durationFilter, setDurationFilter] = useState("Të gjitha");

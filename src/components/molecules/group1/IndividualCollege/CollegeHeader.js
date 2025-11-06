@@ -12,14 +12,12 @@ const CollegeHeader = ({ college }) => {
         <Tag text={college.type} />
         <div className="college-meta">
           <div className="svg-city">
-           
             <IconText text={college.location} className="city" />
           </div>
           <div className="people">
-           
             <IconText text={`${college.students} studentë`} />
           </div>
-          <IconText text={`⭐${college.rating} (${college.reviews} vlerësime)`} />
+          <IconText text={`${college.rating} (${college.reviews} vlerësime)`} />
           <IconText text={`${college.programs} programe`} />
         </div>
       </div>

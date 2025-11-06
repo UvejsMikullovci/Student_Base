@@ -16,6 +16,7 @@ import Login from "./components/Account/Login/Login";
 import Register from "./components/Account/Register/Register";
 import { AuthProvider } from "./context/AuthContext";
 import CollegeDetailsPage from "./components/pages/group1/IndividualColleges/CollegeDetailsPage";
+import PanelApplicants from "./components/pages/panelColleges/panelApplicants.js"
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/kolegjte/:collegeId" element={<CollegeDetailsPage />} />
+          <Route path="/panelApplicants" element={<PanelApplicants />} />
         </Routes>
         <main style={{ minHeight: "10vh" }}>
           <Routes>
