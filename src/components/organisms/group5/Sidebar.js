@@ -1,90 +1,77 @@
 import React, { useState, useEffect } from "react";
-import {
-  Menu,
-  X,
-  User,
-  FileText,
-  CreditCard,
-  BarChart2,
-  Bell,
-  Heart,
-  Settings,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Sidebar.css";
 import { auth, db } from "../../../Firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
 
-const Sidebar = ({ active, setActive }) => {
+export default function Sidebar({
+  active,
+  setActive,
+  menuItems = [],
+  roleLabel = "User",
+  profileKey = "defaultProfile",
+  storagePath = "registrations",
+}) {
   const [open, setOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
   const [userData, setUserData] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
 
-  // Detect screen size
+  // ✅ Responsive detection
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Fetch user data
+  // ✅ Fetch user info from Firestore
   useEffect(() => {
     const fetchUserData = async () => {
       const currentUser = auth.currentUser;
       if (!currentUser) return;
       try {
-        const docRef = doc(db, "registrations", currentUser.uid);
+        const docRef = doc(db, storagePath, currentUser.uid);
         const snap = await getDoc(docRef);
-        if (snap.exists()) {
-          setUserData(snap.data());
-        }
+        if (snap.exists()) setUserData(snap.data());
       } catch (err) {
         console.error("Gabim gjatë marrjes së të dhënave të përdoruesit:", err);
       }
     };
     fetchUserData();
-  }, []);
+  }, [storagePath]);
 
-  // Load local profile photo (saved from ProfileBox)
+  // ✅ Load stored profile image
   useEffect(() => {
-    const savedImage = localStorage.getItem("profileImage");
+    const savedImage = localStorage.getItem(`profileImage_${profileKey}`);
     if (savedImage) setProfileImage(savedImage);
-  }, []);
+  }, [profileKey]);
 
-  // Handle uploading a new photo directly from sidebar
+  // ✅ Handle photo upload
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
     const reader = new FileReader();
     reader.onloadend = () => {
       setProfileImage(reader.result);
-      localStorage.setItem("profileImage", reader.result);
+      localStorage.setItem(`profileImage_${profileKey}`, reader.result);
     };
     reader.readAsDataURL(file);
   };
 
   const triggerFileInput = () => {
-    document.getElementById("sidebarFileInput").click();
+    document.getElementById(`sidebarFileInput_${profileKey}`).click();
   };
 
-  const menuItems = [
-    { title: "Profili im", icon: <User size={18} /> },
-    { title: "Aplikimet", icon: <FileText size={18} /> },
-    { title: "Pagesat", icon: <CreditCard size={18} /> },
-    { title: "Statistikat", icon: <BarChart2 size={18} /> },
-    { title: "Njoftimet", icon: <Bell size={18} /> },
-    { title: "Të preferuarat", icon: <Heart size={18} /> },
-    { title: "Cilësimet", icon: <Settings size={18} /> },
-  ];
-
-  const name = userData ? `${userData.name || ""} ${userData.surname || ""}`.trim() : "Ngarkim...";
-  const role = userData?.role || "Student";
+  const name = userData
+    ? `${userData.name || ""} ${userData.surname || ""}`.trim()
+    : "Ngarkim...";
+  const role = userData?.role || roleLabel;
   const avatar = name ? name.charAt(0).toUpperCase() : "?";
 
   return (
     <>
+      {/* 📱 Mobile Header */}
       {!isDesktop && (
         <div className="mobile-header">
           <div className="user-section">
@@ -94,7 +81,6 @@ const Sidebar = ({ active, setActive }) => {
                 alt="Profile"
                 className="avatar-image"
                 onClick={triggerFileInput}
-                style={{ cursor: "pointer" }}
               />
             ) : (
               <div className="avatar" onClick={triggerFileInput}>
@@ -112,6 +98,7 @@ const Sidebar = ({ active, setActive }) => {
         </div>
       )}
 
+      {/* 🖥️ Sidebar */}
       <AnimatePresence>
         {(open || isDesktop) && (
           <motion.aside
@@ -129,7 +116,6 @@ const Sidebar = ({ active, setActive }) => {
                     alt="Profile"
                     className="avatar-image"
                     onClick={triggerFileInput}
-                    style={{ cursor: "pointer" }}
                   />
                 ) : (
                   <div className="avatar" onClick={triggerFileInput}>
@@ -139,7 +125,7 @@ const Sidebar = ({ active, setActive }) => {
 
                 <input
                   type="file"
-                  id="sidebarFileInput"
+                  id={`sidebarFileInput_${profileKey}`}
                   accept="image/*"
                   style={{ display: "none" }}
                   onChange={handleImageUpload}
@@ -174,6 +160,4 @@ const Sidebar = ({ active, setActive }) => {
       </AnimatePresence>
     </>
   );
-};
-
-export default Sidebar;
+}

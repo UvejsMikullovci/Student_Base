@@ -1,3 +1,5 @@
+// src/Firebase/firebase.js
+
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -8,14 +10,17 @@ const firebaseConfig = {
   authDomain: "maindatabasepractise.firebaseapp.com",
   databaseURL: "https://maindatabasepractise-default-rtdb.firebaseio.com",
   projectId: "maindatabasepractise",
-  storageBucket: "maindatabasepractise.appspot.com", // ✅ FIXED
+  storageBucket: "maindatabasepractise.appspot.com",
   messagingSenderId: "727187357647",
   appId: "1:727187357647:web:f8641722054004f8fedcba",
 };
 
+// ✅ Initialize Firebase once
 const app = initializeApp(firebaseConfig);
 
+// ✅ Export shared instances for your app
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
+
 export default app;
