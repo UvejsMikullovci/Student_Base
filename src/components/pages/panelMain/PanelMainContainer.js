@@ -21,7 +21,6 @@ import "./PanelMainContainer.css";
 export default function PanelMainContainer() {
   const [activePanel, setActivePanel] = useState("Profili im");
 
-  // Define your sidebar menu for the student panel
   const studentMenu = [
     { title: "Profili im", icon: <User size={18} /> },
     { title: "Aplikimet", icon: <FileText size={18} /> },
