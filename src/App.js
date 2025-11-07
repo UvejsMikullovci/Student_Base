@@ -19,6 +19,7 @@ import Dorms from "./components/pages/group1/Dorms.js"
 import "./components/styles/panelCollage.css";
 import PanelDormsMain from "./components/pages/panelDorms/PanelDormsMain/PanelDormsMain.js";
 import PanelProfMain from "./components/pages/panelProf/panelProfMain/PanelProf.js";
+import RoomListingPage from "./components/pages/group1/RoomDetails/RoomListingPage.js";
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/konviktet" element={<Dorms />} />
             <Route path="/kolegjte/:collegeId" element={<CollegeDetailsPage />} />
+             <Route path="/dhoma" element={<RoomListingPage />} />
           </Routes>
 
           <main style={{ minHeight: "10vh" }}>
