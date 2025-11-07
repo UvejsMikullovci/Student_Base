@@ -1,0 +1,178 @@
+.applicants-container {
+    font-family: "Poppins", sans-serif;
+    padding: 30px;
+    color: #222;
+}
+
+.table-container {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.student-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.student-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status-badge.pending {
+    background: #f2f4f8;
+    color: #555;
+}
+
+.status-badge.accepted {
+    background: #000814;
+    color: white;
+}
+
+.status-badge.rejected {
+    background: #ffdddd;
+    color: #d8000c;
+}
+
+.actions button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 0 5px;
+}
+
+.actions button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 30px;
+    width: 450px;
+    max-width: 90%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.close-btn {
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.modal-content {
+    text-align: center;
+}
+
+.modal-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.university {
+    color: #5a6aa0;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    text-align: left;
+}
+
+.info-grid .full {
+    grid-column: span 2;
+}
+
+.label {
+    font-weight: 500;
+    color: #5a6aa0;
+    font-size: 0.9rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.accept-btn {
+    background: #000814;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.reject-btn {
+    background: #d32f2f;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
