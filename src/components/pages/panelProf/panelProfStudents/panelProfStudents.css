@@ -114,3 +114,6 @@ tr:hover {
   padding: 20px;
   font-size: 15px;
 }
+td, th {
+  color: #333;
+}
