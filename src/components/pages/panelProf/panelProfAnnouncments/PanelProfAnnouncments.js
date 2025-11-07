@@ -30,11 +30,15 @@ const PanelProfAnnouncments = () => {
     return () => unsubscribe();
   }, []);
 
-  // ✅ Real-time listener for announcements
   useEffect(() => {
     if (!userId) return;
 
-    const announcementsRef = collection(db, "registrations", userId, "announcements");
+    const announcementsRef = collection(
+      db,
+      "registrations",
+      userId,
+      "announcements"
+    );
     const q = query(announcementsRef, orderBy("createdAt", "desc"));
 
     const unsubscribe = onSnapshot(
@@ -60,7 +64,12 @@ const PanelProfAnnouncments = () => {
   const handleAddAnnouncement = async () => {
     if (!newAnnouncement.trim() || !userId) return;
     try {
-      const announcementsRef = collection(db, "registrations", userId, "announcements");
+      const announcementsRef = collection(
+        db,
+        "registrations",
+        userId,
+        "announcements"
+      );
       const docRef = await addDoc(announcementsRef, {
         text: newAnnouncement.trim(),
         createdAt: serverTimestamp(),
@@ -83,13 +92,10 @@ const PanelProfAnnouncments = () => {
     }
   };
 
-  // ✅ Edit announcement
   const handleEdit = (id, text) => {
     setEditingId(id);
     setEditingText(text);
   };
-
-  // ✅ Save edited announcement
   const handleSaveEdit = async (id) => {
     if (!editingText.trim() || !userId) return;
     try {
@@ -104,7 +110,6 @@ const PanelProfAnnouncments = () => {
     }
   };
 
-  // 🧠 Format timestamp
   const formatDate = (timestamp) => {
     if (!timestamp?.seconds) return "";
     const date = new Date(timestamp.seconds * 1000);
@@ -153,10 +158,14 @@ const PanelProfAnnouncments = () => {
                 <>
                   <div className="announcement-text">
                     <span>{a.text}</span>
-                    <small className="timestamp">{formatDate(a.createdAt)}</small>
+                    <small className="timestamp">
+                      {formatDate(a.createdAt)}
+                    </small>
                   </div>
                   <div className="announcement-actions">
-                    <button onClick={() => handleEdit(a.id, a.text)}>Edit</button>
+                    <button onClick={() => handleEdit(a.id, a.text)}>
+                      Edit
+                    </button>
                     <button onClick={() => handleDelete(a.id)}>Delete</button>
                   </div>
                 </>
