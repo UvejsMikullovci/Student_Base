@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../../../Firebase/firebase";
+import { db, auth } from "../../../../Firebase/firebase";
 import {
   collection,
   addDoc,
-  getDocs,
-  serverTimestamp,
   deleteDoc,
   doc,
   updateDoc,
+  serverTimestamp,
+  onSnapshot,
+  query,
+  orderBy,
 } from "firebase/firestore";
 import "./PanelProfAnnouncements.css";
 
@@ -16,85 +18,110 @@ const PanelProfAnnouncments = () => {
   const [newAnnouncement, setNewAnnouncement] = useState("");
   const [editingId, setEditingId] = useState(null);
   const [editingText, setEditingText] = useState("");
+  const [userId, setUserId] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const announcementsCollection = collection(db, "announcements");
-
-  // Fetch announcements from Firebase
-  const fetchAnnouncements = async () => {
-    try {
-      const data = await getDocs(announcementsCollection);
-      const formattedData = data.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      formattedData.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
-      setAnnouncements(formattedData);
-    } catch (error) {
-      console.error("Error fetching announcements:", error);
-      alert("Failed to fetch announcements. Check console.");
-    }
-  };
-
+  // ✅ Watch for auth state (get user ID)
   useEffect(() => {
-    fetchAnnouncements();
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) setUserId(user.uid);
+      else setUserId(null);
+    });
+    return () => unsubscribe();
   }, []);
 
-  // Add new announcement
-  const handleAddAnnouncement = async () => {
-    if (!newAnnouncement.trim()) {
-      alert("Announcement cannot be empty");
-      return;
-    }
+  // ✅ Real-time listener for announcements
+  useEffect(() => {
+    if (!userId) return;
 
+    const announcementsRef = collection(db, "registrations", userId, "announcements");
+    const q = query(announcementsRef, orderBy("createdAt", "desc"));
+
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setAnnouncements(data);
+        setLoading(false);
+      },
+      (error) => {
+        console.error("Error fetching announcements:", error);
+        setLoading(false);
+      }
+    );
+
+    return () => unsubscribe();
+  }, [userId]);
+
+  // ✅ Add new announcement (auto random ID)
+  const handleAddAnnouncement = async () => {
+    if (!newAnnouncement.trim() || !userId) return;
     try {
-      const docRef = await addDoc(announcementsCollection, {
-        text: newAnnouncement,
+      const announcementsRef = collection(db, "registrations", userId, "announcements");
+      const docRef = await addDoc(announcementsRef, {
+        text: newAnnouncement.trim(),
         createdAt: serverTimestamp(),
       });
-
-      console.log("Added document ID:", docRef.id);
-
-      // Fetch updated list from Firebase
-      await fetchAnnouncements();
+      console.log("✅ Added document with ID:", docRef.id);
       setNewAnnouncement("");
     } catch (error) {
-      console.error("Error adding announcement:", error);
-      alert("Failed to add announcement. Check console.");
+      console.error("❌ Error adding announcement:", error);
     }
   };
 
+  // ✅ Delete announcement
   const handleDelete = async (id) => {
+    if (!userId) return;
     try {
-      await deleteDoc(doc(db, "announcements", id));
-      await fetchAnnouncements();
+      await deleteDoc(doc(db, "registrations", userId, "announcements", id));
+      console.log("🗑️ Deleted announcement:", id);
     } catch (error) {
-      console.error("Error deleting announcement:", error);
-      alert("Failed to delete. Check console.");
+      console.error("❌ Error deleting announcement:", error);
     }
   };
 
-  const handleEdit = (id, currentText) => {
+  // ✅ Edit announcement
+  const handleEdit = (id, text) => {
     setEditingId(id);
-    setEditingText(currentText);
+    setEditingText(text);
   };
 
+  // ✅ Save edited announcement
   const handleSaveEdit = async (id) => {
-    if (!editingText.trim()) return;
-
+    if (!editingText.trim() || !userId) return;
     try {
-      await updateDoc(doc(db, "announcements", id), { text: editingText });
+      await updateDoc(doc(db, "registrations", userId, "announcements", id), {
+        text: editingText.trim(),
+      });
+      console.log("✏️ Updated announcement:", id);
       setEditingId(null);
       setEditingText("");
-      await fetchAnnouncements();
     } catch (error) {
-      console.error("Error updating announcement:", error);
-      alert("Failed to update. Check console.");
+      console.error("❌ Error updating announcement:", error);
     }
   };
+
+  // 🧠 Format timestamp
+  const formatDate = (timestamp) => {
+    if (!timestamp?.seconds) return "";
+    const date = new Date(timestamp.seconds * 1000);
+    return date.toLocaleString("en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+  };
+
+  if (!userId) return <p>Loading user data...</p>;
+  if (loading) return <p>Loading announcements...</p>;
 
   return (
     <div className="panel-prof-announcements">
       <h2>Professor Announcements</h2>
+
+      {/* Input field */}
       <div className="add-announcement">
         <input
           type="text"
@@ -105,27 +132,33 @@ const PanelProfAnnouncments = () => {
         <button onClick={handleAddAnnouncement}>Add</button>
       </div>
 
+      {/* List of announcements */}
       <ul className="announcement-list">
         {announcements.length === 0 ? (
           <li>No announcements yet.</li>
         ) : (
-          announcements.map((announcement) => (
-            <li key={announcement.id}>
-              {editingId === announcement.id ? (
+          announcements.map((a) => (
+            <li key={a.id}>
+              {editingId === a.id ? (
                 <>
                   <input
                     type="text"
                     value={editingText}
                     onChange={(e) => setEditingText(e.target.value)}
                   />
-                  <button onClick={() => handleSaveEdit(announcement.id)}>Save</button>
+                  <button onClick={() => handleSaveEdit(a.id)}>Save</button>
                   <button onClick={() => setEditingId(null)}>Cancel</button>
                 </>
               ) : (
                 <>
-                  <span>{announcement.text}</span>
-                  <button onClick={() => handleEdit(announcement.id, announcement.text)}>Edit</button>
-                  <button onClick={() => handleDelete(announcement.id)}>Delete</button>
+                  <div className="announcement-text">
+                    <span>{a.text}</span>
+                    <small className="timestamp">{formatDate(a.createdAt)}</small>
+                  </div>
+                  <div className="announcement-actions">
+                    <button onClick={() => handleEdit(a.id, a.text)}>Edit</button>
+                    <button onClick={() => handleDelete(a.id)}>Delete</button>
+                  </div>
                 </>
               )}
             </li>
