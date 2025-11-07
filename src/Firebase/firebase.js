@@ -1,5 +1,3 @@
-// src/Firebase/firebase.js
-
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -15,12 +13,9 @@ const firebaseConfig = {
   appId: "1:727187357647:web:f8641722054004f8fedcba",
 };
 
-// ✅ Initialize Firebase once
 const app = initializeApp(firebaseConfig);
 
-// ✅ Export shared instances for your app
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
-
 export default app;
