@@ -3,10 +3,8 @@
     flex-direction: row;
     align-items: flex-start;
     min-height: calc(100vh - 70px);
-    /* below header */
     background-color: #fffcf6;
     margin-top: 70px;
-    /* same as header height */
 }
 
 .panel-content {

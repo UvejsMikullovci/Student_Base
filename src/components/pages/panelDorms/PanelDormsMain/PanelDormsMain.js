@@ -11,7 +11,6 @@ import "../../../organisms/group5/Sidebar.css";
 export default function PanelDormsMainContainer() {
   const [activePanel, setActivePanel] = useState("Profili im");
 
-  // 🏠 Sidebar menu for dorm panel
   const dormMenu = [
     { title: "Profili im", icon: <User size={18} /> },
     { title: "Koviktet", icon: <Home size={18} /> },
@@ -19,7 +18,6 @@ export default function PanelDormsMainContainer() {
     { title: "Cilësimet", icon: <Settings size={18} /> },
   ];
 
-  // Render sections
   const renderActivePanelDorm = () => {
     switch (activePanel) {
       case "Profili im":
