@@ -6,7 +6,7 @@
   color: #333;
 }
 
-
+/* Filter section */
 .filter-section {
   background-color: #fff;
   border: 1px solid #e5e7eb;
@@ -46,7 +46,7 @@
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
-
+/* Student list */
 .student-list-section {
   background-color: #fff;
   border: 1px solid #e5e7eb;
@@ -114,6 +114,99 @@ tr:hover {
   padding: 20px;
   font-size: 15px;
 }
-td, th {
-  color: #333;
+
+.add-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  width: 13%;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.add-btn:hover {
+  background-color: #1e4fd6;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 500px; /* wider popup */
+  max-width: 90%; /* responsive on small screens */
+  position: relative;
+  max-height: 80vh; /* optional: keep it from being taller than viewport */
+  overflow-y: auto; /* allow scrolling inside popup if content overflows */
+}
+
+.popup h3 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px; /* a little more spacing from top */
+  right: 16px; /* a little more spacing from right */
+  background-color: #f3f4f6; /* subtle background for better click area */
+  border: none;
+  font-size: 22px; /* bigger X */
+  font-weight: bold;
+  color: #1e40af; /* dark blue color to match your theme */
+  width: 32px; /* bigger clickable area */
+  height: 32px;
+  border-radius: 50%; /* circle button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.close-btn:hover {
+  background-color: #2563eb; /* dark blue on hover */
+  color: white; /* X turns white */
+}
+
+.popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.popup li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f3f4f6;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+}
+
+.add-student-btn {
+  background: #22c55e;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+}
+
+.add-student-btn:hover {
+  background: #16a34a;
 }
