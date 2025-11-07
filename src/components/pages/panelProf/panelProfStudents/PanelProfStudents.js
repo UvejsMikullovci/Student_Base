@@ -75,7 +75,7 @@ function PanelProfStudents() {
 
   return (
     <div className="students-container">
-      {/* Filter section */}
+
       <div className="filter-section">
         <h2>Filter Students</h2>
         <div className="filters">
@@ -104,7 +104,7 @@ function PanelProfStudents() {
         </div>
       </div>
 
-      {/* Student List */}
+
       <div className="student-list-section">
         <h2>Student List ({filteredStudents.length})</h2>
         <table>
