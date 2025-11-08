@@ -13,10 +13,7 @@ import Login from "./components/Account/Login/Login";
 import Register from "./components/Account/Register/Register";
 import { AuthProvider } from "./context/AuthContext";
 import CollegeDetailsPage from "./components/pages/group1/IndividualColleges/CollegeDetailsPage";
-import PanelApplicants from "./components/pages/panelColleges/panelApplicants";
-import PanelCollege from "./components/pages/panelColleges/panelCollage";
 import Dorms from "./components/pages/group1/Dorms.js"
-import "./components/styles/panelCollage.css";
 import PanelDormsMain from "./components/pages/panelDorms/PanelDormsMain/PanelDormsMain.js";
 import PanelProfMain from "./components/pages/panelProf/panelProfMain/PanelProf.js";
 import PanelProfStudents from "./components/pages/panelProf/panelProfStudents/PanelProfStudents.js";
@@ -24,31 +21,14 @@ import RoomListingPage from "./components/pages/group1/RoomDetails/RoomListingPa
 
 
 function App() {
-  const HeaderWrapper = () => {
-    const location = useLocation();
-    if (location.pathname === "/panel-college" || location.pathname === "/panel") {
-      return null;
-    }
-    return <Header />;
-  };
-
-  const FooterWrapper = () => {
-    const location = useLocation();
-    if (location.pathname === "/panel-college" || location.pathname === "/panel") {
-      return null;
-    }
-    return <Footer />;
-  };
 
   return (
     <div className="App">
       <Router>
         <AuthProvider>
-          <HeaderWrapper />
+          <Header/>
           <Routes>
             <Route path="/panel" element={<PanelProfile />} />
-            <Route path="/panel-college" element={<PanelCollege />} />
-            <Route path="/panelApplicants" element={<PanelApplicants />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/konviktet" element={<Dorms />} />
@@ -71,7 +51,7 @@ function App() {
             </Routes>
           </main>
 
-          <FooterWrapper />
+          <Footer/>
         </AuthProvider>
       </Router>
     </div>
