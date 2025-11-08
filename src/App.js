@@ -18,6 +18,8 @@ import PanelDormsMain from "./components/pages/panelDorms/PanelDormsMain/PanelDo
 import PanelProfMain from "./components/pages/panelProf/panelProfMain/PanelProf.js";
 import PanelProfStudents from "./components/pages/panelProf/panelProfStudents/PanelProfStudents.js";
 import RoomListingPage from "./components/pages/group1/RoomDetails/RoomListingPage.js";
+import AboutUs from './components/pages/group3/RethNeshPage.js';
+import PanelCollageMain from './components/pages/panelColleges/panelCollageMain/panelCollageMain.js'
 
 
 function App() {
@@ -28,12 +30,12 @@ function App() {
         <AuthProvider>
           <Header/>
           <Routes>
+            <Route path="/PanelKolegj" element={<PanelCollageMain />} />
             <Route path="/panel" element={<PanelProfile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/konviktet" element={<Dorms />} />
             <Route path="/kolegjte/:collegeId" element={<CollegeDetailsPage />} />
-            //This is just to test the students page on profesors panel
             <Route path="/panelProf/Students" element={<PanelProfStudents />} />
              <Route path="/dhoma" element={<RoomListingPage />} />
           </Routes>
@@ -44,7 +46,7 @@ function App() {
               <Route path="/kolegjte" element={<Collages />} />
               <Route path="/programet" element={<Programet />} />
               <Route path="/cmimet" element={<CmimetPage />} />
-              {/* Rreth Nesh page temporarily disabled due to build issues */}
+              <Route path="/rreth-nesh" element={<AboutUs />} />
               <Route path="/kontakti" element={<ContactPage />} />
               <Route path="/PanelDorms" element={<PanelDormsMain />} />
               <Route path="/PanelProf" element={<PanelProfMain />} />
