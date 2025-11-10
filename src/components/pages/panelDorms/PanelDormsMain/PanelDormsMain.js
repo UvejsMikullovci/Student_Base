@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { User, FileText, Home, Settings } from "lucide-react";
 import Sidebar from "../../../organisms/group5/Sidebar";
-import PanelDormsAplications from "../PanelDormsAplications/ArtikuTest";
+import PanelDormsAplications from "../PanelDormsAplications/artikuTest";
 import PanelDormsProfile from "../PanelDormsProfile/PanelDormsProfile";
 import PanelDormsKonviktet from "../PanelDormsKonviktet/PanelDormsKonviktet";
 import PanelDormsCilesimet from "../PanelDormsCilesimet/PanelDormsCilesimet";
