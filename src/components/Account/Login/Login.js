@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { auth } from "../../../Firebase/firebase";
+import { auth, db } from "../../../Firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -22,15 +23,51 @@ export default function Login() {
     setSuccess(false);
 
     try {
-      await signInWithEmailAndPassword(auth, formData.email, formData.password);
+      // ✅ Log user in
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+
+      const user = userCredential.user;
+
+      // ✅ Fetch their Firestore document to get the role
+      const userDocRef = doc(db, "registrations", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+
+      let role = "Student";
+      if (userDocSnap.exists()) {
+        const data = userDocSnap.data();
+        role = data.role || "Student";
+      }
+
       setSuccess(true);
-      setTimeout(() => {
-        navigate("/panel");
-      }, 800);
-    } catch {
+
+      // ✅ Redirect based on role
+      switch (role) {
+        case "Student":
+          navigate("/panel");
+          break;
+        case "Professor":
+          navigate("/panelprof");
+          break;
+        case "College":
+          navigate("/panelkolegj");
+          break;
+        case "Landlord":
+          navigate("/paneldorms");
+          break;
+        default:
+          navigate("/panel");
+          break;
+      }
+    } catch (err) {
+      console.error("Login error:", err);
       setError("Email ose fjalëkalim i pasaktë.");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -67,17 +104,8 @@ export default function Login() {
           {loading ? "Duke u futur..." : "Hyr"}
         </button>
 
-        {error && (
-          <p className="error">
-            {error}
-          </p>
-        )}
-
-        {success && (
-          <p className="success">
-            Mirë se u ktheve përsëri!
-          </p>
-        )}
+        {error && <p className="error">{error}</p>}
+        {success && <p className="success">Mirë se u ktheve përsëri!</p>}
 
         <p className="redirect-text">
           Nuk ke llogari?{" "}
