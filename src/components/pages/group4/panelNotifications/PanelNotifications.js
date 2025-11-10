@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { db } from "../../../../Firebase/firebase";
 import { Mail, Archive, X } from "lucide-react";
@@ -10,7 +10,13 @@ import "./PanelNotifications.css";
 
 // Localizer setup
 const locales = { "en-US": require("date-fns/locale/en-US") };
-const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales });
+const localizer = dateFnsLocalizer({
+  format,
+  parse,
+  startOfWeek,
+  getDay,
+  locales,
+});
 
 // Modal Component
 const Modal = ({ title, isOpen, onClose, children }) => {
@@ -25,7 +31,9 @@ const Modal = ({ title, isOpen, onClose, children }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-bold text-indigo-600 dark:text-indigo-400">{title}</h3>
+          <h3 className="text-xl font-bold text-indigo-600 dark:text-indigo-400">
+            {title}
+          </h3>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition duration-150"
@@ -49,23 +57,49 @@ const NotificationsPage = () => {
   const [search, setSearch] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Fetch notifications
+  // Fetch announcements for all users
   useEffect(() => {
-    if (!userId) return;
-
     const fetchAnnouncements = async () => {
       try {
-        const announcementsCollection = collection(db, "registrations", userId, "announcements");
-        const snapshot = await getDocs(announcementsCollection);
-        const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        setNotifications(data);
-      } catch (err) {
-        console.error("Error fetching announcements:", err);
+        const usersSnapshot = await getDocs(collection(db, "registrations"));
+        const allAnnouncements = [];
+
+        for (const userDoc of usersSnapshot.docs) {
+          const announcementsSnapshot = await getDocs(
+            collection(db, "registrations", userDoc.id, "announcements")
+          );
+
+          for (const ann of announcementsSnapshot.docs) {
+            const data = ann.data();
+
+            let createdAt = new Date();
+            if (data.createdAt && typeof data.createdAt.toDate === "function") {
+              createdAt = data.createdAt.toDate();
+            } else if (data.createdAt?.seconds) {
+              createdAt = new Date(data.createdAt.seconds * 1000);
+            }
+
+            allAnnouncements.push({
+              id: ann.id,
+              title: data.text || "Pa titull",
+              message: data.text || "Nuk ka përmbajtje",
+              sender:
+                data.sender || userDoc.data().name || "Dërgues i panjohur",
+              start: createdAt,
+              end: new Date(createdAt.getTime() + 60 * 60 * 1000),
+              unread: !!data.unread,
+            });
+          }
+        }
+
+        setNotifications(allAnnouncements);
+      } catch {
+        // silently fail
       }
     };
 
     fetchAnnouncements();
-  }, [userId]);
+  }, []);
 
   // Filtered notifications
   const filtered = notifications.filter((n) => {
@@ -78,36 +112,31 @@ const NotificationsPage = () => {
     return match;
   });
 
-  // Transform notifications to calendar events using createdAt
-  const events = notifications
-    .map((n) => {
-      if (!n.createdAt) return null;
-      const start = n.createdAt.toDate(); // Firestore Timestamp to JS Date
-      const end = new Date(start.getTime() + 60 * 60 * 1000); // default 1-hour
-      return {
-        id: n.id,
-        title: n.title || "Njoftim pa titull",
-        start,
-        end,
-        allDay: false,
-        sender: n.sender || "Dërgues i panjohur",
-        message: n.message || "",
-      };
-    })
-    .filter(Boolean);
+  const handleClickListItem = (notif) => {
+    setSelected(notif);
+    setIsModalOpen(true);
+  };
 
-  // Event click handler
   const handleSelectEvent = useCallback((event) => {
     setSelected(event);
     setIsModalOpen(true);
   }, []);
+
+  const handleDeleteSelected = () => {
+    if (!selected) return;
+    setNotifications((prev) => prev.filter((n) => n.id !== selected.id));
+    setSelected(null);
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="min-h-screen p-4 md:p-8 bg-gray-50 dark:bg-gray-900 font-sans transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <h1 className="notif-heading-main">Njoftimet</h1>
-        <p className="notif-paragraph-main">Menaxho të gjitha njoftimet dhe mesazhet tuaja</p>
+        <p className="notif-paragraph-main">
+          Menaxho të gjitha njoftimet dhe mesazhet tuaja
+        </p>
 
         <div className="notif-wrapper">
           {/* Left Panel */}
@@ -131,7 +160,8 @@ const NotificationsPage = () => {
                 className={filter === "unread" ? "active" : ""}
                 onClick={() => setFilter("unread")}
               >
-                Pa lexuar <span>{notifications.filter((n) => n.unread).length}</span>
+                Pa lexuar{" "}
+                <span>{notifications.filter((n) => n.unread).length}</span>
               </button>
             </div>
 
@@ -142,18 +172,18 @@ const NotificationsPage = () => {
                 filtered.map((n) => (
                   <li
                     key={n.id}
-                    className={`notif-item ${selected?.id === n.id ? "selected" : ""} ${
-                      n.unread ? "unread" : ""
-                    }`}
-                    onClick={() => setSelected(n)}
+                    className={`notif-item ${
+                      selected?.id === n.id ? "selected" : ""
+                    } ${n.unread ? "unread" : ""}`}
+                    onClick={() => handleClickListItem(n)}
                   >
                     <div className="notif-title">
                       <Mail size={16} className="mr-2 text-gray-500" />
-                      {n.sender || "Dërgues i panjohur"}
+                      {n.sender}
                     </div>
-                    <div className="notif-text">{n.title || "Pa titull"}</div>
+                    <div className="notif-text">{n.title}</div>
                     <div className="notif-time">
-                      {n.createdAt ? n.createdAt.toDate().toLocaleString() : "Pa datë"}
+                      {n.start ? new Date(n.start).toLocaleString() : "Pa datë"}
                     </div>
                   </li>
                 ))
@@ -172,12 +202,12 @@ const NotificationsPage = () => {
               <div className="notif-message-card">
                 <div className="notif-header">
                   <div>
-                    <h3>{selected.title || "Pa titull"}</h3>
+                    <h3>{selected.title}</h3>
                     <p>
                       <Mail size={16} className="mr-2 text-gray-400" />
-                      {selected.sender || "Dërgues i panjohur"} •{" "}
-                      {selected.createdAt
-                        ? selected.createdAt.toDate().toLocaleString()
+                      {selected.sender} •{" "}
+                      {selected.start
+                        ? new Date(selected.start).toLocaleString()
                         : "Pa datë"}
                     </p>
                   </div>
@@ -188,11 +218,7 @@ const NotificationsPage = () => {
                     <Archive size={16} className="mr-1" />
                     Arkivo
                   </button>
-                  <button
-                    onClick={() =>
-                      setNotifications((prev) => prev.filter((n) => n.id !== selected.id))
-                    }
-                  >
+                  <button onClick={handleDeleteSelected}>
                     <X size={16} className="mr-1" />
                     Fshi
                   </button>
@@ -201,9 +227,11 @@ const NotificationsPage = () => {
                 <hr />
 
                 <div className="notif-body">
-                  {(selected.message || "Nuk ka përmbajtje").split("\n").map((p, i) => (
-                    <p key={i}>{p}</p>
-                  ))}
+                  {(selected.message || "Nuk ka përmbajtje")
+                    .split("\n")
+                    .map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
                 </div>
               </div>
             )}
@@ -218,7 +246,7 @@ const NotificationsPage = () => {
 
           <Calendar
             localizer={localizer}
-            events={events}
+            events={notifications}
             startAccessor="start"
             endAccessor="end"
             style={{ height: 600 }}
@@ -226,7 +254,7 @@ const NotificationsPage = () => {
             onSelectEvent={handleSelectEvent}
             eventPropGetter={(event) => ({
               style: {
-                backgroundColor: "#6366f1", // indigo
+                backgroundColor: event.unread ? "#ef4444" : "#6366f1",
                 color: "white",
                 borderRadius: "6px",
                 padding: "2px 4px",
@@ -237,7 +265,6 @@ const NotificationsPage = () => {
           />
         </div>
 
-        {/* Event Modal */}
         <Modal
           title={selected?.title || "Ngjarja"}
           isOpen={isModalOpen}
@@ -246,7 +273,10 @@ const NotificationsPage = () => {
           {selected && (
             <div>
               <p>
-                <strong>Koha:</strong> {selected.start.toLocaleString()}
+                <strong>Koha:</strong>{" "}
+                {selected.start
+                  ? new Date(selected.start).toLocaleString()
+                  : "Pa datë"}
               </p>
               <p>
                 <strong>Dërguesi:</strong> {selected.sender}
