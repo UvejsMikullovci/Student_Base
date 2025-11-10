@@ -50,7 +50,7 @@ export default function PanelDormsMainContainer() {
           active={activePanel}
           setActive={setActivePanel}
           menuItems={dormMenu}
-          roleLabel="Konvikt"
+          roleLabel="Profesor"
           profileKey="dorms"
           storagePath="registrations"
         />
