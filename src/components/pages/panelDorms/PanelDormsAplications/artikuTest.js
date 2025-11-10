@@ -36,7 +36,7 @@ function ArtikuTest() {
             dorm: "Spacious Two-Bedroom Apartment",
             field: "Engineering",
             appliedDate: "10/30/2025",
-            status: "accepted",
+            status: "pending",
             avatar: "https://i.pravatar.cc/100?img=6",
         },
     ]);
@@ -58,6 +58,9 @@ function ArtikuTest() {
             setStudents(updated);
         }
     };
+
+    const findStudentIndexByEmail = (email) =>
+        students.findIndex((s) => s.email === email);
 
     return (
         <div className="applicants-container">
@@ -92,26 +95,33 @@ function ArtikuTest() {
                                 <td>
                                     <span
                                         className={`status-badge ${student.status === "accepted"
-                                            ? "accepted"
-                                            : student.status === "pending"
-                                                ? "pending"
-                                                : "rejected"
+                                                ? "accepted"
+                                                : student.status === "pending"
+                                                    ? "pending"
+                                                    : "rejected"
                                             }`}
                                     >
                                         {student.status}
                                     </span>
                                 </td>
                                 <td className="actions">
-                                    <button onClick={() => setSelectedStudent(student)}>👁️</button>
+                                    <button
+                                        onClick={() => setSelectedStudent(student)}
+                                        title="View Details"
+                                    >
+                                        👁️
+                                    </button>
                                     <button
                                         onClick={() => handleAccept(index)}
                                         disabled={student.status !== "pending"}
+                                        title="Accept"
                                     >
                                         ✅
                                     </button>
                                     <button
                                         onClick={() => handleReject(index)}
                                         disabled={student.status !== "pending"}
+                                        title="Reject"
                                     >
                                         ❌
                                     </button>
@@ -124,11 +134,17 @@ function ArtikuTest() {
 
             {/* Popup Modal */}
             {selectedStudent && (
-                <div className="modal-overlay" onClick={() => setSelectedStudent(null)}>
+                <div
+                    className="modal-overlay"
+                    onClick={() => setSelectedStudent(null)}
+                >
                     <div className="modal" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h3>Applicant Details</h3>
-                            <button className="close-btn" onClick={() => setSelectedStudent(null)}>
+                            <button
+                                className="close-btn"
+                                onClick={() => setSelectedStudent(null)}
+                            >
                                 ✕
                             </button>
                         </div>
@@ -174,8 +190,8 @@ function ArtikuTest() {
                                     <button
                                         className="accept-btn"
                                         onClick={() => {
-                                            const index = students.findIndex(
-                                                (s) => s.email === selectedStudent.email
+                                            const index = findStudentIndexByEmail(
+                                                selectedStudent.email
                                             );
                                             handleAccept(index);
                                             setSelectedStudent(null);
@@ -186,8 +202,8 @@ function ArtikuTest() {
                                     <button
                                         className="reject-btn"
                                         onClick={() => {
-                                            const index = students.findIndex(
-                                                (s) => s.email === selectedStudent.email
+                                            const index = findStudentIndexByEmail(
+                                                selectedStudent.email
                                             );
                                             handleReject(index);
                                             setSelectedStudent(null);

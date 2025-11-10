@@ -2,13 +2,15 @@
     font-family: "Poppins", sans-serif;
     padding: 30px;
     color: #222;
+    background-color: #f7f7f7;
+    min-height: 100vh;
 }
 
 .table-container {
     background: #fff;
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 table {
@@ -24,6 +26,13 @@ td {
     border-bottom: 1px solid #eee;
 }
 
+thead th {
+    font-weight: 600;
+    color: #555;
+    font-size: 0.9rem;
+    background-color: #fcfcfc;
+}
+
 .student-info {
     display: flex;
     align-items: center;
@@ -34,14 +43,26 @@ td {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    object-fit: cover;
+}
+
+.student-info strong {
+    font-weight: 600;
+}
+
+.student-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #777;
 }
 
 .status-badge {
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
     font-weight: 600;
-    text-transform: capitalize;
+    text-transform: uppercase;
+    display: inline-block;
 }
 
 .status-badge.pending {
@@ -60,16 +81,25 @@ td {
 }
 
 .actions button {
-    border: none;
-    background: none;
+    border: none !important;
+    background: none !important;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin: 0 5px;
+    color: #333;
+    transition: transform 0.2s;
+    padding: 5px;
+}
+
+.actions button:hover {
+    transform: scale(1.1);
+    color: #000814;
 }
 
 .actions button:disabled {
     opacity: 0.4;
     cursor: not-allowed;
+    color: #555 !important;
 }
 
 /* ===== MODAL ===== */
@@ -79,7 +109,7 @@ td {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,9 +120,9 @@ td {
     background: white;
     border-radius: 12px;
     padding: 20px 30px;
-    width: 450px;
-    max-width: 90%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 420px;
+    max-width: 95%;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     position: relative;
 }
 
@@ -100,20 +130,23 @@ td {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
 }
 
 .modal-header h3 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
 }
 
 .close-btn {
     border: none;
     background: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     cursor: pointer;
+    color: #777;
 }
 
 .modal-content {
@@ -124,55 +157,79 @@ td {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    border: 3px solid #e0e0e0;
 }
 
 .university {
     color: #5a6aa0;
-    font-size: 0.95rem;
-    margin-bottom: 20px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    font-weight: 500;
 }
 
+/* --- FIXED ALIGNMENT TO MATCH DESIGN --- */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    column-gap: 40px;
+    row-gap: 14px;
+    margin-top: 15px;
     text-align: left;
+}
+
+.info-grid>div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.info-grid .label {
+    font-weight: 600;
+    color: #6c6c6c;
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+}
+
+.info-grid p:not(.label) {
+    font-weight: 500;
+    color: #111;
+    margin: 0;
+    font-size: 0.95rem;
 }
 
 .info-grid .full {
     grid-column: span 2;
 }
 
-.label {
-    font-weight: 500;
-    color: #5a6aa0;
-    font-size: 0.9rem;
-}
-
+/* --- MODAL ACTION BUTTONS --- */
 .modal-actions {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
     margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
 }
 
 .accept-btn {
     background: #000814;
     color: white;
     border: none;
-    padding: 8px 18px;
+    padding: 8px 20px;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 .reject-btn {
-    background: #d32f2f;
+    background: #df4c4a;
     color: white;
     border: none;
-    padding: 8px 18px;
+    padding: 8px 20px;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
+    font-size: 1rem;
 }
