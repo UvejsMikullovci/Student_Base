@@ -20,6 +20,7 @@ import PanelProfStudents from "./components/pages/panelProf/panelProfStudents/Pa
 import RoomListingPage from "./components/pages/group1/RoomDetails/RoomListingPage.js";
 import AboutUs from './components/pages/group3/RethNeshPage.js';
 import PanelCollageMain from './components/pages/panelColleges/panelCollageMain/panelCollageMain.js'
+import PanelProfileSettings from "./components/pages/panelProf/panelProfileSettings/PanelProfileSettings.js";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             <Route path="/konviktet" element={<Dorms />} />
             <Route path="/kolegjte/:collegeId" element={<CollegeDetailsPage />} />
             <Route path="/panelProf/Students" element={<PanelProfStudents />} />
+            <Route path="/panelProf/Settings" element={<PanelProfileSettings />} />
              <Route path="/dhoma" element={<RoomListingPage />} />
           </Routes>
 
