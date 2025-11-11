@@ -11,7 +11,7 @@ import PanelProfProfile from "../panelProfProfile/PanelProfProfile";
 import PanelProfStudents from "../panelProfStudents/PanelProfStudents";
 import PanelProfGrades from "../panelProfGrades/PanelProfGrades.js";
 import PanelProfAnnouncements from "../panelProfAnnouncments/PanelProfAnnouncments";
-import PanelProfSettings from "../panelProfileSettings/PanelProfileSettings";
+import PanelProfSettings from "../panelProfileSettings/PanelProfileSettings.js";
 import "../../../organisms/group5/Sidebar.css";
 import "../panelProfMain/PanelProf.css";
 
