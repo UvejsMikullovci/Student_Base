@@ -21,7 +21,7 @@
 .why-section-content p {
   color: #555;
   font-size: 1rem;
-  max-width: 650px;
-  margin: 0 auto 40px;
+  width: 100%;
+  text-align: center;
   line-height: 1.5;
 }

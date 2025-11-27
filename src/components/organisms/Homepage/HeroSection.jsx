@@ -1,7 +1,7 @@
 import React from "react";
 import { HeroText } from "../../molecules/Homepage/HeroText";
 import { StatsGroup } from "../../molecules/Homepage/StatsGroup";
-import { ImageGrid } from "../../molecules/Homepage/ImageGrid";
+import ImageGrid from "../../molecules/Homepage/ImageGrid";
 import "./HeroSection.css";
 
 export function HeroSection() {

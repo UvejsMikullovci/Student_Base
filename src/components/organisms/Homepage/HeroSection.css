@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
   margin: 0 auto;
+  width: 90%;
   padding: 60px 40px;
   background-color: #fff;
   gap: 40px; 
@@ -15,7 +15,6 @@
 }
 
 .hero-right {
-  flex: 1;
   display: flex;
   justify-content: flex-end;
 }

@@ -1,53 +1,52 @@
-.icon-card {
-    height: 40vh;
-    background-color: #ffffff63;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    width: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.2s 
-ease;
+.homePageIconCard {
+  background-color: #ffffffc4;
+  border-radius: 12px;
+  padding: 20px 20px 40px 20px;
+  text-align: center;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
 }
 
-.icon-card:hover {
+.homePageIconCard:hover {
   transform: translateY(-5px);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  cursor: pointer;
 }
 
 
-.icon {
+.homePageIconCard .icon {
   width: 70px;
   height: 70px;
-  background-color: #ffe6ef; 
-  border-radius: 12px; 
+  background-color: #ffe6ef;
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
 }
 
-.icon svg {
+.homePageIconCard .icon svg {
   color: #e04e45;
-    font-size: 28px;
-    stroke-width: 0.5;
-   
-}
-.icon-card h3 {
-   font-weight: 400;
-    color: #000000;
-    font-size: 1rem;
-    max-width: 650px;
-    margin: 20px 20px;
-    line-height: 1.5;
+  font-size: 28px;
+  stroke-width: 1;
+  font-weight: 200;
 }
 
-.icon-card p {
-     color: #555;
-    font-size: 1rem;
-    max-width: 650px;
-    margin: 0 auto 40px;
-    line-height: 1.5;
+.homePageIconCard h3 {
+  font-weight: 400;
+  color: #000000;
+  font-size: 1rem;
+  max-width: 650px;
+  margin: 20px 20px;
+  line-height: 1.5;
+}
+
+.homePageIconCard p {
+  color: #555;
+  font-size: 1rem;
+  max-width: 650px;
+  line-height: 1.5;
 }

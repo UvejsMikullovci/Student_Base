@@ -1,8 +1,9 @@
 .navbar {
-  width: 100%;
+  width: 94%;
+  margin: 0 auto;
   background-color: #fffcf6;
   border-bottom: 1px solid #f1eae4;
-  padding: 1.2rem 4rem; /* increased padding for more space */
+  padding: 1.2rem 4rem;
   display: flex;
   justify-content: center;
   font-family: 'Poppins', sans-serif;
@@ -12,17 +13,17 @@
 
 .container {
   width: 100%;
-  max-width: 1600px; /* slightly wider for a more expanded layout */
+  max-width: 1600px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* space between logo and right section */
+  justify-content: space-between;
 }
 
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 2rem; /* space between navlinks and button */
-  margin-left: auto; /* pushes nav-right (links + button) to the right */
+  gap: 2rem;
+  margin-left: auto;
 }
 
 .cta {

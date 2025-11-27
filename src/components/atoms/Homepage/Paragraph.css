@@ -1,8 +1,8 @@
-.paragraph {
+.homePageParagraph {
     text-align: left;
     color: #555;
     font-size: 1.1rem;
     line-height: 1.6;
-    max-width: 300;
-    margin-top: 16px;
+    max-width: 600px;
+    margin-top: 0px;
 }

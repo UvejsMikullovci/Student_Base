@@ -1,5 +1,5 @@
-.Work-card {
-height: 40vh;
+.homePageWorkCard {
+    height: 40vh;
     background-color: #ffffff63;
     border-radius: 12px;
     box-shadow: 3px 4px 40px rgba(175, 175, 175, 0.281);
@@ -7,50 +7,48 @@ height: 40vh;
     text-align: center;
     width: 320px;
     margin-top: 60px;
-    display: flex
-;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.2s 
-ease;
+    transition: transform 0.2s ease;
 }
 
 
 
 
-.workcard {
+.homePageWorkCardIcon {
     width: 70px;
     background-color: rgba(255, 228, 196, 0.664);
     height: 70px;
     padding: 23px;
     border-radius: 12px;
-    display: flex
-;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
     border-radius: 88px;
 }
 
-.workcard svg {
-  color: #e04e45;
+.homePageWorkCardIcon svg {
+    color: #e04e45;
     font-size: 28px;
     stroke-width: 0.5;
 }
 
-.workcard svg :hover{
+.homePageWorkCardIcon svg :hover {
     transform: scale(1.1);
-      transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
-.Work-card h3 {
- font-size: 1rem;
+
+.homePageWorkCard h3 {
+    font-size: 1rem;
     font-weight: 550;
     margin-bottom: 10px;
     color: #333;
 }
 
-.Work-card p {
-      color: #555;
+.homePageWorkCard p {
+    color: #555;
     font-size: 1rem;
     max-width: 650px;
     margin: 0 auto 40px;
