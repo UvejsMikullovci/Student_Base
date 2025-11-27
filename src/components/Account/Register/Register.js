@@ -62,10 +62,10 @@ export default function Register() {
       setContractorType("");
       setRoleSelection("");
 
-      if (roleSelection === "Student") navigate("/panel");
-      if (roleSelection === "Professor") navigate("/panelprof");
-      if (roleSelection === "Landlord") navigate("/paneldorms");
-      if (roleSelection === "College") navigate("/panelkolegj");
+      if (roleSelection === "Student") navigate("/StudentPanel");
+      if (roleSelection === "Professor") navigate("/ProfessorPanel");
+      if (roleSelection === "Landlord") navigate("/LandlordPanel");
+      if (roleSelection === "College") navigate("/CollegePanel");
     } catch (err) {
       if (err.code === "auth/email-already-in-use")
         setError("Ky email është tashmë i regjistruar.");

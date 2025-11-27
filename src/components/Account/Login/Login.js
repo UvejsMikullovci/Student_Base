@@ -47,19 +47,19 @@ export default function Login() {
       // ✅ Redirect based on role
       switch (role) {
         case "Student":
-          navigate("/panel");
+          navigate("/StudentPanel");
           break;
         case "Professor":
-          navigate("/panelprof");
+          navigate("/ProfessorPanel");
           break;
         case "College":
-          navigate("/panelkolegj");
+          navigate("/CollegePanel");
           break;
         case "Landlord":
-          navigate("/paneldorms");
+          navigate("/LandlordPanel");
           break;
         default:
-          navigate("/panel");
+          navigate("/StudentPanel");
           break;
       }
     } catch (err) {
